@@ -12,3 +12,9 @@ Uninstallation is done with:
 ```bash
 curl --silent https://raw.githubusercontent.com/adriancmiranda/dotfiles/master/uninstall | sh
 ```
+
+To clone this project (and all its submodules):
+
+```bash
+git clone --recursive git://github.com/adriancmiranda/dotfiles.git
+```
