@@ -6,3 +6,9 @@ Installation is done with simple command set (see “building system from scratc
 ```bash
 curl --silent https://raw.githubusercontent.com/adriancmiranda/dotfiles/master/install | sh
 ```
+
+Uninstallation is done with:
+
+```bash
+curl --silent https://raw.githubusercontent.com/adriancmiranda/dotfiles/master/uninstall | sh
+```
