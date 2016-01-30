@@ -143,11 +143,7 @@ function downloadMongoDB {
 		mkdir -p "$PWD/$name";
 		cp -R -n "$PWD/$file/" "$PWD/$name";
 		success "Done!";
-		# installMongoDB;
-# 		curl -O https://fastdl.mongodb.org/osx/mongodb-osx-x86_64-3.2.1.tgz;
-# 		tar -zxvf ./mongodb-osx-x86_64-3.2.1.tgz;
-# 		mkdir -p ./mongodb;
-# 		cp -R -n ./mongodb-osx-x86_64-3.2.1/ mongodb;
+		installMongoDB;
 	)
 	[ $? -eq 0 ] || (
 		local ERROR=$?;
@@ -160,16 +156,16 @@ function downloadMongoDB {
 		local ERROR=$?;
 
 		rm "$PWD/$file.$extension";
-		rm -rf "$PWD/mongodb" "$PWD/$file";
+		rm -rf "$PWD/$file";
+		sleep 2;
+		rm -rf "$PWD/$name";
 		log "extracting files...";
-# 	rm ./mongodb-osx-x86_64-3.2.1.tgz;
-# 	rm -rf ./mongodb ./mongodb-osx-x86_64-3.2.1;
 		exit $ERROR;
 	}
 }
 
-# function installMongoDB {
-# 	uninstallMongoDB;
+function installMongoDB {
+	uninstallMongoDB;
 # 	{ # try
 # 		printf "\n\n[Installing MongoDB]:\n";
 # 		mv ./mongodb ~/bin/;
@@ -177,41 +173,41 @@ function downloadMongoDB {
 # 		printf "\n$___\n${ERROR}✖ ERROR:${NC} MongoDB installation failed\n$___\n";
 # 		# exit 1;
 # 	}
-# }
+}
 
-# function setupMongoDB {
-# 	{ # try
-# 		printf "\n\n[Setuping MongoDB]:\n";
+function setupMongoDB {
+	{ # try
+		log "\n[Setuping MongoDB]:";
 # 		# mkdir -p /data/db
-# 	} || { # catch
-# 		printf "\n$___\n${ERROR}✖ ERROR:${NC} setup MongoDB installation failed\n$___\n";
-# 		# exit 1;
-# 	}
-# }
+	} || { # catch
+		printf "\n$___\n${ERROR}✖ ERROR:${NC} setup MongoDB installation failed\n$___\n";
+		exit 1;
+	}
+}
 
-# function backupMongoDB {
-# 	{ # try
-# 		printf "\n\n[Backuping MongoDB]:\n";
+function backupMongoDB {
+	{ # try
+		log "\n[Backuping MongoDB]:";
 # 		mkdir -p ~/Desktop/_dotfiles/MongoDB/installers ~/Desktop/_dotfiles/MongoDB/backup ~/Desktop/_dotfiles/MongoDB/raw;
 # 		# cp -R -n ./mongodb ~/Desktop/_dotfiles/MongoDB/installers;
 # 		# mv mongodb-osx-x86_64-3.2.1.tgz ~/Desktop/dotfiles;
 # 		# rm mongodb-osx-x86_64-3.2.1.tgz;
-# 	} || { # catch
-# 		printf "\n$___\n${ERROR}✖ ERROR:${NC} backup MongoDB installation failed\n$___\n";
-# 		# exit 1;
-# 	}
-# }
+	} || { # catch
+		printf "\n$___\n${ERROR}✖ ERROR:${NC} backup MongoDB installation failed\n$___\n";
+		exit 1;
+	}
+}
 
-# function uninstallMongoDB {
-# 	{ # try
-# 		backupMongoDB;
-# 		printf "Uninstalling MongoDB\n";
+function uninstallMongoDB {
+	{ # try
+		backupMongoDB;
+		log "\n[Uninstalling MongoDB]";
 # 		# rm -rf ~/bin/mongodb;
-# 	} || { # catch
-# 		printf "\n$___\n${ERROR}✖ ERROR:${NC} cleanup MongoDB installation failed\n$___\n";
-# 		# exit 1;
-# 	}
-# }
+	} || { # catch
+		printf "\n$___\n${ERROR}✖ ERROR:${NC} cleanup MongoDB installation failed\n$___\n";
+		exit 1;
+	}
+}
 
 
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
