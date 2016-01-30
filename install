@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 #
 # URL: https://github.com/adriancmiranda/dotfiles
 # Title: Dotfiles
@@ -18,17 +18,44 @@ ABS=$(cd "$DIR"; pwd);
 # Navigate to current directory
 cd "$ABS";
 
-# Banner
-printf "                      \n";
-printf "   /     '      /  /  \n";
-printf "  /__      ___ (  /   \n";
-printf "  \\--\`-'-|\`---\\ | \n";
-printf "   |' _/   \` __/ /   \n";
-printf "   \'._  W    ,--\'   \n";
-printf "      |_:_._/     a.m \n";
-printf "                  box \n";
-printf "                  ... \n";
-printf "x~x~x~x~x~x~x~x~x~x~x~\n";
+
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+#
+#
+#
+# HUMANIZE COLORS
+#
+#
+#
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+# colors
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+# @usage: printf "${Bla}black ${Red}red ${NC} ...\n";
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+# regular         bold               underline          high intensity     boldhigh intens..   background         high intensity bgs
+Yel='\e[0;33m';   BYel='\e[1;33m';   UYel='\e[4;33m';   IYel='\e[0;93m';   BIYel='\e[1;93m';   On_Yel='\e[43m';   On_IYel='\e[0;103m';
+Pur='\e[0;35m';   BPur='\e[1;35m';   UPur='\e[4;35m';   IPur='\e[0;95m';   BIPur='\e[1;95m';   On_Pur='\e[45m';   On_IPur='\e[0;105m';
+Bla='\e[0;30m';   BBla='\e[1;30m';   UBla='\e[4;30m';   IBla='\e[0;90m';   BIBla='\e[1;90m';   On_Bla='\e[40m';   On_IBla='\e[0;100m';
+Gre='\e[0;32m';   BGre='\e[1;32m';   UGre='\e[4;32m';   IGre='\e[0;92m';   BIGre='\e[1;92m';   On_Gre='\e[42m';   On_IGre='\e[0;102m';
+Whi='\e[0;37m';   BWhi='\e[1;37m';   UWhi='\e[4;37m';   IWhi='\e[0;97m';   BIWhi='\e[1;97m';   On_Whi='\e[47m';   On_IWhi='\e[0;107m';
+Blu='\e[0;34m';   BBlu='\e[1;34m';   UBlu='\e[4;34m';   IBlu='\e[0;94m';   BIBlu='\e[1;94m';   On_Blu='\e[44m';   On_IBlu='\e[0;104m';
+Cya='\e[0;36m';   BCya='\e[1;36m';   UCya='\e[4;36m';   ICya='\e[0;96m';   BICya='\e[1;96m';   On_Cya='\e[46m';   On_ICya='\e[0;106m';
+Red='\e[0;31m';   BRed='\e[1;31m';   URed='\e[4;31m';   IRed='\e[0;91m';   BIRed='\e[1;91m';   On_Red='\e[41m';   On_IRed='\e[0;101m';
+
+# alert messages
+INFO=${Bla}${On_Whi};
+SUCCESS=${BBla}${On_Gre};
+FAULT=${Red}${On_Bla};
+WARN=${BBla}${On_Yel};
+
+# no color
+NC='\e[0m';
+
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+# line decoration
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+LD="${Red}$(printf %81s |tr " " "x")${NC}";
+
 
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 #
@@ -40,32 +67,25 @@ printf "x~x~x~x~x~x~x~x~x~x~x~\n";
 #
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-function download {
-	local url=${1-};
-	local result=$2;
-	local fault=$3;
-	local always=$4;
-	(
-		set -e
+function log {
+	local message=$@;
+	printf "$message\n";
+}
 
-		curl -O "$url";
-		[ "$result" != "" ] && $result $url;
+function success {
+	local message=${1-};
+	log $message;
+}
 
-	)
-	[ $? -eq 0 ] || (
-		ERROR=$?;
-		
-		[ "$fault" != "" ] && $fault $url ${ERROR};
+function error {
+	local kind=$1;
+	local message=$2;
+	log "$LD\n${FAULT}✖ $kind:${NC} $message\n$LD";
+}
 
-		exit $ERROR;
-	)
-	{
-		ERROR=$?;
-
-		[ "$always" != "" ] && $always $url ${ERROR:0};
-
-		exit $ERROR;
-	}
+function warn {
+	local message=${1-};
+	log $message;
 }
 
 
@@ -109,68 +129,89 @@ function download {
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 # MongoDB
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
 function downloadMongoDB {
-	{ # try
-		printf "\n\n[Downloading MongoDB]:\n";
-		curl -O https://fastdl.mongodb.org/osx/mongodb-osx-x86_64-3.2.1.tgz;
-		tar -zxvf ./mongodb-osx-x86_64-3.2.1.tgz;
-		mkdir -p ./mongodb;
-		cp -R -n ./mongodb-osx-x86_64-3.2.1/ mongodb;
-		printf "\nDone!\n";
-		# installMongoDB;
-	} || { # catch
-		printf "\n$___\n${ERROR}✖ ERROR:${NC} download MongoDB installer failed\n$___\n";
-	}
-	rm ./mongodb-osx-x86_64-3.2.1.tgz;
-	rm -rf ./mongodb ./mongodb-osx-x86_64-3.2.1;
-}
+	local URL="$1";
+	local host=$(dirname "$URL");
+	local extension=$(basename ${URL##*.});
+	local file=$(basename ${URL%.*});
+	local name="mongodb";
+	(set -e
 
-function installMongoDB {
-	uninstallMongoDB;
-	{ # try
-		printf "\n\n[Installing MongoDB]:\n";
-		mv ./mongodb ~/bin/;
-	} || { # catch
-		printf "\n$___\n${ERROR}✖ ERROR:${NC} MongoDB installation failed\n$___\n";
-		# exit 1;
-	}
-}
+		curl -O $URL | log "[Downloading ${INFO} $file.$extension ${NC} from ${INFO} $host ${NC}...]:";
+		tar -zxvf "$PWD/$file.$extension";
+		mkdir -p "$PWD/$name";
+		cp -R -n "$PWD/$file/" "$PWD/$name";
+		success "Done!";
+# 		curl -O https://fastdl.mongodb.org/osx/mongodb-osx-x86_64-3.2.1.tgz;
+# 		tar -zxvf ./mongodb-osx-x86_64-3.2.1.tgz;
+# 		mkdir -p ./mongodb;
+# 		cp -R -n ./mongodb-osx-x86_64-3.2.1/ mongodb;
+	)
+	[ $? -eq 0 ] || (
+		local ERROR=$?;
+		
+		error "ERROR" "Download ${INFO} $file.$extension ${NC} has been failed";
 
-function setupMongoDB {
-	{ # try
-		printf "\n\n[Setuping MongoDB]:\n";
-		# mkdir -p /data/db
-	} || { # catch
-		printf "\n$___\n${ERROR}✖ ERROR:${NC} setup MongoDB installation failed\n$___\n";
-		# exit 1;
-	}
-}
+		exit $ERROR;
+	)
+	{
+		local ERROR=$?;
 
-function backupMongoDB {
-	{ # try
-		printf "\n\n[Backuping MongoDB]:\n";
-		mkdir -p ~/Desktop/_dotfiles/MongoDB/installers ~/Desktop/_dotfiles/MongoDB/backup ~/Desktop/_dotfiles/MongoDB/raw;
-		# cp -R -n ./mongodb ~/Desktop/_dotfiles/MongoDB/installers;
-		# mv mongodb-osx-x86_64-3.2.1.tgz ~/Desktop/dotfiles;
-		# rm mongodb-osx-x86_64-3.2.1.tgz;
-	} || { # catch
-		printf "\n$___\n${ERROR}✖ ERROR:${NC} backup MongoDB installation failed\n$___\n";
-		# exit 1;
+		rm "$PWD/$file.$extension";
+		rm -rf "$PWD/mongodb" "$PWD/$file";
+		log "extracting files...";
+# 	rm ./mongodb-osx-x86_64-3.2.1.tgz;
+# 	rm -rf ./mongodb ./mongodb-osx-x86_64-3.2.1;
+		exit $ERROR;
 	}
 }
 
-function uninstallMongoDB {
-	{ # try
-		backupMongoDB;
-		printf "Uninstalling MongoDB\n";
-		# rm -rf ~/bin/mongodb;
-	} || { # catch
-		printf "\n$___\n${ERROR}✖ ERROR:${NC} cleanup MongoDB installation failed\n$___\n";
-		# exit 1;
-	}
-}
+# function installMongoDB {
+# 	uninstallMongoDB;
+# 	{ # try
+# 		printf "\n\n[Installing MongoDB]:\n";
+# 		mv ./mongodb ~/bin/;
+# 	} || { # catch
+# 		printf "\n$___\n${ERROR}✖ ERROR:${NC} MongoDB installation failed\n$___\n";
+# 		# exit 1;
+# 	}
+# }
 
-# downloadMongoDB;
+# function setupMongoDB {
+# 	{ # try
+# 		printf "\n\n[Setuping MongoDB]:\n";
+# 		# mkdir -p /data/db
+# 	} || { # catch
+# 		printf "\n$___\n${ERROR}✖ ERROR:${NC} setup MongoDB installation failed\n$___\n";
+# 		# exit 1;
+# 	}
+# }
+
+# function backupMongoDB {
+# 	{ # try
+# 		printf "\n\n[Backuping MongoDB]:\n";
+# 		mkdir -p ~/Desktop/_dotfiles/MongoDB/installers ~/Desktop/_dotfiles/MongoDB/backup ~/Desktop/_dotfiles/MongoDB/raw;
+# 		# cp -R -n ./mongodb ~/Desktop/_dotfiles/MongoDB/installers;
+# 		# mv mongodb-osx-x86_64-3.2.1.tgz ~/Desktop/dotfiles;
+# 		# rm mongodb-osx-x86_64-3.2.1.tgz;
+# 	} || { # catch
+# 		printf "\n$___\n${ERROR}✖ ERROR:${NC} backup MongoDB installation failed\n$___\n";
+# 		# exit 1;
+# 	}
+# }
+
+# function uninstallMongoDB {
+# 	{ # try
+# 		backupMongoDB;
+# 		printf "Uninstalling MongoDB\n";
+# 		# rm -rf ~/bin/mongodb;
+# 	} || { # catch
+# 		printf "\n$___\n${ERROR}✖ ERROR:${NC} cleanup MongoDB installation failed\n$___\n";
+# 		# exit 1;
+# 	}
+# }
+
 
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 #
@@ -200,15 +241,23 @@ function uninstallMongoDB {
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
+
+
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-#
-#
-#
-# INFO
-#
-#
-#
-#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+# Banner
+log "                      ";
+log "   /     '      /  /  ";
+log "  /__      ___ (  /   ";
+log "  \\--\`-'-|\`---\\ | ";
+log "   |' _/   \` __/ /   ";
+log "   \'._  W    ,--\'   ";
+log "      |_:_._/     a.m ";
+log "                  box ";
+log "x~x~x~x~x~x~x~x~x~x~x~";
+
+downloadMongoDB "https://fastdl.mongodb.org/osx/mongodb-osx-x86_64-3.2.1.tgz";
+
 # https://zcrashz.wordpress.com/2013/01/22/bash-shell-script-function-examples/
 # source ~/.bash_profile;
 # php -v;
