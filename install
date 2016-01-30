@@ -40,6 +40,34 @@ printf "x~x~x~x~x~x~x~x~x~x~x~\n";
 #
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+function download {
+	local url=${1-};
+	local result=$2;
+	local fault=$3;
+	local always=$4;
+	(
+		set -e
+
+		curl -O "$url";
+		[ "$result" != "" ] && $result $url;
+
+	)
+	[ $? -eq 0 ] || (
+		ERROR=$?;
+		
+		[ "$fault" != "" ] && $fault $url ${ERROR};
+
+		exit $ERROR;
+	)
+	{
+		ERROR=$?;
+
+		[ "$always" != "" ] && $always $url ${ERROR:0};
+
+		exit $ERROR;
+	}
+}
+
 
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 #
@@ -61,6 +89,11 @@ printf "x~x~x~x~x~x~x~x~x~x~x~\n";
 # sudo chmod 644 $HOME.conf
 
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+# Secure tunnels to localhost
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+# curl -O https://dl.ngrok.com/ngrok_2.0.19_darwin_amd64.zip && unzip ngrok_2.0.19_darwin_amd64.zip -p ~/bin;
+
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 #
 #
 #
@@ -76,9 +109,68 @@ printf "x~x~x~x~x~x~x~x~x~x~x~\n";
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 # MongoDB
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-curl -O https://fastdl.mongodb.org/osx/mongodb-osx-x86_64-3.2.1.tgz && \
-tar -zxvf mongodb-osx-x86_64-3.2.1.tgz && \
-mkdir -p mongodb && cp -R -n mongodb-osx-x86_64-3.2.1/ mongodb
+function downloadMongoDB {
+	{ # try
+		printf "\n\n[Downloading MongoDB]:\n";
+		curl -O https://fastdl.mongodb.org/osx/mongodb-osx-x86_64-3.2.1.tgz;
+		tar -zxvf ./mongodb-osx-x86_64-3.2.1.tgz;
+		mkdir -p ./mongodb;
+		cp -R -n ./mongodb-osx-x86_64-3.2.1/ mongodb;
+		printf "\nDone!\n";
+		# installMongoDB;
+	} || { # catch
+		printf "\n$___\n${ERROR}✖ ERROR:${NC} download MongoDB installer failed\n$___\n";
+	}
+	rm ./mongodb-osx-x86_64-3.2.1.tgz;
+	rm -rf ./mongodb ./mongodb-osx-x86_64-3.2.1;
+}
+
+function installMongoDB {
+	uninstallMongoDB;
+	{ # try
+		printf "\n\n[Installing MongoDB]:\n";
+		mv ./mongodb ~/bin/;
+	} || { # catch
+		printf "\n$___\n${ERROR}✖ ERROR:${NC} MongoDB installation failed\n$___\n";
+		# exit 1;
+	}
+}
+
+function setupMongoDB {
+	{ # try
+		printf "\n\n[Setuping MongoDB]:\n";
+		# mkdir -p /data/db
+	} || { # catch
+		printf "\n$___\n${ERROR}✖ ERROR:${NC} setup MongoDB installation failed\n$___\n";
+		# exit 1;
+	}
+}
+
+function backupMongoDB {
+	{ # try
+		printf "\n\n[Backuping MongoDB]:\n";
+		mkdir -p ~/Desktop/_dotfiles/MongoDB/installers ~/Desktop/_dotfiles/MongoDB/backup ~/Desktop/_dotfiles/MongoDB/raw;
+		# cp -R -n ./mongodb ~/Desktop/_dotfiles/MongoDB/installers;
+		# mv mongodb-osx-x86_64-3.2.1.tgz ~/Desktop/dotfiles;
+		# rm mongodb-osx-x86_64-3.2.1.tgz;
+	} || { # catch
+		printf "\n$___\n${ERROR}✖ ERROR:${NC} backup MongoDB installation failed\n$___\n";
+		# exit 1;
+	}
+}
+
+function uninstallMongoDB {
+	{ # try
+		backupMongoDB;
+		printf "Uninstalling MongoDB\n";
+		# rm -rf ~/bin/mongodb;
+	} || { # catch
+		printf "\n$___\n${ERROR}✖ ERROR:${NC} cleanup MongoDB installation failed\n$___\n";
+		# exit 1;
+	}
+}
+
+# downloadMongoDB;
 
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 #
@@ -117,8 +209,12 @@ mkdir -p mongodb && cp -R -n mongodb-osx-x86_64-3.2.1/ mongodb
 #
 #
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+# https://zcrashz.wordpress.com/2013/01/22/bash-shell-script-function-examples/
 # source ~/.bash_profile;
 # php -v;
 # httpd -v;
 # /usr/local/mysql/bin/mysql -v;
 # mysql -v
+# open ~/Desktop/_dotfiles;
+# open ~/bin;
+# open $PWD;
