@@ -18,3 +18,14 @@ To clone this project (and all its submodules):
 ```bash
 git clone --recursive git://github.com/adriancmiranda/dotfiles.git
 ```
+
+## Support
+
+Bugs and issues should be reported via the [issue tracker][issue_tracker].
+
+<!--
+||
+|| <External_links>
+||
+l'-->
+[issue_tracker]: http://github.com/adriancmiranda/as3/issues "Issue tracker"
