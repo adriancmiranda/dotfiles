@@ -8,6 +8,36 @@
 # Version: 0.0.1
 #
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+# SYM: For reading through a symlink, which is usually not what you want
+# (you usually don't want to confuse the user this way)
+SYM=$(basename "$(test -L "$0" && readlink "$0" || echo "$0")");
+DIR=$(dirname "$0");
+PWD=$(pwd);
+ABS=$(cd "$DIR"; pwd);
+
+# Navigate to current directory
+cd "$ABS";
+
+# Banner
+printf "                      \n";
+printf "   /     '      /  /  \n";
+printf "  /__      ___ (  /   \n";
+printf "  \\--\`-'-|\`---\\ | \n";
+printf "   |' _/   \` __/ /   \n";
+printf "   \'._  W    ,--\'   \n";
+printf "      |_:_._/     a.m \n";
+printf "                  box \n";
+printf "x~x~x~x~x~x~x~x~x~x~x~\n";
+
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+#
+#
+#
+# UTILS
+#
+#
+#
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -45,8 +75,9 @@
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 # MongoDB
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-
+curl -O https://fastdl.mongodb.org/osx/mongodb-osx-x86_64-3.2.1.tgz && \
+tar -zxvf mongodb-osx-x86_64-3.2.1.tgz && \
+mkdir -p mongodb && cp -R -n mongodb-osx-x86_64-3.2.1/ mongodb
 
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 #
