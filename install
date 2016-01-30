@@ -143,6 +143,7 @@ function downloadMongoDB {
 		mkdir -p "$PWD/$name";
 		cp -R -n "$PWD/$file/" "$PWD/$name";
 		success "Done!";
+		# installMongoDB;
 # 		curl -O https://fastdl.mongodb.org/osx/mongodb-osx-x86_64-3.2.1.tgz;
 # 		tar -zxvf ./mongodb-osx-x86_64-3.2.1.tgz;
 # 		mkdir -p ./mongodb;
