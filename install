@@ -155,10 +155,9 @@ function downloadMongoDB {
 	{
 		local ERROR=$?;
 
-		rm "$PWD/$file.$extension";
-		rm -rf "$PWD/$file";
 		sleep 2;
-		rm -rf "$PWD/$name";
+		rm "$PWD/$file.$extension";
+		rm -rf "$PWD/$file" "$PWD/$name";
 		log "extracting files...";
 		exit $ERROR;
 	}
