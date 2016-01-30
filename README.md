@@ -7,8 +7,6 @@ Installation is done with simple command set (see “building system from scratc
 curl --silent https://raw.githubusercontent.com/adriancmiranda/dotfiles/master/install | sh
 ```
 
-_**Note**: you may need to close and reopen your terminal_
-
 Uninstallation is done with:
 
 ```bash
