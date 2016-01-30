@@ -7,6 +7,8 @@ Installation is done with simple command set (see “building system from scratc
 curl --silent https://raw.githubusercontent.com/adriancmiranda/dotfiles/master/install | sh
 ```
 
+_**Note**: you may need to close and reopen your terminal_
+
 Uninstallation is done with:
 
 ```bash
@@ -28,4 +30,4 @@ Bugs and issues should be reported via the [issue tracker][issue_tracker].
 || <External_links>
 ||
 l'-->
-[issue_tracker]: http://github.com/adriancmiranda/as3/issues "Issue tracker"
+[issue_tracker]: http://github.com/adriancmiranda/dotfiles/issues "Issue tracker"
