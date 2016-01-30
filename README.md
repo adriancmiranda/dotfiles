@@ -1,4 +1,4 @@
-# dotfiles
+# .files
 > Colourful &amp; robust OS X configuration files and utilities.
 
 Installation is done with simple command set (see “building system from scratch” for setup of new system):
