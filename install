@@ -14,6 +14,7 @@ SYM=$(basename "$(test -L "$0" && readlink "$0" || echo "$0")");
 DIR=$(dirname "$0");
 PWD=$(pwd);
 ABS=$(cd "$DIR"; pwd);
+BKP="$HOME/Desktop/_dotfiles";
 
 # Navigate to current directory
 cd "$ABS";
@@ -276,13 +277,19 @@ function configureMongoDB {
 }
 
 function backupMongoDB {
+	local URL="$1";
+	local extension=$(basename ${URL##*.});
+	local file=$(basename ${URL%.*});
+	local name="mongodb";
+	local bkpDir="$BKP/MongoDB";
 	(
 		set -e;
 		log "\n[Backuping $file.$extension]:";
-		# mkdir -p ~/Desktop/_dotfiles/MongoDB/installers ~/Desktop/_dotfiles/MongoDB/backup ~/Desktop/_dotfiles/MongoDB/raw;
-		# cp -R -n ./mongodb ~/Desktop/_dotfiles/MongoDB/installers;
-		# mv mongodb-osx-x86_64-3.2.1.tgz ~/Desktop/dotfiles;
-		# rm mongodb-osx-x86_64-3.2.1.tgz;
+		if mkdir -p "$bkpDir/installers" "$bkpDir/backup" "$bkpDir/raw"; then
+			# cp -R -n "$PWD/$name" "$bkpDir/installers";
+			# mv "$file.$extension" "$BKP/installers";
+			# rm "$file.$extension";
+		fi
 	)
 	[ $? -eq 0 ] ||
 	(
@@ -293,10 +300,14 @@ function backupMongoDB {
 }
 
 function uninstallMongoDB {
+	local URL="$1";
+	local extension=$(basename ${URL##*.});
+	local file=$(basename ${URL%.*});
+	local name="mongodb";
 	(
 		set -e;
-		backupMongoDB;
-		# log "\n[Uninstalling ${INFO} $file.$extension ${NC}]:";
+		backupMongoDB $URL;
+		log "\n[Uninstalling $file.$extension]:";
 		# rm -rf ~/bin/mongodb;
 	)
 	[ $? -eq 0 ] ||
