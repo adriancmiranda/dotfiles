@@ -218,9 +218,10 @@ function downloadMongoDB {
 	local extension=$(basename ${URL##*.});
 	local file=$(basename ${URL%.*});
 	local name="mongodb";
+	[[ ! -f "$PWD/$file.$extension" ]] && \
+	curl -O $URL | log "[Downloading ${INFO} $file.$extension ${NC} from ${INFO} $host ${NC}...]:";
 	(
 		set -e;
-		curl -O $URL | log "[Downloading ${INFO} $file.$extension ${NC} from ${INFO} $host ${NC}...]:";
 		tar -zxvf "$PWD/$file.$extension";
 		mkdir -p "$PWD/$name";
 		cp -R -n "$PWD/$file/" "$PWD/$name";
@@ -235,8 +236,8 @@ function downloadMongoDB {
 	)
 	{
 		local ERROR=$?;
-		rm "$PWD/$file.$extension";
-		rm -rf "$PWD/$file" "$PWD/$name";
+		# rm "$PWD/$file.$extension";
+		# rm -rf "$PWD/$file" "$PWD/$name";
 		exit $ERROR;
 	}
 }
@@ -249,7 +250,7 @@ function installMongoDB {
 	local installDir="$HOME/bin";
 	uninstallMongoDB $URL;
 	(
-		set -e;
+		set -e;exit 1;
 		log "\n[Installing $file.$extension]:";
 		if mv "$PWD/$name" "$installDir" 2> /dev/null; then
 			log "✓ $name has been successfully installed on ${INFO} $installDir/$name ${NC}";
@@ -301,9 +302,10 @@ function backupMongoDB {
 		set -e;
 		log "\n[Backuping $file.$extension]:";
 		if mkdir -p "$bkpDir/installers" "$bkpDir/backup" "$bkpDir/raw"; then
-			# cp -R -n "$PWD/$name" "$bkpDir/installers";
-			# mv "$file.$extension" "$BKP/installers";
-			# rm "$file.$extension";
+			if cp -R -n "$PWD/$name" "$bkpDir/installers"; then
+				mv "$file.$extension" "$BKP/installers";
+				rm "$file.$extension";
+			fi
 		fi
 	)
 	[ $? -eq 0 ] ||
