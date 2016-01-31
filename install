@@ -304,9 +304,9 @@ function uninstallMongoDB {
 	local extension=$(basename ${URL##*.});
 	local file=$(basename ${URL%.*});
 	local name="mongodb";
+	backupMongoDB $URL;
 	(
 		set -e;
-		backupMongoDB $URL;
 		log "\n[Uninstalling $file.$extension]:";
 		# rm -rf ~/bin/mongodb;
 	)
