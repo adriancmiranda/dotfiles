@@ -46,7 +46,7 @@ Red='\e[0;31m';   BRed='\e[1;31m';   URed='\e[4;31m';   IRed='\e[0;91m';   BIRed
 INFO=${Bla}${On_Whi};
 SUCCESS=${BBla}${On_Gre};
 FAULT=${Red}${On_Bla};
-WARN=${BBla}${On_Yel};
+WARN=${Bla}${On_Yel};
 
 # no color
 NC='\e[0m';
@@ -54,7 +54,7 @@ NC='\e[0m';
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 # line decoration
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-LD="${Red}$(printf %86s | tr " " "/")${NC}";
+LD="$(printf %86s | tr " " "/")${NC}";
 
 
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -80,76 +80,34 @@ function success {
 function error {
 	local kind=$1;
 	local message=$2;
-	log "$LD\n${FAULT}✖ $kind:${NC} $message\n$LD";
+	log "${Red}$LD${NC}\n${FAULT}✖ $kind:${NC} $message\n${Red}$LD${NC}";
 }
 
 function warn {
 	local message=${1-};
-	log $message;
+	log "${Yel}$LD${NC}\n$message\n${Yel}$LD${NC}";
 }
 
-function mvsec {
-	return 0;
-}
+# echo "eita: mvsec ae ae1";
+# if [[ $(mvsec ae ae1) == "1" ]]; then
+# if mv "$PWD/mongodb" "$HOME/bin"; then
+# 	echo >&2 "successfully acquired lock: moved!";
+# 	# echo "aeafasdfasdfasdfasfadsfadsfasfadsfasdfadfasfdsadfasdfa";
+# else
+# 	echo >&2 "não moveu!!!!";
+# fi
 
-# function fileExists {
-# 	local target="$1";
-# 	[[ -f "$target" ]] && return 0 || return 1;
-# }
+# listAllFiles "$folder_empty";
+# listAllFiles "$folder_empty2";
+# listAllFiles "$folder_empty3";
+# listAllFiles "$folder_full";
 
-# function isDirectory {
-# 	local target="$1";
-# 	[[ -d "$target" ]] && return 1 || return 0;
-# }
+# printf "$LD\n";
 
-# function isCleanDirectory {
-# 	return isDirectory "$1";
-# }
-
-function listAllFiles {
-	:
-	# shopt -s dotglob
-	# cd "$1";
-	# for file in *; do
-	# 	log $file
-	# done
-	# log "pwd:$PWD";
-	# cd "$PWD";
-}
-
-function is_empty {
-	:
-	# method 1
-	# local dir="$1";
-	# shopt -s nullglob;
-	# local files=( "$dir"/* "$dir"/.* );
-	# log $files 
-	# [[ ${#files[@]} -eq 2 ]];
-
-	# method 2
-	local files=$(find . -type d -exec bash -c \
-	"echo -ne '{}\t'; ls -a1 '{}' | egrep -v  '^\.(\.?|DS_Store)$' | wc -l" \; | \
-	awk -F"\t" '$NF<=0{ system("chflags hidden " $1 ) }');
-	log "files:$files";
-}
-
-
-folder_empty="$PWD/teste/empty";
-folder_empty2="$PWD/teste/empty2";
-folder_empty3="$PWD/teste/empty3";
-folder_full="$PWD/teste/full";
-
-listAllFiles "$folder_empty";
-listAllFiles "$folder_empty2";
-listAllFiles "$folder_empty3";
-listAllFiles "$folder_full";
-
-printf "$LD\n";
-
-if is_empty "$folder_empty"; then echo "$folder_empty: Is empty"; else echo "$folder_empty: Not empty"; fi
-if is_empty "$folder_empty2"; then echo "$folder_empty2: Is empty"; else echo "$folder_empty2: Not empty"; fi
-if is_empty "$folder_empty3"; then echo "$folder_empty3: Is empty"; else echo "$folder_empty3: Not empty"; fi
-if is_empty "$folder_full"; then echo "$folder_full: Is empty"; else echo "$folder_full: Not empty"; fi
+# if is_empty "$folder_empty"; then echo "$folder_empty: Is empty"; else echo "$folder_empty: Not empty"; fi
+# if is_empty "$folder_empty2"; then echo "$folder_empty2: Is empty"; else echo "$folder_empty2: Not empty"; fi
+# if is_empty "$folder_empty3"; then echo "$folder_empty3: Is empty"; else echo "$folder_empty3: Not empty"; fi
+# if is_empty "$folder_full"; then echo "$folder_full: Is empty"; else echo "$folder_full: Not empty"; fi
 
 # printf "$LD\n";
 
@@ -278,29 +236,12 @@ function installMongoDB {
 	(
 		set -e;
 		log "\n[Installing ${INFO} $file.$extension ${NC}]:";
-
-		# Logic
-		# hasDiretory? (isEmpty? install : warn) : install
-
-		# Validation
-		# if [ ! hasDir "$installDir/$name" ]; then
-		# 	if [ isAllowedDir "$installDir/$name" ]; then
-		# 		mv "$PWD/$name" "$installDir";
-		# 		configureMongoDB;
-		# 	else
-		# 		warn "${INFO} $installDir/$name ${NC}";
-		# 	fi
-		# else 
-		# 	mv "$PWD/$name" "$installDir";
-		# 	configureMongoDB;
-		# fi
-
-		# Sofisticated validation
-		# if [ mvsec "$PWD/$name" "$installDir" ]; then
-		# 	configureMongoDB;
-		# else
-		# 	warn "${INFO} $installDir/$name ${NC}";
-		# fi
+		if mv "$PWD/$name" "$installDir"; then
+			log >&2 "${INFO} $PWD/$name ${NC} has been successfully installed";
+			configureMongoDB;
+		else
+			warn >&2 "${WARN} $name ${NC} has been installed in same address before.\nCheckout: ${INFO} $installDir/$name ${NC}";
+		fi
 	)
 	[ $? -eq 0 ] ||
 	(
@@ -421,10 +362,10 @@ log "   |' _/   \` __/ /   ";
 log "   \'._  W    ,--\'   ";
 log "      |_:_._/     a.m ";
 log "                  box ";
-log "$LD";
+log "${Red}$LD${NC}";
 # downloadMySQL
-# downloadMongoDB "https://fastdl.mongodb.org/osx/mongodb-osx-x86_64-3.2.1.tgz";
-installMongoDB "https://fastdl.mongodb.org/osx/mongodb-osx-x86_64-3.2.1.tgz";
+downloadMongoDB "https://fastdl.mongodb.org/osx/mongodb-osx-x86_64-3.2.1.tgz";
+# installMongoDB "https://fastdl.mongodb.org/osx/mongodb-osx-x86_64-3.2.1.tgz";
 
 # downloadSublimeText;
 # installSublimeTextIcons;
