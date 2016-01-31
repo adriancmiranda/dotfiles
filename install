@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 #
 # URL: https://github.com/adriancmiranda/dotfiles
 # Title: Dotfiles
@@ -88,6 +88,23 @@ function warn {
 	log $message;
 }
 
+function fileExists {
+	local file="$1";
+	[[ -f "$file" ]] && return 0 || return 1;
+}
+
+function isDirectory {
+	local file="$1";
+	[[ -d "$file" ]] && return 1 || return 0;
+}
+
+bla=$HOME/bin/mongodb;
+if ( fileExists "$bla" ) then
+ echo "File found"
+else
+ echo "File not found"
+fi
+
 
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 #
@@ -170,7 +187,8 @@ function installMongoDB {
 	(
 		set -e;
 		log "\n[Installing ${INFO} $file.$extension ${NC}]:";
-		[[ -e "${folder}" ]] && mv "$PWD/$name" "$dest";
+		# [[ ! -z "$folder" ]] && mv "$PWD/$name" "$dest";
+		configureMongoDB;
 	)
 	[ $? -eq 0 ] ||
 	(
@@ -180,38 +198,50 @@ function installMongoDB {
 	)
 }
 
-function setupMongoDB {
-	{ # try
-		log "\n[Setuping ${INFO} $file.$extension ${NC}]:";
-# 		# mkdir -p /data/db
-	} || { # catch
-		printf "\n$___\n${ERROR}✖ ERROR:${NC} setup MongoDB installation failed\n$___\n";
-		exit 1;
-	}
+function configureMongoDB {
+	(
+		set -e;
+		log "\n[Configuring ${INFO} $file.$extension ${NC}]:";
+		# mkdir -p /data/db
+	)
+	[ $? -eq 0 ] ||
+	(
+		local ERROR=$?;
+		error "CONFIGURATION_ERROR" "The ${INFO} $file.$extension ${NC} configuration failed.";
+		exit $ERROR;
+	)
 }
 
 function backupMongoDB {
-	{ # try
+	(
+		set -e;
 		log "\n[Backuping ${INFO} $file.$extension ${NC}]:";
-# 		mkdir -p ~/Desktop/_dotfiles/MongoDB/installers ~/Desktop/_dotfiles/MongoDB/backup ~/Desktop/_dotfiles/MongoDB/raw;
-# 		# cp -R -n ./mongodb ~/Desktop/_dotfiles/MongoDB/installers;
-# 		# mv mongodb-osx-x86_64-3.2.1.tgz ~/Desktop/dotfiles;
-# 		# rm mongodb-osx-x86_64-3.2.1.tgz;
-	} || { # catch
-		printf "\n$___\n${ERROR}✖ ERROR:${NC} backup MongoDB installation failed\n$___\n";
-		exit 1;
-	}
+		# mkdir -p ~/Desktop/_dotfiles/MongoDB/installers ~/Desktop/_dotfiles/MongoDB/backup ~/Desktop/_dotfiles/MongoDB/raw;
+		# cp -R -n ./mongodb ~/Desktop/_dotfiles/MongoDB/installers;
+		# mv mongodb-osx-x86_64-3.2.1.tgz ~/Desktop/dotfiles;
+		# rm mongodb-osx-x86_64-3.2.1.tgz;
+	)
+	[ $? -eq 0 ] ||
+	(
+		local ERROR=$?;
+		error "BACKUP_ERROR" "Backup from ${INFO} $file.$extension ${NC} has been failed.";
+		exit $ERROR;
+	)
 }
 
 function uninstallMongoDB {
-	{ # try
+	(
+		set -e;
 		backupMongoDB;
-		log "\n[Uninstalling ${INFO} $file.$extension ${NC}]:";
-# 		# rm -rf ~/bin/mongodb;
-	} || { # catch
-		printf "\n$___\n${ERROR}✖ ERROR:${NC} cleanup MongoDB installation failed\n$___\n";
-		exit 1;
-	}
+		# log "\n[Uninstalling ${INFO} $file.$extension ${NC}]:";
+		# rm -rf ~/bin/mongodb;
+	)
+	[ $? -eq 0 ] ||
+	(
+		local ERROR=$?;
+		error "CLEANUP_ERROR" "${INFO} $file.$extension ${NC} cleanup has been failed.";
+		exit $ERROR;
+	)
 }
 
 
