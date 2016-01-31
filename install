@@ -261,7 +261,8 @@ function configureMongoDB {
 		set -e;
 		log "\n[Configuring $file.$extension]:";
 		if mkdir "$dataDir" 2> /dev/null; then
-			log "${SUCCESS} $name ${NC} has been successfully configured";
+			log "✓ $name has been successfully configured";
+			success "${SUCCESS} Done! ${NC}";
 		else
 			warn "${WARN} $name ${NC} ${INFO} $dataDir ${NC} directory already exists";
 		fi
