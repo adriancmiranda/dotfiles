@@ -236,7 +236,7 @@ function installMongoDB {
 		set -e;
 		log "\n[Installing $file.$extension]:";
 		if mv "$PWD/$name" "$installDir" 2> /dev/null; then
-			log "x $name has been successfully installed on ${INFO} $installDir/$name ${NC}";
+			log "✓ $name has been successfully installed on ${INFO} $installDir/$name ${NC}";
 			success "${SUCCESS} Done! ${NC}";
 			configureMongoDB $URL;
 		else
@@ -259,7 +259,7 @@ function configureMongoDB {
 	local dataDir="/data/db";
 	(	
 		set -e;
-		log "\n[Configuring ${INFO} $file.$extension ${NC}]:";
+		log "\n[Configuring $file.$extension]:";
 		if mkdir "$dataDir" 2> /dev/null; then
 			log "${SUCCESS} $name ${NC} has been successfully configured";
 		else
@@ -277,7 +277,7 @@ function configureMongoDB {
 function backupMongoDB {
 	(
 		set -e;
-		log "\n[Backuping ${INFO} $file.$extension ${NC}]:";
+		log "\n[Backuping $file.$extension]:";
 		# mkdir -p ~/Desktop/_dotfiles/MongoDB/installers ~/Desktop/_dotfiles/MongoDB/backup ~/Desktop/_dotfiles/MongoDB/raw;
 		# cp -R -n ./mongodb ~/Desktop/_dotfiles/MongoDB/installers;
 		# mv mongodb-osx-x86_64-3.2.1.tgz ~/Desktop/dotfiles;
