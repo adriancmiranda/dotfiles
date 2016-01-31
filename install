@@ -88,22 +88,94 @@ function warn {
 	log $message;
 }
 
-function fileExists {
-	local file="$1";
-	[[ -f "$file" ]] && return 0 || return 1;
+function mvsec {
+	return 0;
 }
 
-function isDirectory {
-	local file="$1";
-	[[ -d "$file" ]] && return 1 || return 0;
+# function fileExists {
+# 	local target="$1";
+# 	[[ -f "$target" ]] && return 0 || return 1;
+# }
+
+# function isDirectory {
+# 	local target="$1";
+# 	[[ -d "$target" ]] && return 1 || return 0;
+# }
+
+# function isCleanDirectory {
+# 	return isDirectory "$1";
+# }
+
+function listAllFiles {
+	:
+	# shopt -s dotglob
+	# cd "$1";
+	# for file in *; do
+	# 	log $file
+	# done
+	# log "pwd:$PWD";
+	# cd "$PWD";
 }
 
-bla=$HOME/bin/mongodb;
-if ( fileExists "$bla" ) then
- echo "File found"
-else
- echo "File not found"
-fi
+function is_empty {
+	:
+	# method 1
+	# local dir="$1";
+	# shopt -s nullglob;
+	# local files=( "$dir"/* "$dir"/.* );
+	# log $files 
+	# [[ ${#files[@]} -eq 2 ]];
+
+	# method 2
+	local files=$(find . -type d -exec bash -c \
+	"echo -ne '{}\t'; ls -a1 '{}' | egrep -v  '^\.(\.?|DS_Store)$' | wc -l" \; | \
+	awk -F"\t" '$NF<=0{ system("chflags hidden " $1 ) }');
+	log "files:$files";
+}
+
+
+folder_empty="$PWD/teste/empty";
+folder_empty2="$PWD/teste/empty2";
+folder_empty3="$PWD/teste/empty3";
+folder_full="$PWD/teste/full";
+
+listAllFiles "$folder_empty";
+listAllFiles "$folder_empty2";
+listAllFiles "$folder_empty3";
+listAllFiles "$folder_full";
+
+printf "$LD\n";
+
+if is_empty "$folder_empty"; then echo "$folder_empty: Is empty"; else echo "$folder_empty: Not empty"; fi
+if is_empty "$folder_empty2"; then echo "$folder_empty2: Is empty"; else echo "$folder_empty2: Not empty"; fi
+if is_empty "$folder_empty3"; then echo "$folder_empty3: Is empty"; else echo "$folder_empty3: Not empty"; fi
+if is_empty "$folder_full"; then echo "$folder_full: Is empty"; else echo "$folder_full: Not empty"; fi
+
+# printf "$LD\n";
+
+# if [ -d "$folder_empty" ] && [ -z "$(ls -A -- "$folder_empty")" ]; then
+# 	echo "$folder_empty: Is empty";
+# else
+# 	echo "$folder_empty: Not empty";
+# fi
+
+# if [ -d "$folder_empty2" ] && [ -z "$(ls -A -- "$folder_empty2")" ]; then
+# 	echo "$folder_empty2: Is empty";
+# else
+# 	echo "$folder_empty2: Not empty";
+# fi
+
+# if [ -d "$folder_empty3" ] && [ -z "$(ls -A -- "$folder_empty3")" ]; then
+# 	echo "$folder_empty3: Is empty";
+# else
+# 	echo "$folder_empty3: Not empty";
+# fi
+
+# if [ -d "$folder_full" ] && [ -z "$(ls -A -- "$folder_full")" ]; then
+# 	echo "$folder_full: Is empty";
+# else
+# 	echo "$folder_full: Not empty";
+# fi
 
 
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -142,6 +214,25 @@ fi
 # MySQL
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+function downloadMySQL {
+	:
+}
+
+function installMySQL {
+	:
+}
+
+function configureMySQL {
+	:
+}
+
+function backupMySQL {
+	:
+}
+
+function uninstallMySQL {
+	:
+}
 
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 # MongoDB
@@ -182,13 +273,34 @@ function installMongoDB {
 	local extension=$(basename ${URL##*.});
 	local file=$(basename ${URL%.*});
 	local name="mongodb";
-	local dest="$HOME/bin";
+	local installDir="$HOME/bin";
 	uninstallMongoDB $URL;
 	(
 		set -e;
 		log "\n[Installing ${INFO} $file.$extension ${NC}]:";
-		# [[ ! -z "$folder" ]] && mv "$PWD/$name" "$dest";
-		configureMongoDB;
+
+		# Logic
+		# hasDiretory? (isEmpty? install : warn) : install
+
+		# Validation
+		# if [ ! hasDir "$installDir/$name" ]; then
+		# 	if [ isAllowedDir "$installDir/$name" ]; then
+		# 		mv "$PWD/$name" "$installDir";
+		# 		configureMongoDB;
+		# 	else
+		# 		warn "${INFO} $installDir/$name ${NC}";
+		# 	fi
+		# else 
+		# 	mv "$PWD/$name" "$installDir";
+		# 	configureMongoDB;
+		# fi
+
+		# Sofisticated validation
+		# if [ mvsec "$PWD/$name" "$installDir" ]; then
+		# 	configureMongoDB;
+		# else
+		# 	warn "${INFO} $installDir/$name ${NC}";
+		# fi
 	)
 	[ $? -eq 0 ] ||
 	(
@@ -277,22 +389,25 @@ function uninstallMongoDB {
 # Themes
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-# function installSublimeTextThemes {
-# }
+function installSublimeTextThemes {
+	:
+}
 
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 # Snippets
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-# function installSublimeTextSnippets {
-# }
+function installSublimeTextSnippets {
+	:
+}
 
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 # Build Systems
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-# function installSublimeTextBuildSystems {
-# }
+function installSublimeTextBuildSystems {
+	:
+}
 
 
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -307,6 +422,7 @@ log "   \'._  W    ,--\'   ";
 log "      |_:_._/     a.m ";
 log "                  box ";
 log "$LD";
+# downloadMySQL
 # downloadMongoDB "https://fastdl.mongodb.org/osx/mongodb-osx-x86_64-3.2.1.tgz";
 installMongoDB "https://fastdl.mongodb.org/osx/mongodb-osx-x86_64-3.2.1.tgz";
 
