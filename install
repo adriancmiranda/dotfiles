@@ -257,6 +257,10 @@ function uninstallMongoDB {
 # Application
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+# function downloadSublimeText {
+# 	/Applications/Sublime\ Text.app/Contents/Resources/Sublime\ Text.icns
+# }
+
 # function installSublimeText {
 # 	/Applications/Sublime\ Text.app/Contents/Resources/Sublime\ Text.icns
 # }
@@ -306,7 +310,7 @@ log "$LD";
 # downloadMongoDB "https://fastdl.mongodb.org/osx/mongodb-osx-x86_64-3.2.1.tgz";
 installMongoDB "https://fastdl.mongodb.org/osx/mongodb-osx-x86_64-3.2.1.tgz";
 
-# installSublimeText;
+# downloadSublimeText;
 # installSublimeTextIcons;
 # installSublimeTextThemes;
 # installSublimeTextSnippets;
