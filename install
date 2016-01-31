@@ -54,7 +54,7 @@ NC='\e[0m';
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 # line decoration
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-LD="${Red}$(printf %81s |tr " " "x")${NC}";
+LD="${Red}$(printf %86s | tr " " "/")${NC}";
 
 
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -136,47 +136,53 @@ function downloadMongoDB {
 	local extension=$(basename ${URL##*.});
 	local file=$(basename ${URL%.*});
 	local name="mongodb";
-	(set -e
-
+	(
+		set -e;
 		curl -O $URL | log "[Downloading ${INFO} $file.$extension ${NC} from ${INFO} $host ${NC}...]:";
 		tar -zxvf "$PWD/$file.$extension";
 		mkdir -p "$PWD/$name";
 		cp -R -n "$PWD/$file/" "$PWD/$name";
-		success "Done!";
-		installMongoDB;
+		success "${INFO} Done! ${NC}";
+		installMongoDB $URL;
 	)
-	[ $? -eq 0 ] || (
+	[ $? -eq 0 ] ||
+	(
 		local ERROR=$?;
-		
-		error "ERROR" "Download ${INFO} $file.$extension ${NC} has been failed";
-
+		error "ERROR" "Download ${INFO} $file.$extension ${NC} has been failed.";
 		exit $ERROR;
 	)
 	{
 		local ERROR=$?;
-
-		sleep 2;
 		rm "$PWD/$file.$extension";
 		rm -rf "$PWD/$file" "$PWD/$name";
-		log "extracting files...";
 		exit $ERROR;
 	}
 }
 
 function installMongoDB {
-	uninstallMongoDB;
-# 	{ # try
-# 		printf "\n\n[Installing MongoDB]:\n";
-# 		mv ./mongodb ~/bin/;
-# 	} || { # catch
-# 		printf "\n$___\n${ERROR}✖ ERROR:${NC} MongoDB installation failed\n$___\n";
-# 		# exit 1;
-# 	}
+	local URL="$1";
+	local host=$(dirname "$URL");
+	local extension=$(basename ${URL##*.});
+	local file=$(basename ${URL%.*});
+	local name="mongodb";
+	local dest="$HOME/bin";
+	uninstallMongoDB $URL;
+	(
+		set -e;
+		log "\n[Installing ${INFO} $file.$extension ${NC}]:";
+		[[ -e "${folder}" ]] && mv "$PWD/$name" "$dest";
+	)
+	[ $? -eq 0 ] ||
+	(
+		local ERROR=$?;
+		error "ERROR" "The ${INFO} $file.$extension ${NC} installation failed.";
+		exit $ERROR;
+	)
 }
 
 function setupMongoDB {
 	{ # try
-		log "\n[Setuping MongoDB]:";
+		log "\n[Setuping ${INFO} $file.$extension ${NC}]:";
 # 		# mkdir -p /data/db
 	} || { # catch
 		printf "\n$___\n${ERROR}✖ ERROR:${NC} setup MongoDB installation failed\n$___\n";
@@ -186,7 +192,7 @@ function setupMongoDB {
 
 function backupMongoDB {
 	{ # try
-		log "\n[Backuping MongoDB]:";
+		log "\n[Backuping ${INFO} $file.$extension ${NC}]:";
 # 		mkdir -p ~/Desktop/_dotfiles/MongoDB/installers ~/Desktop/_dotfiles/MongoDB/backup ~/Desktop/_dotfiles/MongoDB/raw;
 # 		# cp -R -n ./mongodb ~/Desktop/_dotfiles/MongoDB/installers;
 # 		# mv mongodb-osx-x86_64-3.2.1.tgz ~/Desktop/dotfiles;
@@ -200,7 +206,7 @@ function backupMongoDB {
 function uninstallMongoDB {
 	{ # try
 		backupMongoDB;
-		log "\n[Uninstalling MongoDB]";
+		log "\n[Uninstalling ${INFO} $file.$extension ${NC}]:";
 # 		# rm -rf ~/bin/mongodb;
 	} || { # catch
 		printf "\n$___\n${ERROR}✖ ERROR:${NC} cleanup MongoDB installation failed\n$___\n";
@@ -250,9 +256,11 @@ log "   |' _/   \` __/ /   ";
 log "   \'._  W    ,--\'   ";
 log "      |_:_._/     a.m ";
 log "                  box ";
-log "x~x~x~x~x~x~x~x~x~x~x~";
+log "$LD";
+# log "x~x~x~x~x~x~x~x~x~x~x~";
 
-downloadMongoDB "https://fastdl.mongodb.org/osx/mongodb-osx-x86_64-3.2.1.tgz";
+# downloadMongoDB "https://fastdl.mongodb.org/osx/mongodb-osx-x86_64-3.2.1.tgz";
+installMongoDB "https://fastdl.mongodb.org/osx/mongodb-osx-x86_64-3.2.1.tgz";
 
 # https://zcrashz.wordpress.com/2013/01/22/bash-shell-script-function-examples/
 # source ~/.bash_profile;
