@@ -44,7 +44,7 @@ Red='\e[0;31m';   BRed='\e[1;31m';   URed='\e[4;31m';   IRed='\e[0;91m';   BIRed
 
 # alert messages
 INFO=${Bla}${On_Whi};
-SUCCESS=${BBla}${On_Gre};
+SUCCESS=${Bla}${On_Gre};
 FAULT=${Red}${On_Bla};
 WARN=${Bla}${On_Yel};
 
@@ -208,7 +208,7 @@ function downloadMongoDB {
 		tar -zxvf "$PWD/$file.$extension";
 		mkdir -p "$PWD/$name";
 		cp -R -n "$PWD/$file/" "$PWD/$name";
-		success "${INFO} Done! ${NC}";
+		success "${SUCCESS} Done! ${NC}";
 		installMongoDB $URL;
 	)
 	[ $? -eq 0 ] ||
@@ -227,7 +227,6 @@ function downloadMongoDB {
 
 function installMongoDB {
 	local URL="$1";
-	local host=$(dirname "$URL");
 	local extension=$(basename ${URL##*.});
 	local file=$(basename ${URL%.*});
 	local name="mongodb";
@@ -236,11 +235,11 @@ function installMongoDB {
 	(
 		set -e;
 		log "\n[Installing ${INFO} $file.$extension ${NC}]:";
-		if mv "$PWD/$name" "$installDir"; then
-			log >&2 "${INFO} $PWD/$name ${NC} has been successfully installed";
-			configureMongoDB;
+		if mv "$PWD/$name" "$installDir" 2> /dev/null; then
+			log "${INFO} $PWD/$name ${NC} has been successfully installed";
+			configureMongoDB $URL;
 		else
-			warn >&2 "${WARN} $name ${NC} has been installed in same address before.\nCheckout: ${INFO} $installDir/$name ${NC}";
+			warn "${WARN} $name ${NC} has been installed in same address before.\nCheckout: ${INFO} $installDir/$name ${NC}";
 		fi
 	)
 	[ $? -eq 0 ] ||
@@ -252,10 +251,19 @@ function installMongoDB {
 }
 
 function configureMongoDB {
-	(
+	local URL="$1";
+	local extension=$(basename ${URL##*.});
+	local file=$(basename ${URL%.*});
+	local name="mongodb";
+	local dataDir="/data/db";
+	(	
 		set -e;
 		log "\n[Configuring ${INFO} $file.$extension ${NC}]:";
-		# mkdir -p /data/db
+		if mkdir "$dataDir" 2> /dev/null; then
+			log "${SUCCESS} $name ${NC} has been successfully configured";
+		else
+			warn "${WARN} $name ${NC} ${INFO} $dataDir ${NC} directory already exists";
+		fi
 	)
 	[ $? -eq 0 ] ||
 	(
