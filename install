@@ -226,7 +226,7 @@ function downloadMongoDB {
 		mkdir -p "$PWD/$name";
 		cp -R -n "$PWD/$file/" "$PWD/$name";
 		success "${SUCCESS} Done! ${NC}";
-		installMongoDB $URL;
+		{ installMongoDB $URL; }||{ :; }
 	)
 	[ $? -eq 0 ] ||
 	(
