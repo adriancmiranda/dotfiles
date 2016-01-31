@@ -174,23 +174,38 @@ function warn {
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 function downloadMySQL {
-	:
+	local URL="$1";
+	local extension=$(basename ${URL##*.});
+	local file=$(basename ${URL%.*});
+	installMySQL $URL;
 }
 
 function installMySQL {
-	:
+	local URL="$1";
+	local extension=$(basename ${URL##*.});
+	local file=$(basename ${URL%.*});
+	uninstallMySQL $URL;
+	configureMySQL $URL;
 }
 
 function configureMySQL {
-	:
+	local URL="$1";
+	local extension=$(basename ${URL##*.});
+	local file=$(basename ${URL%.*});
 }
 
 function backupMySQL {
-	:
+	local URL="$1";
+	local extension=$(basename ${URL##*.});
+	local file=$(basename ${URL%.*});
+	local bkpDir="$BKP/MongoDB";
 }
 
 function uninstallMySQL {
-	:
+	local URL="$1";
+	local extension=$(basename ${URL##*.});
+	local file=$(basename ${URL%.*});
+	backupMySQL $URL;
 }
 
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
