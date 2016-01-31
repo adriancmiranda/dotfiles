@@ -256,23 +256,39 @@ function uninstallMongoDB {
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 # Application
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-# /Applications/Sublime\ Text.app/Contents/Resources/Sublime\ Text.icns
+
+# function installSublimeText {
+# 	/Applications/Sublime\ Text.app/Contents/Resources/Sublime\ Text.icns
+# }
+
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+# Icons
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+# function installSublimeTextIcons {
+# 	/Applications/Sublime\ Text.app/Contents/Resources/Sublime\ Text.icns
+# }
 
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 # Themes
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+# function installSublimeTextThemes {
+# }
 
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 # Snippets
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+# function installSublimeTextSnippets {
+# }
 
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 # Build Systems
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-
+# function installSublimeTextBuildSystems {
+# }
 
 
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -289,6 +305,12 @@ log "                  box ";
 log "$LD";
 # downloadMongoDB "https://fastdl.mongodb.org/osx/mongodb-osx-x86_64-3.2.1.tgz";
 installMongoDB "https://fastdl.mongodb.org/osx/mongodb-osx-x86_64-3.2.1.tgz";
+
+# installSublimeText;
+# installSublimeTextIcons;
+# installSublimeTextThemes;
+# installSublimeTextSnippets;
+# installSublimeTextBuildSystems;
 
 # https://zcrashz.wordpress.com/2013/01/22/bash-shell-script-function-examples/
 # source ~/.bash_profile;
