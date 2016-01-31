@@ -218,7 +218,6 @@ function downloadMongoDB {
 	local extension=$(basename ${URL##*.});
 	local file=$(basename ${URL%.*});
 	local name="mongodb";
-	[[ ! -f "$PWD/$file.$extension" ]] && \
 	curl -O $URL | log "[Downloading ${INFO} $file.$extension ${NC} from ${INFO} $host ${NC}...]:";
 	(
 		set -e;
