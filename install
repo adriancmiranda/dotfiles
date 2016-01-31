@@ -287,8 +287,6 @@ log "   \'._  W    ,--\'   ";
 log "      |_:_._/     a.m ";
 log "                  box ";
 log "$LD";
-# log "x~x~x~x~x~x~x~x~x~x~x~";
-
 # downloadMongoDB "https://fastdl.mongodb.org/osx/mongodb-osx-x86_64-3.2.1.tgz";
 installMongoDB "https://fastdl.mongodb.org/osx/mongodb-osx-x86_64-3.2.1.tgz";
 
