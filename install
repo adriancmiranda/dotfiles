@@ -323,15 +323,15 @@ function uninstallMongoDB {
 	local URL="$1";
 	local extension=$(basename ${URL##*.});
 	local file=$(basename ${URL%.*});
-	local name="mongodb";
-	local installDir="$HOME/bin";
 	local dataDir="/data/db";
 	backupMongoDB $URL;
 	(
 		set -e;
 		log "\n[Uninstalling $file.$extension]:";
-		rm -rf "$installDir";
+		find "/usr/local" -name mongo* -or -name bsondump -delete;
+		find "$HOME/bin" -name mongo* -or -name bsondump -delete;
 		rm -rf "$dataDir";
+
 	)
 	[ $? -eq 0 ] ||
 	(
