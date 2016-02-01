@@ -223,9 +223,12 @@ function downloadMongoDB {
 		set -e;
 		tar -zxvf "$PWD/$file.$extension";
 		mkdir -p "$PWD/$name";
-		cp -R -n "$PWD/$file/" "$PWD/$name";
-		success "${SUCCESS} Done! ${NC}";
-		{ installMongoDB $URL; }||{ :; }
+		if cp -R -n "$PWD/$file/" "$PWD/$name"; then
+			success "${SUCCESS} Done! ${NC}";
+			{ installMongoDB $URL; }||{ :; }
+		else
+			error "COPY_ERROR" "${INFO} $PWD/$name ${NC} already exists\n------------- Remove this folder and try again to continue!";
+		fi
 	)
 	[ $? -eq 0 ] ||
 	(
