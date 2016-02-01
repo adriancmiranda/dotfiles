@@ -218,7 +218,7 @@ function downloadMongoDB {
 	local extension=$(basename ${URL##*.});
 	local file=$(basename ${URL%.*});
 	local name="mongodb";
-	curl -O $URL | log "[Downloading ${INFO} $file.$extension ${NC} from ${INFO} $host ${NC}...]:";
+	curl -O $URL | log "[Downloading $name ${INFO} $file.$extension ${NC} from ${INFO} $host ${NC}...]:";
 	(
 		set -e;
 		tar -zxvf "$PWD/$file.$extension";
@@ -238,8 +238,8 @@ function downloadMongoDB {
 	)
 	{
 		local ERROR=$?;
-		[ -f "$PWD/$file.$extension" ] && rm "$PWD/$file.$extension";
-		[ -d "$PWD/$file" ] && rm -rf "$PWD/$file" "$PWD/$name";
+		# [ -f "$PWD/$file.$extension" ] && rm "$PWD/$file.$extension";
+		# [ -d "$PWD/$file" ] && rm -rf "$PWD/$file" "$PWD/$name";
 		exit $ERROR;
 	}
 }
@@ -404,8 +404,7 @@ log "      |_:_._/     a.m ";
 log "                  box ";
 log "${Red}$LD${NC}";
 # downloadMySQL
-# downloadMongoDB "https://fastdl.mongodb.org/osx/mongodb-osx-x86_64-3.2.1.tgz";
-downloadMongoDB "bla";
+downloadMongoDB "https://fastdl.mongodb.org/osx/mongodb-osx-x86_64-3.2.1.tgz";
 # installMongoDB "https://fastdl.mongodb.org/osx/mongodb-osx-x86_64-3.2.1.tgz";
 
 # downloadSublimeText;
