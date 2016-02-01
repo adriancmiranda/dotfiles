@@ -238,8 +238,8 @@ function downloadMongoDB {
 	)
 	{
 		local ERROR=$?;
-		# [ -f "$PWD/$file.$extension" ] && rm "$PWD/$file.$extension";
-		# [ -d "$PWD/$file" ] && rm -rf "$PWD/$file" "$PWD/$name";
+		[ -f "$PWD/$file.$extension" ] && rm "$PWD/$file.$extension";
+		[ -d "$PWD/$file" ] && rm -rf "$PWD/$file" "$PWD/$name";
 		exit $ERROR;
 	}
 }
@@ -252,9 +252,9 @@ function installMongoDB {
 	local installDir="$HOME/bin";
 	uninstallMongoDB $URL;
 	(
-		set -e;exit 1;
+		set -e;
 		log "\n[Installing $file.$extension]:";
-		if mv "$PWD/$name" "$installDir" 2> /dev/null; then
+		if mv "$PWD/$name" "$installDir"; then
 			log "✓ $name has been successfully installed on ${INFO} $installDir/$name ${NC}";
 			success "${SUCCESS} Done! ${NC}";
 			{ configureMongoDB $URL; }||{ :; }
@@ -280,7 +280,7 @@ function configureMongoDB {
 		set -e;
 		log "\n[Configuring $file.$extension]:";
 		if mkdir "$dataDir" 2> /dev/null; then
-			log "✓ $name has been successfully configured";
+			log "✓ $name has been successfully configured on ${INFO} $dataDir ${NC}";
 			success "${SUCCESS} Done! ${NC}";
 		else
 			warn "${WARN} $name ${NC} ${INFO} $dataDir ${NC} directory already exists";
@@ -305,6 +305,7 @@ function backupMongoDB {
 		log "\n[Backuping $file.$extension]:";
 		if mkdir -p "$bkpDir/installers" "$bkpDir/backup" "$bkpDir/raw"; then
 			if cp -R -n "$PWD/$name" "$bkpDir/installers"; then
+				open "$bkpDir/installers";
 				mv "$file.$extension" "$BKP/installers";
 				rm "$file.$extension";
 			fi
@@ -323,11 +324,14 @@ function uninstallMongoDB {
 	local extension=$(basename ${URL##*.});
 	local file=$(basename ${URL%.*});
 	local name="mongodb";
+	local installDir="$HOME/bin";
+	local dataDir="/data/db";
 	backupMongoDB $URL;
 	(
 		set -e;
 		log "\n[Uninstalling $file.$extension]:";
-		# rm -rf ~/bin/mongodb;
+		rm -rf "$installDir";
+		rm -rf "$dataDir";
 	)
 	[ $? -eq 0 ] ||
 	(
