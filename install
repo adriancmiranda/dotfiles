@@ -309,6 +309,10 @@ function backupMongoDB {
 				mv "$file.$extension" "$BKP/installers";
 				rm "$file.$extension";
 			fi
+			# /usr/local/Cellar
+			# /usr/local/bin
+			# /data/db
+			# $HOME/bin
 		fi
 	)
 	[ $? -eq 0 ] ||
@@ -324,6 +328,7 @@ function uninstallMongoDB {
 	local extension=$(basename ${URL##*.});
 	local file=$(basename ${URL%.*});
 	local dataDir="/data/db";
+	local whichDir=$(dirname "$(which mongo)");
 	backupMongoDB $URL;
 	(
 		set -e;
@@ -408,8 +413,7 @@ log "      |_:_._/     a.m ";
 log "                  box ";
 log "${Red}$LD${NC}";
 # downloadMySQL
-downloadMongoDB "https://fastdl.mongodb.org/osx/mongodb-osx-x86_64-3.2.1.tgz";
-# installMongoDB "https://fastdl.mongodb.org/osx/mongodb-osx-x86_64-3.2.1.tgz";
+# downloadMongoDB "https://fastdl.mongodb.org/osx/mongodb-osx-x86_64-3.2.1.tgz";
 
 # downloadSublimeText;
 # installSublimeTextIcons;
