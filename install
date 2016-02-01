@@ -257,7 +257,7 @@ function installMongoDB {
 		if mv "$PWD/$name" "$installDir" 2> /dev/null; then
 			log "✓ $name has been successfully installed on ${INFO} $installDir/$name ${NC}";
 			success "${SUCCESS} Done! ${NC}";
-			configureMongoDB $URL;
+			{ configureMongoDB $URL; }||{ :; }
 		else
 			warn "${WARN} $name ${NC} has been installed in same address before.\nCheckout: ${INFO} $installDir/$name ${NC}";
 		fi
