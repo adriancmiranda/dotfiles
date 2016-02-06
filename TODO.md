@@ -17,9 +17,12 @@
 [✖ Adobe Fireworks]() <br>
 
 ## shell
+[✖ homebrew]() <br>
+[✖ macports]() <br>
 [✖ phantomjs](https://bitbucket.org/ariya/phantomjs/downloads/phantomjs-2.1.1-macosx.zip) <br>
 [✖ ffmpeg]() <br>
 [✖ youtube-dl]() <br>
+[✖ ack](http://beyondgrep.com/install/) <br>
 [✖ wget]() <br>
 [✖ sass]() <br>
 [✖ compass]() <br>
