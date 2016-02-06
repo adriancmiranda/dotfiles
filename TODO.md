@@ -30,7 +30,7 @@
 [✖ sass](http://sass-lang.com/install) <br>
 [✖ compass](http://compass-style.org/install/) <br>
 [✖ nvm](https://github.com/creationix/nvm) <br>
-[✖ rvm](https://rvm.io/rvm/install) <br> <!-- @see http://foffer.dk/install-ruby-on-os-x-10-10-yosemite-using-rvm/ -->
+[✖ rvm](https://rvm.io/rvm/install) <br>
 [✖ pip](https://pip.pypa.io/en/stable/installing/) <br>
 [✖ grunt](http://gruntjs.com/getting-started) <br>
 [✖ gulp](http://gulpjs.com) <br>
@@ -50,3 +50,5 @@
 
 ## tools
 [✖ Heroku Toolbelt](https://toolbelt.heroku.com/download/osx) <br>
+
+<!-- @see http://foffer.dk/install-ruby-on-os-x-10-10-yosemite-using-rvm/ -->
