@@ -19,6 +19,20 @@ To clone this project (and all its submodules):
 git clone --recursive git://github.com/adriancmiranda/dotfiles.git
 ```
 
+Options:
+
+<table>
+    <tr>
+        <td><code>-h</code>, <code>--help</code></td>
+        <td>Help</td>
+    </tr>
+    <tr>
+        <td><code>-l</code>, <code>--list</code></td>
+        <td>List of additional applications to install</td>
+    </tr>
+</table>
+
+
 ## Support
 
 Bugs and issues should be reported via the [issue tracker][issue_tracker].
