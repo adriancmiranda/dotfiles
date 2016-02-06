@@ -52,3 +52,4 @@
 [✖ Heroku Toolbelt](https://toolbelt.heroku.com/download/osx) <br>
 
 <!-- @see http://foffer.dk/install-ruby-on-os-x-10-10-yosemite-using-rvm/ -->
+<!-- @see http://osxdaily.com/2012/03/21/change-shell-mac-os-x/ -->
