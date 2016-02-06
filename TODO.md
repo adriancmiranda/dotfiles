@@ -11,7 +11,7 @@
 [✖ VLC](http://get.videolan.org/vlc/2.2.2/macosx/vlc-2.2.2.dmg) <br>
 [✖ 1Password](https://d13itkw33a7sus.cloudfront.net/dist/1P/mac4/1Password-6.0.1.zip) <br>
 [✖ 1Password - Safari Extension](https://agilebits.com/onepassword/extensions/safari?beta=false) <br>
-[✖ 1Password - Chrome Extension](https://agilebits.com/onepassword/extensions)
+[✖ 1Password - Chrome Extension](https://agilebits.com/onepassword/extensions) <br>
 [✖ Adobe Photoshop]() <br>
 [✖ Adobe Media Encoder]() <br>
 [✖ Adobe Illustrator]() <br>
