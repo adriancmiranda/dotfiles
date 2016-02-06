@@ -15,6 +15,7 @@
 [✖ Adobe Fireworks]() <br>
 
 ## shell
+[✖ phantomjs](https://bitbucket.org/ariya/phantomjs/downloads/phantomjs-2.1.1-macosx.zip) <br>
 [✖ ffmpeg]() <br>
 [✖ youtube-dl]() <br>
 [✖ wget]() <br>
