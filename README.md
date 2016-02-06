@@ -18,6 +18,8 @@ To clone this project (and all its submodules):
 ```bash
 git clone --recursive git://github.com/adriancmiranda/dotfiles.git
 ```
+> As a prerequisite it's assumed you have [~/.ssh](https://help.github.com/articles/checking-for-existing-ssh-keys/) keys installed as this is the one dependency for using [git](http://git-scm.com/download/mac).
+
 
 Options:
 
