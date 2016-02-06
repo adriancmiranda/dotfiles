@@ -21,8 +21,8 @@
 [✖ macports]() <br>
 [✖ phantomjs](https://bitbucket.org/ariya/phantomjs/downloads/phantomjs-2.1.1-macosx.zip) <br>
 [✖ ffmpeg]() <br>
-[✖ graphicsmagick](http://www.graphicsmagick.org)
-[✖ optipng](http://optipng.sourceforge.net)
+[✖ graphicsmagick](http://www.graphicsmagick.org) <br>
+[✖ optipng](http://optipng.sourceforge.net) <br>
 [✖ youtube-dl]() <br>
 [✖ ack](http://beyondgrep.com/install/) <br>
 [✖ wget]() <br>
