@@ -30,7 +30,7 @@
 [✖ wget]() <br>
 [✖ sass]() <br>
 [✖ compass]() <br>
-[✖ nvm]() <br>
+[✖ nvm](https://github.com/creationix/nvm) <br>
 [✖ rvm]() <br>
 [✖ pip]() <br>
 [✖ grunt]() <br>
