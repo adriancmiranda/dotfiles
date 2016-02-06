@@ -1,4 +1,4 @@
-[Applications]
+## Applications
 
 - [Sublime Text 3](https://download.sublimetext.com/Sublime%20Text%20Build%203083.dmg)
 - [iTerm 2](https://iterm2.com/downloads/stable/iTerm2-2_1_4.zip)
@@ -14,7 +14,7 @@
 - [Adobe Flash]()
 - [Adobe Fireworks]()
 
-[shell]
+## shell
 - [ffmpeg]()
 - [youtube-dl]()
 - [wget]()
@@ -29,10 +29,13 @@
 - [nodemon]()
 - [forever]()
 
-[databases]
+## databases
 - [mongodb]()
 - [mysql]()
 
-[sdks]
+## sdks
  - [Android SDK]()
  - [Apache Flex SDK]()
+
+## tools
+ - [Heroku Toolbelt](https://toolbelt.heroku.com/download/osx)
