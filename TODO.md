@@ -25,6 +25,7 @@
 [✖ compass]() <br>
 [✖ nvm]() <br>
 [✖ rvm]() <br>
+[✖ pip]() <br>
 [✖ grunt]() <br>
 [✖ gulp]() <br>
 [✖ bower]() <br>
