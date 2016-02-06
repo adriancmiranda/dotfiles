@@ -5,7 +5,6 @@
 [✖ Sublime Text 3](https://download.sublimetext.com/Sublime%20Text%20Build%203083.dmg) <br>
 [✖ iTerm 2](https://iterm2.com/downloads/stable/iTerm2-2_1_4.zip) <br>
 [✖ Google Chrome](https://www.google.com.br/chrome/browser/thankyou.html?platform=mac) <br>
-[✖ NodeJS](https://nodejs.org/dist/v4.2.6/node-v4.2.6.pkg) <br>
 [✖ Git](http://sourceforge.net/projects/git-osx-installer/files/git-2.6.4-intel-universal-mavericks.dmg/download?use_mirror=autoselect) <br>
 [✖ Python](https://www.python.org/ftp/python/3.5.1/python-3.5.1-macosx10.6.pkg) <br>
 [✖ VLC](http://get.videolan.org/vlc/2.2.2/macosx/vlc-2.2.2.dmg) <br>
