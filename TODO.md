@@ -10,6 +10,7 @@
 [✖ Python](https://www.python.org/ftp/python/3.5.1/python-3.5.1-macosx10.6.pkg) <br>
 [✖ VLC](http://get.videolan.org/vlc/2.2.2/macosx/vlc-2.2.2.dmg) <br>
 [✖ 1Password](https://d13itkw33a7sus.cloudfront.net/dist/1P/mac4/1Password-6.0.1.zip) <br>
+[✖ 1Password - Safari Extension](https://agilebits.com/onepassword/extensions/safari?beta=false) <br>
 [✖ Adobe Photoshop]() <br>
 [✖ Adobe Media Encoder]() <br>
 [✖ Adobe Illustrator]() <br>
