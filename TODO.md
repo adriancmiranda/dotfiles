@@ -34,6 +34,7 @@
 [✖ grunt]() <br>
 [✖ gulp]() <br>
 [✖ bower]() <br>
+[✖ webtorrent]() <br>
 [✖ yo]() <br>
 [✖ nodemon]() <br>
 [✖ forever]() <br>
