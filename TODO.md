@@ -37,8 +37,8 @@
 [✖ bower](http://bower.io) <br>
 [✖ webtorrent](https://github.com/feross/webtorrent#install) <br>
 [✖ yo](http://yeoman.io) <br>
-[✖ nodemon]() <br>
-[✖ forever]() <br>
+[✖ nodemon](http://nodemon.io) <br>
+[✖ forever](https://github.com/foreverjs/forever) <br>
 
 ## databases
 [✖ mongodb]() <br>
