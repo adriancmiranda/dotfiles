@@ -43,15 +43,15 @@
 [✖ gulp](http://gulpjs.com) <br>
 [✖ bower](http://bower.io) <br>
 [✖ coffee-script](http://coffeescript.org/) <br>
-[✖ typescript](http://www.typescriptlang.org/)
+[✖ typescript](http://www.typescriptlang.org/) <br>
 [✖ webtorrent](https://github.com/feross/webtorrent#install) <br>
 [✖ yo](http://yeoman.io) <br>
-[✖ iojs](https://iojs.org/pt-br/index.html)
+[✖ iojs](https://iojs.org/pt-br/index.html) <br>
 [✖ nodemon](http://nodemon.io) <br>
 [✖ forever](https://github.com/foreverjs/forever) <br>
 [✖ colordiff](http://www.colordiff.org/) <br>
-[✖ cmake](https://cmake.org/download/)
-[✖ dnsmasq](http://www.thekelleys.org.uk/dnsmasq/doc.html)
+[✖ cmake](https://cmake.org/download/) <br>
+[✖ dnsmasq](http://www.thekelleys.org.uk/dnsmasq/doc.html) <br>
 
 ## databases
 [✖ mongodb]() <br>
