@@ -14,6 +14,7 @@
 [✖ ImageAlpha](https://pngmini.com/) <br>
 [✖ VirtualBox](https://www.virtualbox.org/) <br>
 [✖ HandBrake](https://handbrake.fr/) <br>
+[✖ querious](http://www.araelium.com/querious/) <br>
 [✖ Adobe Photoshop]() <br>
 [✖ Adobe Media Encoder]() <br>
 [✖ Adobe Illustrator]() <br>
@@ -43,7 +44,7 @@
 [✖ yo](http://yeoman.io) <br>
 [✖ nodemon](http://nodemon.io) <br>
 [✖ forever](https://github.com/foreverjs/forever) <br>
-[✖ querious](http://www.araelium.com/querious/)
+[✖ colordiff](http://www.colordiff.org/) <br>
 
 ## databases
 [✖ mongodb]() <br>
