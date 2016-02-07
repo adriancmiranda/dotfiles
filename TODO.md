@@ -36,6 +36,7 @@
 [✖ grunt](http://gruntjs.com/getting-started) <br>
 [✖ gulp](http://gulpjs.com) <br>
 [✖ bower](http://bower.io) <br>
+[✖ coffee-script](http://coffeescript.org/) <br>
 [✖ webtorrent](https://github.com/feross/webtorrent#install) <br>
 [✖ yo](http://yeoman.io) <br>
 [✖ nodemon](http://nodemon.io) <br>
