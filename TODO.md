@@ -48,6 +48,7 @@
 [✖ nodemon](http://nodemon.io) <br>
 [✖ forever](https://github.com/foreverjs/forever) <br>
 [✖ colordiff](http://www.colordiff.org/) <br>
+[✖ cmake](https://cmake.org/download/)
 [✖ dnsmasq](http://www.thekelleys.org.uk/dnsmasq/doc.html)
 
 ## databases
