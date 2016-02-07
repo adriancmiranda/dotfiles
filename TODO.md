@@ -43,6 +43,7 @@
 [✖ yo](http://yeoman.io) <br>
 [✖ nodemon](http://nodemon.io) <br>
 [✖ forever](https://github.com/foreverjs/forever) <br>
+[✖ querious](http://www.araelium.com/querious/)
 
 ## databases
 [✖ mongodb]() <br>
