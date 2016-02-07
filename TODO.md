@@ -25,7 +25,7 @@
 ## shell
 [✖ homebrew]() <br>
 [✖ macports]() <br>
-[✖ tmux](http://tmux.github.io/) <br>
+[✖ tmux](http://tmux.github.io/) <br> 
 [✖ phantomjs](https://bitbucket.org/ariya/phantomjs/downloads/phantomjs-2.1.1-macosx.zip) <br>
 [✖ ffmpeg]() <br>
 [✖ graphicsmagick](http://www.graphicsmagick.org) <br>
@@ -60,5 +60,6 @@
 ## tools
 [✖ Heroku Toolbelt](https://toolbelt.heroku.com/download/osx) <br>
 
+<!-- @see https://github.com/square/maximum-awesome -->
 <!-- @see http://foffer.dk/install-ruby-on-os-x-10-10-yosemite-using-rvm/ -->
 <!-- @see http://osxdaily.com/2012/03/21/change-shell-mac-os-x/ -->
