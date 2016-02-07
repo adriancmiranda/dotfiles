@@ -46,6 +46,7 @@
 [✖ typescript](http://www.typescriptlang.org/)
 [✖ webtorrent](https://github.com/feross/webtorrent#install) <br>
 [✖ yo](http://yeoman.io) <br>
+[✖ iojs](https://iojs.org/pt-br/index.html)
 [✖ nodemon](http://nodemon.io) <br>
 [✖ forever](https://github.com/foreverjs/forever) <br>
 [✖ colordiff](http://www.colordiff.org/) <br>
