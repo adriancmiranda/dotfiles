@@ -16,6 +16,7 @@
 [✖ HandBrake](https://handbrake.fr/) <br>
 [✖ querious](http://www.araelium.com/querious/) <br>
 [✖ Code Runner App](https://coderunnerapp.com/) <br>
+[✖ Total Finder](http://totalfinder.binaryage.com/) <br>
 [✖ Adobe Photoshop]() <br>
 [✖ Adobe Media Encoder]() <br>
 [✖ Adobe Illustrator]() <br>
