@@ -1,0 +1,55 @@
+[user]
+	name = Adrian C. Miranda
+	email = adriancmiranda@gmail.com
+[github]
+	user = adriancmiranda
+	token = 9f6e9f011b9a3f11e91cadea11bfe935df169206
+[core]
+	editor = vim
+	pager = less
+	excludesfile = ~/.gitignore
+	attributesfile = ~/.gitattributes
+[color]
+	ui = true
+	diff = auto
+	status = auto
+	branch = auto
+	interactive = auto
+	pager = true
+[merge]
+	tool = vimdiff
+[push]
+	default = current
+[alias]
+	prd = !git change master
+	hml = !git change hml
+	dev = !git change dev
+	master = !git prd
+	staging = !git hml
+	develop = !git dev
+	cleanupds = "!f() { find . -type f -name '*.DS_Store' -ls -delete; }; f;"
+	ours = "!f() { git checkout --ours $@ && git add $@; }; f"
+	theirs = "!f() { git checkout --theirs $@ && git add $@; }; f";
+	dev-deploy = "!f() { BRANCH=$(git rev-parse --abbrev-ref HEAD); git pull --verbose && git pull origin $BRANCH --verbose && git push origin $BRANCH && git checkout develop && git pull origin develop --verbose && git merge $BRANCH && git push origin develop && git checkout $BRANCH && say -v "cellos" "oh This is a silly song silly song silly song this is the silliest song ive ever ever heard So why keep you listening listening listening while you are supposed to work to work to work to work its because i hate my job hate my job hate my job its because i hate my job more than anything else No its because youve no life youve no life youve no life and you better go get one after forwarding this crap"; }; f"
+	hml-deploy = "!f() { BRANCH=$(git rev-parse --abbrev-ref HEAD); git pull --verbose && git pull origin $BRANCH --verbose && git push origin $BRANCH && git checkout develop && git pull origin develop --verbose && git merge $BRANCH && git push origin develop && git checkout hml && git pull origin hml --verbose && git merge develop && git push origin hml && git checkout $BRANCH && say -v "cellos" "oh This is a silly song silly song silly song this is the silliest song ive ever ever heard So why keep you listening listening listening while you are supposed to work to work to work to work its because i hate my job hate my job hate my job its because i hate my job more than anything else No its because youve no life youve no life youve no life and you better go get one after forwarding this crap"; }; f"
+	alias = !git config --list | grep 'alias\\.' | sed 's/alias\\.\\([^=]*\\)=\\(.*\\)/\\1\\\t => \\2/' | sort
+	lastcommit = log -1 HEAD
+	lasttag = describe --tags --abbrev=0
+	rmtag = "!f() { git tag -d $1 && git push origin :refs/tags/$1; }; f"
+	unstage = reset HEAD -- #file
+	upstream = "!f() { BRANCH=$(git rev-parse --abbrev-ref HEAD); git branch --set-upstream $(BRANCH) origin/$(BRANCH); }; f"
+	history = log --graph --pretty=format:'%Cred%h%Creset %C(yellow)%an%d%Creset %s %Cgreen(%cr)%Creset' --date=relative
+	branchs = !git fetch --all && git fetch -p && git branch -a
+	track = "!f() { git checkout --track -B $1 origin/$1; }; f"
+	change = "!f() { git checkout $1 && git pull origin $1 --verbose; }; f"
+	mkbranch = "!f() { git checkout -b $1 && git push origin $1 && git mst && git track $1 && git checkout $1; }; f"
+	info = !git uri && git who && git branchs && git lasttag
+	up = !git pull origin $(git rev-parse --abbrev-ref HEAD) && git pull --verbose
+	psh = !git up && git push origin $(git rev-parse --abbrev-ref HEAD) && say -v "hysterical" "git git giiiit"
+	fuse = !git up && git merge
+	goto = !git change
+	stat = !git status -s
+	undo = reset --hard
+	who = shortlog -sne
+	uri = remote -v
+	url = !git uri
