@@ -13,6 +13,7 @@
 [✖ 1Password - Chrome Extension](https://agilebits.com/onepassword/extensions) <br>
 [✖ ImageAlpha](https://pngmini.com/) <br>
 [✖ VirtualBox](https://www.virtualbox.org/) <br>
+[✖ HandBrake](https://handbrake.fr/) <br>
 [✖ Adobe Photoshop]() <br>
 [✖ Adobe Media Encoder]() <br>
 [✖ Adobe Illustrator]() <br>
