@@ -1,3 +1,3 @@
-[submodule "sublime/Packages/Theme/Material - Theme"]
-	path = sublime/Packages/Theme/Material - Theme
+[submodule "sublime/Packages/Themes/Material - Theme"]
+	path = sublime/Packages/Themes/Material - Theme
 	url = git@github.com:equinusocio/material-theme.git
