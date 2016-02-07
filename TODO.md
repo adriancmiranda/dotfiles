@@ -43,6 +43,7 @@
 [✖ gulp](http://gulpjs.com) <br>
 [✖ bower](http://bower.io) <br>
 [✖ coffee-script](http://coffeescript.org/) <br>
+[✖ typescript](http://www.typescriptlang.org/)
 [✖ webtorrent](https://github.com/feross/webtorrent#install) <br>
 [✖ yo](http://yeoman.io) <br>
 [✖ nodemon](http://nodemon.io) <br>
