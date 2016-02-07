@@ -12,6 +12,7 @@
 [✖ 1Password - Safari Extension](https://agilebits.com/onepassword/extensions/safari?beta=false) <br>
 [✖ 1Password - Chrome Extension](https://agilebits.com/onepassword/extensions) <br>
 [✖ ImageAlpha](https://pngmini.com/) <br>
+[✖ VirtualBox](https://www.virtualbox.org/) <br>
 [✖ Adobe Photoshop]() <br>
 [✖ Adobe Media Encoder]() <br>
 [✖ Adobe Illustrator]() <br>
