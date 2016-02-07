@@ -16,6 +16,7 @@
 [✖ HandBrake](https://handbrake.fr/) <br>
 [✖ querious](http://www.araelium.com/querious/) <br>
 [✖ Code Runner App](https://coderunnerapp.com/) <br>
+[✖ Total Finder](http://totalfinder.binaryage.com/) <br>
 [✖ Adobe Photoshop]() <br>
 [✖ Adobe Media Encoder]() <br>
 [✖ Adobe Illustrator]() <br>
@@ -25,6 +26,7 @@
 ## shell
 [✖ homebrew]() <br>
 [✖ macports]() <br>
+[✖ tmux](http://tmux.github.io/) <br> 
 [✖ phantomjs](https://bitbucket.org/ariya/phantomjs/downloads/phantomjs-2.1.1-macosx.zip) <br>
 [✖ ffmpeg]() <br>
 [✖ graphicsmagick](http://www.graphicsmagick.org) <br>
@@ -41,11 +43,13 @@
 [✖ gulp](http://gulpjs.com) <br>
 [✖ bower](http://bower.io) <br>
 [✖ coffee-script](http://coffeescript.org/) <br>
+[✖ typescript](http://www.typescriptlang.org/)
 [✖ webtorrent](https://github.com/feross/webtorrent#install) <br>
 [✖ yo](http://yeoman.io) <br>
 [✖ nodemon](http://nodemon.io) <br>
 [✖ forever](https://github.com/foreverjs/forever) <br>
 [✖ colordiff](http://www.colordiff.org/) <br>
+[✖ cmake](https://cmake.org/download/)
 [✖ dnsmasq](http://www.thekelleys.org.uk/dnsmasq/doc.html)
 
 ## databases
@@ -59,5 +63,6 @@
 ## tools
 [✖ Heroku Toolbelt](https://toolbelt.heroku.com/download/osx) <br>
 
+<!-- @see https://github.com/square/maximum-awesome -->
 <!-- @see http://foffer.dk/install-ruby-on-os-x-10-10-yosemite-using-rvm/ -->
 <!-- @see http://osxdaily.com/2012/03/21/change-shell-mac-os-x/ -->
