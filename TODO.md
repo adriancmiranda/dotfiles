@@ -48,6 +48,7 @@
 [✖ yo](http://yeoman.io) <br>
 [✖ iojs](https://iojs.org/pt-br/index.html) <br>
 [✖ nodemon](http://nodemon.io) <br>
+[✖ live-server](https://github.com/tapio/live-server) <br>
 [✖ forever](https://github.com/foreverjs/forever) <br>
 [✖ colordiff](http://www.colordiff.org/) <br>
 [✖ cmake](https://cmake.org/download/) <br>
