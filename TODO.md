@@ -62,6 +62,7 @@
 [✖ Apache Flex SDK]() <br>
 
 ## tools
+[✖ Live Reload](https://chrome.google.com/webstore/detail/livereload/jnihajbhpnppcggbcgedagnkighmdlei/related)
 [✖ Heroku Toolbelt](https://toolbelt.heroku.com/download/osx) <br>
 
 <!-- @see https://github.com/square/maximum-awesome -->
