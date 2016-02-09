@@ -63,8 +63,8 @@
 [✖ Apache Flex SDK]() <br>
 
 ## tools
-[✖ Live Reload](https://chrome.google.com/webstore/detail/livereload/jnihajbhpnppcggbcgedagnkighmdlei/related)
-[✖ Panda](https://chrome.google.com/webstore/detail/panda-hacker-news-dribbbl/jhiocdmmaannaccoofjfmjpbfkogmnap)
+[✖ Live Reload](https://chrome.google.com/webstore/detail/livereload/jnihajbhpnppcggbcgedagnkighmdlei/related) <br>
+[✖ Panda](https://chrome.google.com/webstore/detail/panda-hacker-news-dribbbl/jhiocdmmaannaccoofjfmjpbfkogmnap) <br>
 [✖ Heroku Toolbelt](https://toolbelt.heroku.com/download/osx) <br>
 
 <!-- @see https://github.com/square/maximum-awesome -->
