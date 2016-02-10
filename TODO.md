@@ -66,6 +66,7 @@
 [✖ Live Reload](https://chrome.google.com/webstore/detail/livereload/jnihajbhpnppcggbcgedagnkighmdlei/related) <br>
 [✖ Panda 4](https://chrome.google.com/webstore/detail/panda-4-news-inspiration/haafibkemckmbknhfkiiniobjpgkebko?utm_source=v3) <br>
 [✖ Perfect Pixel](https://chrome.google.com/webstore/detail/perfectpixel-by-welldonec/dkaagdgjmgdmbnecmcefdhjekcoceebi) <br>
+[✖ Full Page Screen Capture](https://chrome.google.com/webstore/detail/full-page-screen-capture/fdpohaocaechififmbbbbbknoalclacl) <br>
 [✖ Heroku Toolbelt](https://toolbelt.heroku.com/download/osx) <br>
 
 <!-- @see https://github.com/square/maximum-awesome -->
