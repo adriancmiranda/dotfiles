@@ -51,6 +51,7 @@
 [✖ live-server](https://github.com/tapio/live-server) <br>
 [✖ forever](https://github.com/foreverjs/forever) <br>
 [✖ colordiff](http://www.colordiff.org/) <br>
+[✖ css-colorguard](https://github.com/SlexAxton/css-colorguard) <br>
 [✖ cmake](https://cmake.org/download/) <br>
 [✖ dnsmasq](http://www.thekelleys.org.uk/dnsmasq/doc.html) <br>
 
