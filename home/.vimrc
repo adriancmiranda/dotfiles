@@ -168,31 +168,7 @@ let no_buffers_menu=1
 set mousemodel=popup
 set cursorline
 set guioptions=egmrti
-set gfn=Monospace\ 10
-
-if has("gui_running")
-	if has("gui_mac") || has("gui_macvim")
-		set guifont=Menlo:h12
-		set transparency=7
-	endif
-else
-	let g:CSApprox_loaded = 1
-	if $COLORTERM == 'gnome-terminal'
-		set term=gnome-256color
-	else
-		if $TERM == 'xterm'
-		set term=xterm-256color
-	endif
-endif
-endif
-
-if &term =~ '256color'
-  set t_ut=
-endif
-
-" Disable the blinking cursor.
-set gcr=a:blinkon0
-set scrolloff=3
+set gfn=Menlo:h12
 
 " Status bar
 set laststatus=2
