@@ -56,6 +56,7 @@
 [✖ nvim](https://github.com/cwoac/nvim) <br>
 [✖ htop](http://hisham.hm/htop/) <br>
 [✖ dnsmasq](http://www.thekelleys.org.uk/dnsmasq/doc.html) <br>
+[✖ showterm](http://showterm.io/) <br>
 
 ## databases
 [✖ mongodb]() <br>
