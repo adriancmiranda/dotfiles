@@ -53,7 +53,8 @@
 [✖ colordiff](http://www.colordiff.org/) <br>
 [✖ css-colorguard](https://github.com/SlexAxton/css-colorguard) <br>
 [✖ cmake](https://cmake.org/download/) <br>
-[✖ nvim](https://github.com/cwoac/nvim)
+[✖ nvim](https://github.com/cwoac/nvim) <br>
+[✖ htop](http://hisham.hm/htop/) <br>
 [✖ dnsmasq](http://www.thekelleys.org.uk/dnsmasq/doc.html) <br>
 
 ## databases
