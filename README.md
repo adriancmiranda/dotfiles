@@ -45,3 +45,4 @@ Bugs and issues should be reported via the [issue tracker][issue_tracker].
 ||
 l'-->
 [issue_tracker]: http://github.com/adriancmiranda/dotfiles/issues "Issue tracker"
+[vim_ink]: http://vim.ink/ 

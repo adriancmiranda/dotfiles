@@ -43,14 +43,20 @@
 [✖ gulp](http://gulpjs.com) <br>
 [✖ bower](http://bower.io) <br>
 [✖ coffee-script](http://coffeescript.org/) <br>
-[✖ typescript](http://www.typescriptlang.org/)
+[✖ typescript](http://www.typescriptlang.org/) <br>
 [✖ webtorrent](https://github.com/feross/webtorrent#install) <br>
 [✖ yo](http://yeoman.io) <br>
+[✖ iojs](https://iojs.org/pt-br/index.html) <br>
 [✖ nodemon](http://nodemon.io) <br>
+[✖ live-server](https://github.com/tapio/live-server) <br>
 [✖ forever](https://github.com/foreverjs/forever) <br>
 [✖ colordiff](http://www.colordiff.org/) <br>
-[✖ cmake](https://cmake.org/download/)
-[✖ dnsmasq](http://www.thekelleys.org.uk/dnsmasq/doc.html)
+[✖ css-colorguard](https://github.com/SlexAxton/css-colorguard) <br>
+[✖ cmake](https://cmake.org/download/) <br>
+[✖ nvim](https://github.com/cwoac/nvim) <br>
+[✖ htop](http://hisham.hm/htop/) <br>
+[✖ dnsmasq](http://www.thekelleys.org.uk/dnsmasq/doc.html) <br>
+[✖ showterm](http://showterm.io/) <br>
 
 ## databases
 [✖ mongodb]() <br>
@@ -61,8 +67,14 @@
 [✖ Apache Flex SDK]() <br>
 
 ## tools
+[✖ Live Reload](https://chrome.google.com/webstore/detail/livereload/jnihajbhpnppcggbcgedagnkighmdlei/related) <br>
+[✖ Panda 4](https://chrome.google.com/webstore/detail/panda-4-news-inspiration/haafibkemckmbknhfkiiniobjpgkebko?utm_source=v3) <br>
+[✖ Perfect Pixel](https://chrome.google.com/webstore/detail/perfectpixel-by-welldonec/dkaagdgjmgdmbnecmcefdhjekcoceebi) <br>
+[✖ Full Page Screen Capture](https://chrome.google.com/webstore/detail/full-page-screen-capture/fdpohaocaechififmbbbbbknoalclacl) <br>
 [✖ Heroku Toolbelt](https://toolbelt.heroku.com/download/osx) <br>
 
+<!-- @see http://vimcolors.com/243/material-theme/light -->
+<!-- @see https://github.com/facelessuser/ColorHelper -->
 <!-- @see https://github.com/square/maximum-awesome -->
 <!-- @see http://foffer.dk/install-ruby-on-os-x-10-10-yosemite-using-rvm/ -->
 <!-- @see http://osxdaily.com/2012/03/21/change-shell-mac-os-x/ -->
