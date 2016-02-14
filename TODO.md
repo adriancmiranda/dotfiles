@@ -2,7 +2,7 @@
 
 ## Applications
 
-[✖ Sublime Text 3](https://download.sublimetext.com/Sublime%20Text%20Build%203083.dmg) <br>
+[✖ Sublime Text 3](https://download.sublimetext.com/Sublime%20Text%20Build%203083.dmg)
 <!-- ln -s "/Applications/Sublime Text.app/Contents/SharedSupport/bin/subl" /usr/local/bin/sublime -->
 [✖ iTerm 2](https://iterm2.com/downloads/stable/iTerm2-2_1_4.zip) <br>
 [✖ Google Chrome](https://www.google.com.br/chrome/browser/thankyou.html?platform=mac) <br>
