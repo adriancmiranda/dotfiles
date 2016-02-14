@@ -76,6 +76,7 @@
 [✖ Full Page Screen Capture](https://chrome.google.com/webstore/detail/full-page-screen-capture/fdpohaocaechififmbbbbbknoalclacl) <br>
 [✖ Heroku Toolbelt](https://toolbelt.heroku.com/download/osx) <br>
 
+<!-- @see http://vim.wikia.com/wiki/Easier_buffer_switching -->
 <!-- @see http://vimcolors.com/243/material-theme/light -->
 <!-- @see https://github.com/facelessuser/ColorHelper -->
 <!-- @see https://github.com/square/maximum-awesome -->
