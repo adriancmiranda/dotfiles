@@ -58,6 +58,7 @@
 [✖ dnsmasq](http://www.thekelleys.org.uk/dnsmasq/doc.html) <br>
 [✖ showterm](http://showterm.io/) <br>
 [✖ translate-shell](https://github.com/soimort/translate-shell) <br>
+[✖ irssi](https://irssi.org/) <br>
 
 ## databases
 [✖ mongodb]() <br>
