@@ -57,6 +57,7 @@
 [✖ htop](http://hisham.hm/htop/) <br>
 [✖ dnsmasq](http://www.thekelleys.org.uk/dnsmasq/doc.html) <br>
 [✖ showterm](http://showterm.io/) <br>
+[✖ translate-shell](https://github.com/soimort/translate-shell) <br>
 
 ## databases
 [✖ mongodb]() <br>
