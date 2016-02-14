@@ -30,6 +30,7 @@ Plugin 'git@github.com:kchmck/vim-coffee-script.git'
 Plugin 'git@github.com:scrooloose/nerdtree.git'
 Plugin 'git@github.com:jistr/vim-nerdtree-tabs.git'
 Plugin 'git@github.com:Xuyuanp/nerdtree-git-plugin.git'
+Plugin 'git@github.com:mortonfox/nerdtree-iterm.git' " Habilita o click no iterm *_*
 Plugin 'git@github.com:scrooloose/syntastic.git' " (** Complexity)
 Plugin 'git@github.com:tpope/vim-endwise.git'
 Plugin 'git@github.com:danro/rename.vim.git'
@@ -402,7 +403,7 @@ set autoread
 "
 " ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 " enable line numbers
-let g:NERDTreeWinSize = 50
+let g:NERDTreeWinSize=35
 let g:NERDTreeChDirMode=2
 let g:NERDTreeShowBookmarks=1
 let g:NERDTreeShowLineNumbers=1
