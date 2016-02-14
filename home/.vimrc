@@ -30,6 +30,7 @@ Plugin 'git@github.com:kchmck/vim-coffee-script.git'
 Plugin 'git@github.com:scrooloose/nerdtree.git'
 Plugin 'git@github.com:jistr/vim-nerdtree-tabs.git'
 Plugin 'git@github.com:Xuyuanp/nerdtree-git-plugin.git'
+Plugin 'git@github.com:mortonfox/nerdtree-iterm.git' " Habilita o click no iterm *_*
 Plugin 'git@github.com:scrooloose/syntastic.git' " (** Complexity)
 Plugin 'git@github.com:tpope/vim-endwise.git'
 Plugin 'git@github.com:danro/rename.vim.git'
@@ -71,7 +72,6 @@ if v:version >= 704
 	Plugin 'SirVer/ultisnips'
 	Plugin 'FelikZ/ctrlp-py-matcher'
 endif
-
 
 " Include user's extra bundle
 if filereadable(expand("~/.vimrc.local.bundles"))
@@ -159,6 +159,7 @@ let g:session_command_aliases = 1
 "
 " ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 syntax on
+set mouse=a " habilita o click do mouse no iterm2 (type `:set mouse`, para ver o help disso) 
 set t_Co=256
 set ruler
 set number
@@ -403,7 +404,7 @@ set autoread
 "
 " ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 " enable line numbers
-let g:NERDTreeWinSize = 50
+let g:NERDTreeWinSize=35
 let g:NERDTreeChDirMode=2
 let g:NERDTreeShowBookmarks=1
 let g:NERDTreeShowLineNumbers=1
@@ -422,17 +423,30 @@ autocmd FileType nerdtree setlocal relativenumber
 
 " nerdtree-git-plugin
 let g:NERDTreeIndicatorMapCustom = {
-    \ "Modified"  : "✹",
-    \ "Staged"    : "✚",
-    \ "Untracked" : "✭",
-    \ "Renamed"   : "➜",
-    \ "Unmerged"  : "═",
-    \ "Deleted"   : "✖",
-    \ "Dirty"     : "✗",
-    \ "Clean"     : "✔︎",
-    \ "Unknown"   : "?"
+    \ "Modified": "✹",
+    \ "Staged": "✚",
+    \ "Untracked": "✭",
+    \ "Renamed": "➜",
+    \ "Unmerged": "═",
+    \ "Deleted": "✖",
+    \ "Dirty": "✗",
+    \ "Clean": "✔︎",
+    \ "Unknown": "?"
 \ }
 
+" Tabs Settings
+let g:nerdtree_tabs_open_on_gui_startup=1
+let g:nerdtree_tabs_open_on_console_startup=0
+let g:nerdtree_tabs_no_startup_for_diff=1
+let g:nerdtree_tabs_smart_startup_focus=1
+let g:nerdtree_tabs_open_on_new_tab=1
+let g:nerdtree_tabs_meaningful_tab_names=1
+let g:nerdtree_tabs_autoclose=1
+let g:nerdtree_tabs_synchronize_view=1
+let g:nerdtree_tabs_synchronize_focus=1
+let g:nerdtree_tabs_focus_on_files=0
+let g:nerdtree_tabs_startup_cd=1
+let g:nerdtree_tabs_autofind=0
 
 " ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 "
