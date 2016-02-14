@@ -35,7 +35,6 @@ Plugin 'git@github.com:scrooloose/syntastic.git' " (** Complexity)
 Plugin 'git@github.com:tpope/vim-endwise.git'
 Plugin 'git@github.com:danro/rename.vim.git'
 Plugin 'git@github.com:easymotion/vim-easymotion.git'
-Plugin 'git@github.com:jdkanani/vim-material-theme.git' " (* Complexity)
 Plugin 'git@github.com:vim-airline/vim-airline.git'
 Plugin 'git@github.com:vim-airline/vim-airline-themes.git'
 Plugin 'git@github.com:gorkunov/smartpairs.vim.git'
@@ -144,6 +143,11 @@ set noswapfile
 set fileformats=unix,dos,mac
 set showcmd
 set shell=/bin/sh
+
+" Show all whitespaces
+" set listchars=tab:▸·,trail:~,eol:¬,extends:>,precedes:<,space:·
+" set listchars=tab:├·,trail:~,eol:¬,extends:>,precedes:<,space:·
+" set listchars=tab:├─,trail:·,eol:¬,extends:>,precedes:<,space:·
 
 " session management
 let g:session_directory = "~/.vim/session"
