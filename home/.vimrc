@@ -159,7 +159,7 @@ let g:session_command_aliases = 1
 "
 " ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 syntax on
-set mouse=a " habilita o click do mouse no iterm2
+set mouse=a " habilita o click do mouse no iterm2 (type `:set mouse`, para ver o help disso) 
 set t_Co=256
 set ruler
 set number
