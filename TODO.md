@@ -61,6 +61,7 @@
 [✖ translate-shell](https://github.com/soimort/translate-shell) <br>
 [✖ irssi](https://irssi.org/) <br>
 [✖ mplayer](http://www.mplayerhq.hu/design7/news.html) <br>
+[✖ amok](http://amokjs.com/)<br>
 
 ## databases
 [✖ mongodb]() <br>
