@@ -43,6 +43,7 @@ Plugin 'git@github.com:jistr/vim-nerdtree-tabs.git'
 Plugin 'git@github.com:Xuyuanp/nerdtree-git-plugin.git'
 Plugin 'git@github.com:mortonfox/nerdtree-iterm.git' " Habilita o click no iterm *_*
 Plugin 'git@github.com:scrooloose/syntastic.git' " (** Complexity)
+Plugin 'git@github.com:terryma/vim-multiple-cursors.git'
 Plugin 'git@github.com:tpope/vim-endwise.git'
 Plugin 'git@github.com:danro/rename.vim.git'
 Plugin 'git@github.com:easymotion/vim-easymotion.git'
