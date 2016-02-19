@@ -62,6 +62,7 @@
 [✖ irssi](https://irssi.org/) <br>
 [✖ mplayer](http://www.mplayerhq.hu/design7/news.html) <br>
 [✖ amok](http://amokjs.com/)<br>
+[✖ node-gyp](https://www.npmjs.com/package/node-gyp) <br>
 [✖ tmate](https://tmate.io/) <br>
 
 ## databases
