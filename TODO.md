@@ -64,6 +64,7 @@
 [✖ amok](http://amokjs.com/)<br>
 [✖ node-gyp](https://www.npmjs.com/package/node-gyp) <br>
 [✖ tmate](https://tmate.io/) <br>
+[✖ newman](https://github.com/postmanlabs/newman/) <br>
 
 ## databases
 [✖ mongodb]() <br>
