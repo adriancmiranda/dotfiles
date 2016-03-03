@@ -23,6 +23,7 @@
 [✖ Adobe Illustrator]() <br>
 [✖ Adobe Flash]() <br>
 [✖ Adobe Fireworks]() <br>
+[✖ FluidApp](http://fluidapp.com/) <br>
 
 ## shell
 [✖ homebrew]() <br>
