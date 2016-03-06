@@ -49,6 +49,7 @@
 [✖ webtorrent](https://github.com/feross/webtorrent#install) <br>
 [✖ yo](http://yeoman.io) <br>
 [✖ iojs](https://iojs.org/pt-br/index.html) <br>
+[✖ jspm](http://jspm.io/) <br>
 [✖ nodemon](http://nodemon.io) <br>
 [✖ live-server](https://github.com/tapio/live-server) <br>
 [✖ forever](https://github.com/foreverjs/forever) <br>
