@@ -67,6 +67,7 @@
 [✖ node-gyp](https://www.npmjs.com/package/node-gyp) <br>
 [✖ tmate](https://tmate.io/) <br>
 [✖ newman](https://github.com/postmanlabs/newman/) <br>
+[✖ requiresafe](https://www.npmjs.com/package/requiresafe) <br>
 
 ## databases
 [✖ mongodb]() <br>
