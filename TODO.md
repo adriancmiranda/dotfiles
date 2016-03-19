@@ -68,6 +68,7 @@
 [✖ tmate](https://tmate.io/) <br>
 [✖ newman](https://github.com/postmanlabs/newman/) <br>
 [✖ requiresafe](https://www.npmjs.com/package/requiresafe) <br>
+[✖ karma](https://karma-runner.github.io/0.13/index.html)
 
 ## databases
 [✖ mongodb]() <br>
