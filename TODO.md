@@ -68,7 +68,7 @@
 [✖ tmate](https://tmate.io/) <br>
 [✖ newman](https://github.com/postmanlabs/newman/) <br>
 [✖ requiresafe](https://www.npmjs.com/package/requiresafe) <br>
-[✖ karma](https://karma-runner.github.io/0.13/index.html)
+[✖ karma](https://karma-runner.github.io/0.13/index.html) <br>
 [✖ node-inspector](https://github.com/node-inspector/node-inspector)
 
 ## databases
