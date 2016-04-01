@@ -48,6 +48,7 @@
 [✖ typescript](http://www.typescriptlang.org/) <br>
 [✖ webtorrent](https://github.com/feross/webtorrent#install) <br>
 [✖ yo](http://yeoman.io) <br>
+[✖ fontwr](https://github.com/raphaklaus/fontwr)
 [✖ iojs](https://iojs.org/pt-br/index.html) <br>
 [✖ jspm](http://jspm.io/) <br>
 [✖ nodemon](http://nodemon.io) <br>
