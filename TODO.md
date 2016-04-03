@@ -24,6 +24,7 @@
 [✖ Adobe Flash]() <br>
 [✖ Adobe Fireworks]() <br>
 [✖ FluidApp](http://fluidapp.com/) <br>
+[✖ nginx](https://www.nginx.com/) <br>
 
 ## shell
 [✖ homebrew]() <br>
