@@ -83,6 +83,7 @@
 [✖ Apache Flex SDK]() <br>
 
 ## tools
+[✖ DevTools Author](https://github.com/micjamking/devtools-author)
 [✖ Live Reload](https://chrome.google.com/webstore/detail/livereload/jnihajbhpnppcggbcgedagnkighmdlei/related) <br>
 [✖ Panda 4](https://chrome.google.com/webstore/detail/panda-4-news-inspiration/haafibkemckmbknhfkiiniobjpgkebko?utm_source=v3) <br>
 [✖ Perfect Pixel](https://chrome.google.com/webstore/detail/perfectpixel-by-welldonec/dkaagdgjmgdmbnecmcefdhjekcoceebi) <br>
