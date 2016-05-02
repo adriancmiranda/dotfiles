@@ -1,6 +1,5 @@
 
 * [ ] [Sublime Text 3](https://download.sublimetext.com/Sublime%20Text%20Build%203083.dmg)
-<!-- ln -s "/Applications/Sublime Text.app/Contents/SharedSupport/bin/subl" /usr/local/bin/subl -->
 * [ ] [iTerm 2](https://iterm2.com/downloads/stable/iTerm2-2_1_4.zip) <br>
 * [ ] [Google Chrome](https://www.google.com.br/chrome/browser/thankyou.html?platform=mac) <br>
 * [ ] [Git](http://sourceforge.net/projects/git-osx-installer/files/git-2.6.4-intel-universal-mavericks.dmg/download?use_mirror=autoselect) <br>
@@ -87,6 +86,7 @@
 * [ ] [Full Page Screen Capture](https://chrome.google.com/webstore/detail/full-page-screen-capture/fdpohaocaechififmbbbbbknoalclacl) <br>
 * [ ] [Heroku Toolbelt](https://toolbelt.heroku.com/download/osx) <br>
 
+<!-- ln -s "/Applications/Sublime Text.app/Contents/SharedSupport/bin/subl" /usr/local/bin/subl -->
 <!-- @see http://vim.wikia.com/wiki/Easier_buffer_switching -->
 <!-- @see http://vimcolors.com/243/material-theme/light -->
 <!-- @see https://github.com/facelessuser/ColorHelper -->
