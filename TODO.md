@@ -69,6 +69,10 @@
 * [ ] [karma](https://karma-runner.github.io/0.13/index.html) <br>
 * [ ] [node-inspector](https://github.com/node-inspector/node-inspector)
 * [ ] [docco](http://jashkenas.github.io/docco/)
+* [ ] [uglify-js](https://www.npmjs.com/package/uglify-js)
+* [ ] [browserify](https://www.npmjs.com/package/browserify)
+* [ ] [garnish](https://www.npmjs.com/package/garnish)
+* [ ] [wzrd](https://www.npmjs.com/package/wzrd)
 
 ## databases
 * [x] [mongodb]() <br>
