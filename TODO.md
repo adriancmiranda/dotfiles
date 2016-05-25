@@ -21,6 +21,7 @@
 * [ ] [Adobe Fireworks]() <br>
 * [ ] [FluidApp](http://fluidapp.com/) <br>
 * [ ] [nginx](https://www.nginx.com/) <br>
+* [ ] [tsd](https://www.npmjs.com/package/tsd) <br>
 * [ ] [alm](https://github.com/alm-tools/alm) <br>
 
 ## shell
