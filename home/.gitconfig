@@ -31,6 +31,8 @@
 	renames = true
 
 [alias]
+	id = rev-parse HEAD
+	
 	prd = !git change master
 
 	hml = !git change hml
