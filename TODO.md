@@ -38,6 +38,8 @@
 * [ ] [sass](http://sass-lang.com/install) <br>
 * [ ] [compass](http://compass-style.org/install/) <br>
 * [ ] [nvm](https://github.com/creationix/nvm) <br>
+* [ ] [n](https://www.npmjs.com/package/n)
+* [ ] [wifi-password](https://www.npmjs.com/package/wifi-password)
 * [ ] [rvm](https://rvm.io/rvm/install) <br>
 * [ ] [pip](https://pip.pypa.io/en/stable/installing/) <br>
 * [ ] [grunt](http://gruntjs.com/getting-started) <br>
