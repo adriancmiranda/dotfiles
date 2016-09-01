@@ -95,6 +95,7 @@
 * [ ] [Heroku Toolbelt](https://toolbelt.heroku.com/download/osx) <br>
 
 <!-- ln -s "/Applications/Sublime Text.app/Contents/SharedSupport/bin/subl" /usr/local/bin/subl -->
+<!-- @see http://osxdaily.com/2012/10/24/set-the-hostname-computer-name-and-bonjour-name-separately-in-os-x/ -->
 <!-- @see http://vim.wikia.com/wiki/Easier_buffer_switching -->
 <!-- @see http://vimcolors.com/243/material-theme/light -->
 <!-- @see https://github.com/facelessuser/ColorHelper -->
