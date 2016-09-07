@@ -25,6 +25,7 @@
 * [ ] [alm](https://github.com/alm-tools/alm) <br>
 
 ## shell
+* [ ] [git-cz-cli](https://github.com/commitizen/cz-cli) <br>
 * [ ] [homebrew]() <br>
 * [ ] [macports]() <br>
 * [ ] [tmux](http://tmux.github.io/) <br> 
