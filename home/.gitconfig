@@ -122,4 +122,6 @@
 	tips = "!_() { t=$(git rev-list --no-merges --max-count=1 \"$@\"); if test -n \"$t\"; then echo $t; _ \"$@\" ^$t; fi;  }; _"
 
 	copyrsa = "pbcopy < ~/.ssh/id_rsa.pub"
+	
+	change-passphrase = "!f(){ OLD_PASSPHRASE=$1; NEW_PASSPHRASE=$2; ssh-keygen -p -P $OLD_PASSPHRASE -N $NEW_PASSPHRASE -f $HOME/.ssh/id_rsa; }; f;"
 
