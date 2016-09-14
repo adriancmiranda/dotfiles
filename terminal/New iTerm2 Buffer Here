@@ -1,3 +1,10 @@
+-- Mac OS X El Capitan 10.11.6
+-- Adapted from these sources:
+-- http://peterdowns.com/posts/open-iterm-finder-service.html
+-- https://gist.github.com/cowboy/905546
+-- https://gist.github.com/shuntaroy/e5ce3ad61c0deb7e27f0
+-- Modified to work with files as well, cd-ing to their container folder
+
 on run {input, parameters}
 	tell application "Finder"
 		set my_file to first item of input
