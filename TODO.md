@@ -23,6 +23,7 @@
 * [ ] [nginx](https://www.nginx.com/) <br>
 * [ ] [tsd](https://www.npmjs.com/package/tsd) <br>
 * [ ] [alm](https://github.com/alm-tools/alm) <br>
+* [ ] [divvy](http://mizage.com/divvy/) <br>
 
 ## shell
 * [ ] [git-cz-cli](https://github.com/commitizen/cz-cli) <br>
