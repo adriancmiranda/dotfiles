@@ -1,5 +1,6 @@
 
 * [ ] [Sublime Text 3](https://download.sublimetext.com/Sublime%20Text%20Build%203083.dmg)
+* [ ] [Jenkins](https://jenkins.io/)
 * [ ] [iTerm 2](https://iterm2.com/downloads/stable/iTerm2-2_1_4.zip) <br>
 * [ ] [Google Chrome](https://www.google.com.br/chrome/browser/thankyou.html?platform=mac) <br>
 * [ ] [Git](http://sourceforge.net/projects/git-osx-installer/files/git-2.6.4-intel-universal-mavericks.dmg/download?use_mirror=autoselect) <br>
