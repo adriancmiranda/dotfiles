@@ -6,6 +6,7 @@
 * [ ] [Git](http://sourceforge.net/projects/git-osx-installer/files/git-2.6.4-intel-universal-mavericks.dmg/download?use_mirror=autoselect) <br>
 * [ ] [Python](https://www.python.org/ftp/python/3.5.1/python-3.5.1-macosx10.6.pkg) <br>
 * [ ] [VLC](http://get.videolan.org/vlc/2.2.2/macosx/vlc-2.2.2.dmg) <br>
+* [ ] [jDownloader](http://jdownloader.org/) <br>
 * [ ] [1Password](https://d13itkw33a7sus.cloudfront.net/dist/1P/mac4/1Password-6.0.1.zip) <br>
 * [ ] [1Password - Safari Extension](https://agilebits.com/onepassword/extensions/safari?beta=false) <br>
 * [ ] [1Password - Chrome Extension](https://agilebits.com/onepassword/extensions) <br>
