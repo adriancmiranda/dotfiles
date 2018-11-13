@@ -99,7 +99,7 @@
 
 	st = !git status -s
 
-	undo = reset --hard
+	undo = "!_() { if [[ -z $1 ]]; then git reset --hard; else git checkout HEAD -- $1; fi  }; _"
 
 	who = shortlog -sne
 
