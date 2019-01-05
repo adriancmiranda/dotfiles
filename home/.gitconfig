@@ -99,7 +99,7 @@
 
 	st = !git status -s
 
-	undo = "!_() { if [[ -z $1 ]]; then git reset --hard; else git checkout HEAD -- $1; fi  }; _"
+	undo = "!_() { if [[ -z $1 ]]; then git reset --hard; else git checkout HEAD -- $1; fi }; _"
 
 	who = shortlog -sne
 
@@ -117,11 +117,13 @@
 
 	empty-tree-sha1 = hash-object -t tree /dev/null
 
-	oneline ="!_() { $(test $# -eq 0 && echo xargs -L1) git log --no-walk --decorate --oneline \"$@\";  }; _"
+	oneline ="!_() { $(test $# -eq 0 && echo xargs -L1) git log --no-walk --decorate --oneline \"$@\"; }; _"
 
-	tips = "!_() { t=$(git rev-list --no-merges --max-count=1 \"$@\"); if test -n \"$t\"; then echo $t; _ \"$@\" ^$t; fi;  }; _"
+	tips = "!_() { t=$(git rev-list --no-merges --max-count=1 \"$@\"); if test -n \"$t\"; then echo $t; _ \"$@\" ^$t; fi; }; _"
 
 	copyrsa = "pbcopy < ~/.ssh/id_rsa.pub"
 	
-	change-passphrase = "!f(){ OLD_PASSPHRASE=$1; NEW_PASSPHRASE=$2; ssh-keygen -p -P $OLD_PASSPHRASE -N $NEW_PASSPHRASE -f $HOME/.ssh/id_rsa; }; f;"
+	change-passphrase = "!_() { OLD_PASSPHRASE=$1; NEW_PASSPHRASE=$2; ssh-keygen -p -P $OLD_PASSPHRASE -N $NEW_PASSPHRASE -f $HOME/.ssh/id_rsa; }; _;"
+	
+	print-authors = "!_() { git shortlog -se | perl -spe 's/^\\s+\\d+\\s+//' | sed -e '/^CommitSyncScript.*$/d' > AUTHORS; }; _;"
 
