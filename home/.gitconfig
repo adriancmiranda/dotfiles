@@ -21,6 +21,12 @@
 	interactive = auto
 	pager = true
 
+[http]
+	postBuffer = 157286400
+
+[web]
+	browser = chrome
+
 [merge]
 	tool = vimdiff
 
