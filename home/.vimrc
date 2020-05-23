@@ -82,7 +82,7 @@ if v:version >= 8.1.1719
 endif
 
 if v:version >= 703
-	Plugin 'Shougo/vimshell.vim'
+	Plugin 'git@github.com:Shougo/vimshell.vim'
 endif
 
 if v:version >= 704
