@@ -29,6 +29,7 @@ call vundle#begin() " alternatively, pass a path where Vundle should install plu
 "
 " ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Plugin 'VundleVim/Vundle.vim'
+Plugin 'git@github.com:ryanoasis/vim-devicons'
 Plugin 'git@github.com:Shougo/vimproc.vim.git'
 Plugin 'git@github.com:jelera/vim-javascript-syntax.git'
 Plugin 'git@github.com:cwoac/nvim.git' " run before: brew install xapian --with-python
@@ -40,10 +41,12 @@ Plugin 'git@github.com:lilydjwg/colorizer.git' " (** Complexity)
 Plugin 'git@github.com:kchmck/vim-coffee-script.git'
 Plugin 'git@github.com:scrooloose/nerdtree.git'
 Plugin 'git@github.com:jistr/vim-nerdtree-tabs.git'
+Plugin 'git@github.com:tiagofumo/vim-nerdtree-syntax-highlight'
 Plugin 'git@github.com:Xuyuanp/nerdtree-git-plugin.git'
 Plugin 'git@github.com:mortonfox/nerdtree-iterm.git' " Habilita o click no iterm *_*
 Plugin 'git@github.com:scrooloose/syntastic.git' " (** Complexity)
 Plugin 'git@github.com:terryma/vim-multiple-cursors.git'
+Plugin 'git@github.com:scrooloose/nerdcommenter'
 Plugin 'git@github.com:tpope/vim-endwise.git'
 Plugin 'git@github.com:danro/rename.vim.git'
 Plugin 'git@github.com:easymotion/vim-easymotion.git'
@@ -65,7 +68,7 @@ Plugin 'git@github.com:tpope/vim-commentary.git'
 Plugin 'git@github.com:bronson/vim-trailing-whitespace.git'
 Plugin 'git@github.com:jiangmiao/auto-pairs.git'
 Plugin 'git@github.com:majutsushi/tagbar.git'
-Plugin 'git@github.com:amirh/HTML-AutoCloseTag.git'
+Plugin 'git@github.com:vim-scripts/HTML-AutoCloseTag.git'
 Plugin 'git@github.com:hail2u/vim-css3-syntax.git'
 Plugin 'git@github.com:gorodinskiy/vim-coloresque.git'
 Plugin 'git@github.com:sherzberg/vim-bootstrap-updater.git'
@@ -74,14 +77,18 @@ Plugin 'git@github.com:tpope/vim-haml.git'
 Plugin 'git@github.com:xolox/vim-misc.git'
 Plugin 'git@github.com:xolox/vim-session.git'
 
+if v:version >= 8.1.1719
+	Plugin 'git@github.com:neoclide/coc.nvim', {'branch': 'release'}
+endif
+
 if v:version >= 703
 	Plugin 'Shougo/vimshell.vim'
 endif
 
 if v:version >= 704
 	" Snippets
-	Plugin 'SirVer/ultisnips'
-	Plugin 'FelikZ/ctrlp-py-matcher'
+	Plugin 'git@github.com:SirVer/ultisnips'
+	Plugin 'git@github.com:FelikZ/ctrlp-py-matcher'
 endif
 
 " Include user's extra bundle
