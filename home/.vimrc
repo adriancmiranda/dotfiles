@@ -76,6 +76,9 @@ Plugin 'git@github.com:honza/vim-snippets.git'
 Plugin 'git@github.com:tpope/vim-haml.git'
 Plugin 'git@github.com:xolox/vim-misc.git'
 Plugin 'git@github.com:xolox/vim-session.git'
+Plugin 'git@github.com:christoomey/vim-tmux-navigator'
+Plugin 'git@github.com:morhetz/gruvbox'
+Plugin 'git@github.com:HerringtonDarkholme/yats.vim' " TS Syntax
 
 if v:version >= 8.1.1719
 	Plugin 'git@github.com:neoclide/coc.nvim', {'branch': 'release'}
