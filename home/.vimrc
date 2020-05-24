@@ -189,6 +189,7 @@ set t_Co=256
 set ruler
 set number
 set background=dark
+" colorscheme gruvbox
 colorscheme ambox-theme
 let no_buffers_menu=1
 set mousemodel=popup
