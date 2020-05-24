@@ -312,7 +312,7 @@ nnoremap tj :tabprev<CR>
 nnoremap th :tabfirst<CR>
 nnoremap tl :tablast<CR>
 
-" Move lines (down:Ctrl+k, up:Ctrl+j)
+" Move lines (down:Ctrl+k, up:Ctrl+j) / (down:Shift+K, up:Shift+J)
 nnoremap <C-j> :m .+1<CR>==
 nnoremap <C-k> :m .-2<CR>==
 inoremap <C-j> <Esc>:m .+1<CR>==gi
@@ -463,6 +463,11 @@ set autoread " detect when a file is changed
 " :NERDTree
 "
 " ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+" auto-open nerdtree
+autocmd vimenter * NERDTree
+autocmd StdinReadPre * let s:std_in=1
+autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in") | exe 'NERDTree' argv()[0] | wincmd p | ene | exe 'cd '.argv()[0] | endif
+
 " enable line numbers
 let g:NERDTreeWinSize=35
 let g:NERDTreeChDirMode=2
