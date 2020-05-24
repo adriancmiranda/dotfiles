@@ -15,7 +15,7 @@
 "
 " ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 " Basics
-set nocompatible              " be iMproved, required
+set nocompatible              " be iMproved, required ~ not compatible with vi
 filetype off                  " required
 
 " Set the runtime path to include Vundle and initialize
@@ -28,9 +28,10 @@ call vundle#begin() " alternatively, pass a path where Vundle should install plu
 " Let Vundle manage Vundle, required, install: `vim +PluginInstall +qall`
 "
 " ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-Plugin 'VundleVim/Vundle.vim'
+Plugin 'git@github.com:VundleVim/Vundle.vim'
 Plugin 'git@github.com:ryanoasis/vim-devicons'
 Plugin 'git@github.com:Shougo/vimproc.vim.git'
+Plugin 'git@github.com:pangloss/vim-javascript'
 Plugin 'git@github.com:jelera/vim-javascript-syntax.git'
 Plugin 'git@github.com:cwoac/nvim.git' " run before: brew install xapian --with-python
 Plugin 'git@github.com:altercation/vim-colors-solarized.git' " (* Complexity)
@@ -39,7 +40,7 @@ Plugin 'git@github.com:Valloric/YouCompleteMe.git' " (*** Complexity)
 Plugin 'git@github.com:airblade/vim-gitgutter.git' " (** Complexity)
 Plugin 'git@github.com:lilydjwg/colorizer.git' " (** Complexity)
 Plugin 'git@github.com:kchmck/vim-coffee-script.git'
-Plugin 'git@github.com:scrooloose/nerdtree.git'
+Plugin 'git@github.com:scrooloose/nerdtree.git' " file drawer, open with :NERDTreeToggle
 Plugin 'git@github.com:jistr/vim-nerdtree-tabs.git'
 Plugin 'git@github.com:tiagofumo/vim-nerdtree-syntax-highlight'
 Plugin 'git@github.com:Xuyuanp/nerdtree-git-plugin.git'
@@ -53,8 +54,10 @@ Plugin 'git@github.com:easymotion/vim-easymotion.git'
 Plugin 'git@github.com:vim-airline/vim-airline.git'
 Plugin 'git@github.com:vim-airline/vim-airline-themes.git'
 Plugin 'git@github.com:gorkunov/smartpairs.vim.git'
-Plugin 'git@github.com:ctrlpvim/ctrlp.vim.git'
-Plugin 'git@github.com:tpope/vim-fugitive.git'
+Plugin 'git@github.com:ctrlpvim/ctrlp.vim.git' " fuzzy find files
+Plugin 'git@github.com:junegunn/fzf', { 'do': { -> fzf#install() } } " fuzzy find files
+Plugin 'git@github.com:junegunn/fzf.vim'
+Plugin 'git@github.com:tpope/vim-fugitive.git' " the ultimate git helper
 Plugin 'git@github.com:vim-scripts/matchit.zip.git'
 Plugin 'git@github.com:tomtom/tcomment_vim.git'
 Plugin 'git@github.com:tpope/vim-abolish.git'
@@ -64,7 +67,7 @@ Plugin 'git@github.com:henrik/vim-ruby-runner.git'
 Plugin 'git@github.com:sheerun/vim-polyglot.git'
 Plugin 'git@github.com:vim-scripts/grep.vim.git'
 Plugin 'git@github.com:vim-scripts/CSApprox.git'
-Plugin 'git@github.com:tpope/vim-commentary.git'
+Plugin 'git@github.com:tpope/vim-commentary.git' " comment/uncomment lines with gcc or gc in visual mode
 Plugin 'git@github.com:bronson/vim-trailing-whitespace.git'
 Plugin 'git@github.com:jiangmiao/auto-pairs.git'
 Plugin 'git@github.com:majutsushi/tagbar.git'
@@ -77,8 +80,10 @@ Plugin 'git@github.com:tpope/vim-haml.git'
 Plugin 'git@github.com:xolox/vim-misc.git'
 Plugin 'git@github.com:xolox/vim-session.git'
 Plugin 'git@github.com:christoomey/vim-tmux-navigator'
-Plugin 'git@github.com:morhetz/gruvbox'
 Plugin 'git@github.com:HerringtonDarkholme/yats.vim' " TS Syntax
+Plugin 'git@github.com:benmills/vimux'
+" Plugin 'git@github.com:chriskempson/base16-vim'
+" Plugin 'git@github.com:morhetz/gruvbox'
 
 if v:version >= 8.1.1719
 	Plugin 'git@github.com:neoclide/coc.nvim', {'branch': 'release'}
@@ -132,31 +137,45 @@ set encoding=utf-8
 set fileencoding=utf-8
 set fileencodings=utf-8
 
+" Code folding settings
+set foldmethod=syntax " fold based on indent
+set foldnestmax=10 " deepest fold is 10 levels
+set nofoldenable " don't fold by default
+set foldlevel=1
+
 " Fix backspace indent
 set backspace=indent,eol,start
 
 " Tabs. May be overriten by autocmd rules
-set tabstop=4
-set softtabstop=0
-set shiftwidth=4
-set expandtab
+set tabstop=2 " the visible width of tabs
+set softtabstop=0 " edit as if the tabs are 0 characters wide
+set shiftwidth=2 " number of spaces to use for indent and unindent
+set shiftround " round indent to a multiple of 'shiftwidth'
+set smarttab " tab respects 'tabstop', 'shiftwidth', and 'softtabstop'
+set expandtab " tabs ftw
+set autoindent " automatically set indent of new line
+set smartindent
 
 " Map leader to ,
-let mapleader=','
+let mapleader=',' " set a map leader for more key combos
 
 " Enable hidden buffers
 set hidden
 
 " Searching
 set hlsearch
-set incsearch
-set ignorecase
-set smartcase
+set incsearch " set incremental search, like modern browsers
+set ignorecase " case insensitive searching
+set smartcase " case-sensitive if expresson contains a capital letter
+set nolazyredraw " don't redraw while executing macros
+set magic " Set magic on, for regex
+set showmatch " show matching braces
+set mat=2 " how many tenths of a second to blink
 
 " Encoding
 set bomb
 set binary
-set ttyfast
+set ttyfast " faster redrawing
 
 " Directories for swp files
 set nobackup
@@ -184,12 +203,14 @@ let g:session_command_aliases = 1
 "
 " ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 syntax on
+let base16colorspace=256  " Access colors present in 256 colorspace"
+set t_Co=256 " Explicitly tell vim that the terminal supports 256 colors"
 set mouse=a " habilita o click do mouse no iterm2 (type `:set mouse`, para ver o help disso) 
-set t_Co=256
 set ruler
 set number
 set background=dark
 " colorscheme gruvbox
+" colorscheme delek
 colorscheme ambox-theme
 let no_buffers_menu=1
 set mousemodel=popup
@@ -434,7 +455,7 @@ augroup vimrc-make-cmake
 	autocmd BufNewFile,BufRead CMakeLists.txt setlocal filetype=cmake
 augroup END
 
-set autoread
+set autoread " detect when a file is changed
 
 
 " ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
