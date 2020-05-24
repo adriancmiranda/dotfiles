@@ -109,3 +109,4 @@
 <!-- @see http://osxdaily.com/2012/03/21/change-shell-mac-os-x/ -->
 <!-- @see http://jason.pureconcepts.net/2011/09/installing-siege-mac-os-x-lion/ -->
 <!-- @see https://sourabhbajaj.com/mac-setup -->
+<!-- @see https://github.com/gpakosz/.tmux -->
