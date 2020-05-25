@@ -36,6 +36,8 @@ Options:
 
 ## Theme
 
+The theme used in the screenshot below is based at [One Dark](https://github.com/joshdick/onedark.vim).
+
 ![Dotfiles theme](https://i.imgur.com/a71nhk6.jpg)
 
 ## Support
