@@ -34,6 +34,9 @@ Options:
     </tr>
 </table>
 
+## Theme
+
+![Dotfiles theme](https://i.imgur.com/a71nhk6.jpg)
 
 ## Support
 
