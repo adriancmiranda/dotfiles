@@ -125,7 +125,7 @@ filetype plugin indent on    " required
 " :PluginClean      - confirms removal of unused plugins; append `!` to auto-approve removal
 "
 " see :h vundle for more details or wiki for FAQ
-" Put your non-Plugin stuff after this line...
+" Put your non-plugin stuff after this line...
 "
 " ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 "
@@ -155,6 +155,7 @@ set smarttab " tab respects 'tabstop', 'shiftwidth', and 'softtabstop'
 set expandtab " tabs ftw
 set autoindent " automatically set indent of new line
 set smartindent
+"set lcs+=space:·
 
 " Map leader to ,
 let mapleader=',' " set a map leader for more key combos
@@ -215,8 +216,15 @@ colorscheme ambox-theme
 let no_buffers_menu=1
 set mousemodel=popup
 set cursorline
+set cursorcolumn
+set colorcolumn=120
 set guioptions=egmrti
 set gfn=Menlo:h12
+set listchars=tab:\|\ 
+"set listchars=tab:\┊\ 
+"set listchars=tab:\┆\ 
+"set listchars=tab:\¦\ 
+set list
 
 " Status bar
 set laststatus=2
@@ -455,6 +463,7 @@ augroup vimrc-make-cmake
 	autocmd BufNewFile,BufRead CMakeLists.txt setlocal filetype=cmake
 augroup END
 
+set modifiable " or set noma
 set autoread " detect when a file is changed
 
 
@@ -512,6 +521,7 @@ let g:nerdtree_tabs_synchronize_focus=1
 let g:nerdtree_tabs_focus_on_files=0
 let g:nerdtree_tabs_startup_cd=1
 let g:nerdtree_tabs_autofind=0
+
 
 " ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 "
@@ -576,19 +586,19 @@ endif
 if !exists('g:airline_powerline_fonts')
 	let g:airline#extensions#tabline#left_sep = ' '
 	let g:airline#extensions#tabline#left_alt_sep = '|'
-	let g:airline_left_sep          = '▶'
-	let g:airline_left_alt_sep      = '»'
-	let g:airline_right_sep         = '◀'
-	let g:airline_right_alt_sep     = '«'
-	let g:airline#extensions#branch#prefix     = '⤴' "➔, ➥, ⎇
-	let g:airline#extensions#readonly#symbol   = '⊘'
+	let g:airline_left_sep = '▶'
+	let g:airline_left_alt_sep = '»'
+	let g:airline_right_sep = '◀'
+	let g:airline_right_alt_sep = '«'
+	let g:airline#extensions#branch#prefix = '⤴' "➔, ➥, ⎇
+	let g:airline#extensions#readonly#symbol = '⊘'
 	let g:airline#extensions#linecolumn#prefix = '¶'
-	let g:airline#extensions#paste#symbol      = 'ρ'
-	let g:airline_symbols.linenr    = '␊'
-	let g:airline_symbols.branch    = '⎇'
-	let g:airline_symbols.paste     = 'ρ'
-	let g:airline_symbols.paste     = 'Þ'
-	let g:airline_symbols.paste     = '∥'
+	let g:airline#extensions#paste#symbol = 'ρ'
+	let g:airline_symbols.linenr = '␊'
+	let g:airline_symbols.branch = '⎇'
+	let g:airline_symbols.paste = 'ρ'
+	let g:airline_symbols.paste = 'Þ'
+	let g:airline_symbols.paste = '∥'
 	let g:airline_symbols.whitespace = 'Ξ'
 else
 	let g:airline#extensions#tabline#left_sep = ''
