@@ -82,6 +82,7 @@ Plugin 'git@github.com:xolox/vim-session.git'
 Plugin 'git@github.com:christoomey/vim-tmux-navigator'
 Plugin 'git@github.com:HerringtonDarkholme/yats.vim' " TS Syntax
 Plugin 'git@github.com:benmills/vimux'
+Plugin 'codota/tabnine-vim'
 " Plugin 'git@github.com:chriskempson/base16-vim'
 " Plugin 'git@github.com:morhetz/gruvbox'
 
