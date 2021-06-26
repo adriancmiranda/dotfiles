@@ -84,9 +84,9 @@ nnoremap <leader>; A;<esc>
 
 " :: Shortcuts
 " =============================================================================
+
 " ctrl+shift+d: duplicate line
 " @see https://stackoverflow.com/a/48734229/1345327
-
 nmap <S-C-d> <Esc>Yp
 
 
