@@ -17,6 +17,7 @@ call plug#end()
 
 " :: STARTFY
 " :: @see https://github.com/mhinz/vim-startify'
+" -----------------------------------------------------------------------------
 let g:startify_custom_header = [
 \"                                                    ",
 \"                                 /     '      /  /  ",
