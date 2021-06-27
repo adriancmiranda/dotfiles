@@ -38,9 +38,9 @@
 "
 "
 " <!-- References -->
-" []: @see https://github.com/mhinz/vim-galore
-" []: @see https://github.com/mutewinter/dot_vim
-" []: @see https://github.com/ChristianChiarulli/LunarVim
+" []: https://github.com/mhinz/vim-galore
+" []: https://github.com/mutewinter/dot_vim
+" []: https://github.com/ChristianChiarulli/LunarVim
 
 " =============================================================================
 " :: PLUGINS
