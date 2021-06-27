@@ -3,17 +3,44 @@
 " :: BRIEF HELP
 "
 " ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-" @see https://github.com/mhinz/vim-galore
-" @see https://github.com/mutewinter/dot_vim
 
-" v: select
-" shift+v: select entire line
-" x: cut
-" yy: copy an entire line
-" p: paste
-" O: insert a blank line
-" u: undo
-" ctrl+r: redo
+" ## Getting started:
+"
+"  ```sh
+"  curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs \
+"    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+"  ```
+" 
+"  then
+" 
+"  ```sh
+"  nvim -c ":PlugInstall"
+"  ```
+"
+" ## Shortcuts
+"
+" v: Select
+" shift+v: Select entire line
+" x: Cut
+" yy: Copy an entire line
+" p: Paste
+" O: Insert a blank line
+" u: Undo
+" ctrl+r: Redo
+"
+"
+" ## Mappings
+"
+" ctrl+p: Goto anything
+" ctrl+shift?+up: Move line / selection up
+" ctrl+shift?+down: Move line / selection down
+" ctrl+shift?+d: Duplicate line
+"
+"
+" <!-- References -->
+" []: @see https://github.com/mhinz/vim-galore
+" []: @see https://github.com/mutewinter/dot_vim
+" []: @see https://github.com/ChristianChiarulli/LunarVim
 
 " =============================================================================
 " :: PLUGINS
@@ -27,9 +54,9 @@ call plug#begin()
 " :: 
 " :: Welcome page
 " :: 
-Plug 'mhinz/vim-startify'
+Plug 'glepnir/dashboard-nvim' " or https://github.com/mhinz/vim-startify
 " :: 
-" :: Theme
+" :: Themes
 " :: 
 Plug 'ryanoasis/vim-devicons' " adds icons
 Plug 'crusoexia/vim-monokai'
@@ -37,7 +64,7 @@ Plug 'arcticicestudio/nord-vim'
 Plug 'ayu-theme/ayu-vim'
 Plug 'altercation/vim-colors-solarized'
 " :: 
-" :: Syntax highlight
+" :: Syntax highlighters
 " :: 
 Plug 'sheerun/vim-polyglot'
 " ::
@@ -45,7 +72,7 @@ Plug 'sheerun/vim-polyglot'
 " ::
 Plug 'prettier/vim-prettier', { 'do': 'npm install' }
 " ::
-" :: Code linting
+" :: Code linters
 " ::
 Plug 'dense-analysis/ale'
 " ::
@@ -84,6 +111,15 @@ call plug#end()
 
 
 
+" :: PROVIDERS
+" =============================================================================
+
+let g:ruby_host_prog = '/usr/bin/ruby'
+let g:python_host_prog = '/usr/bin/python'
+let g:python3_host_prog = '/usr/bin/python3'
+
+
+
 " :: ENCODING
 " =============================================================================
 
@@ -108,22 +144,13 @@ set hlsearch
 
 
 
-" :: PROVIDERS
-" =============================================================================
-
-let g:ruby_host_prog = '/usr/bin/ruby'
-let g:python_host_prog = '/usr/bin/python'
-let g:python3_host_prog = '/usr/bin/python3'
-
-
-
 " :: WELCOME PAGE
 " =============================================================================
 
 " :: Startfy
 " :: @see https://github.com/mhinz/vim-startify
 " -----------------------------------------------------------------------------
-let g:startify_custom_header = [
+let g:dashboard_custom_header = [
 \"                                                    ",
 \"                                 /     '      /  /  ",
 \"                                /__      ___ (  /   ",
@@ -162,7 +189,7 @@ colorscheme monokai
 
 
 
-" :: SYNTAX HIGHLIGHT
+" :: SYNTAX HIGHLIGHTERS
 " =============================================================================
 
 " :: Polyglot
@@ -203,6 +230,61 @@ let g:javascript_conceal_underscore_arrow_function = "🞅"
 let g:javascript_plugin_jsdoc = 1
 let g:javascript_plugin_ngdoc = 1
 let g:javascript_plugin_flow = 1
+
+
+
+" :: CODE FORMATTERS
+" =============================================================================
+
+" :: Prettier
+" :: @see https://github.com/prettier/vim-prettier
+" -----------------------------------------------------------------------------
+" N/A
+
+
+
+" :: CODE LINTERS
+" =============================================================================
+
+" :: ALE (Asynchronous Lint Engine)
+" :: @see https://github.com/w0rp/ale
+" -----------------------------------------------------------------------------
+let g:ale_fix_on_save = 1
+let g:ale_fixers = {
+\'javascript': ['eslint'],
+\}
+
+
+
+" :: CODE COMPLETIONS
+" =============================================================================
+
+" :: COC
+" :: @see https://github.com/neoclide/coc.nvim
+" -----------------------------------------------------------------------------
+let g:coc_user_config = {
+\}
+let g:coc_global_extensions = [
+\'coc-css',
+\'coc-html',
+\'coc-json',
+\'coc-prettier',
+\'coc-eslint',
+\'coc-tsserver',
+\'coc-snippets',
+\]
+
+" :: FZF
+" :: @see https://github.com/junegunn/fzf
+" -----------------------------------------------------------------------------
+" in order to get `ag` runs `nix-env -iA silver-searcher`
+let $FZF_DEFAULT_COMMAND = 'ag -g ""'
+
+let g:fzf_action = {
+\'ctrl-t': 'tab split',
+\'ctrl-s': 'split',
+\'ctrl-v': 'vsplit'
+\}
 
 
 
@@ -285,43 +367,3 @@ vnoremap <C-S-j> :m '>+1<CR>gv=gv
 " @see https://stackoverflow.com/a/48734229/1345327
 nmap <C-S-d> <Esc>Yp
 imap <C-S-d> <Esc>Ypa
-
-" :: Prettier
-" :: @see https://github.com/prettier/vim-prettier
-" -----------------------------------------------------------------------------
-" N/A
-
-" :: COC
-" :: @see https://github.com/neoclide/coc.nvim
-" -----------------------------------------------------------------------------
-let g:coc_user_config = {
-\}
-let g:coc_global_extensions = [
-\'coc-css',
-\'coc-html',
-\'coc-json',
-\'coc-prettier',
-\'coc-eslint',
-\'coc-tsserver',
-\'coc-snippets',
-\]
-
-" :: ALE (Asynchronous Lint Engine)
-" :: @see https://github.com/w0rp/ale
-" -----------------------------------------------------------------------------
-let g:ale_fix_on_save = 1
-let g:ale_fixers = {
-\'javascript': ['eslint'],
-\}
-
-" :: FZF
-" :: @see https://github.com/junegunn/fzf
-" -----------------------------------------------------------------------------
-" in order to get `ag` runs `nix-env -iA silver-searcher`
-let $FZF_DEFAULT_COMMAND = 'ag -g ""'
-
-let g:fzf_action = {
-\'ctrl-t': 'tab split',
-\'ctrl-s': 'split',
-\'ctrl-v': 'vsplit'
-\}
