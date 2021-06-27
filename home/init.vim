@@ -31,6 +31,11 @@
 "
 " ## Mappings
 "
+" press <spacebar> and type <;>: put ; at all source code;
+" press <spacebar> and type <reload>: source init.vim
+" press <spacebar> and type <splith>: split nvim horizontally
+" press <spacebar> and type <splitv>: split nvim vertically
+"
 " ctrl+p: Goto anything
 " ctrl+shift?+up: Move line / selection up
 " ctrl+shift?+down: Move line / selection down
