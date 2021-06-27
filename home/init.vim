@@ -1,61 +1,128 @@
-" :: VIM PLUG
-" :: @see https://github.com/junegunn/vim-plug
+" ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+"
+" :: BRIEF HELP
+"
+" ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+" @see https://github.com/mhinz/vim-galore
+" @see https://github.com/mutewinter/dot_vim
+
+" v: select
+" shift+v: select entire line
+" x: cut
+" yy: copy an entire line
+" p: paste
+" O: insert a blank line
+" u: undo
+" ctrl+r: redo
+
+
+
+" :: PLUGINS
 " =============================================================================
 
-set nocompatible
-
-" :: Polyglot
-" :: @see https://github.com/sheerun/vim-polyglot
+" :: Plug
+" :: @see https://github.com/junegunn/vim-plug
 " -----------------------------------------------------------------------------
-let g:polyglot_disabled = [
-\]
 
 call plug#begin()
+" :: 
+" :: Welcome page
+" :: 
 Plug 'mhinz/vim-startify'
+" :: 
+" :: Theme
+" :: 
+Plug 'ryanoasis/vim-devicons' " adds icons
 Plug 'crusoexia/vim-monokai'
+Plug 'arcticicestudio/nord-vim'
+Plug 'ayu-theme/ayu-vim'
+Plug 'altercation/vim-colors-solarized'
+" :: 
+" :: Syntax highlight
+" :: 
 Plug 'sheerun/vim-polyglot'
-Plug 'pangloss/vim-javascript'
-Plug 'statico/vim-javascript-sql'
-Plug 'mustache/vim-mustache-handlebars'
-Plug 'digitaltoad/vim-pug'
-Plug 'leafOfTree/vim-svelte-plugin'
-Plug 'jxnblk/vim-mdx-js'
-Plug 'maxmellon/vim-jsx-pretty'
-Plug 'HerringtonDarkholme/yats.vim'
-Plug 'GutenYe/json5.vim'
-Plug 'neoclide/jsonc.vim'
-Plug 'othree/html5.vim'
-Plug 'tikhomirov/vim-glsl'
-Plug 'ekalinin/Dockerfile.vim'
-Plug 'chr4/nginx.vim'
-Plug 'LnL7/vim-nix'
-Plug 'tpope/vim-git'
-Plug 'jasonshell/vim-svg-indent'
-Plug 'vim-scripts/svg.vim'
-Plug 'jparise/vim-graphql'
-Plug 'cespare/vim-toml'
-Plug 'posva/vim-vue'
-Plug 'amadeus/vim-xml'
-Plug 'briancollins/vim-jst'
-Plug 'rust-lang/rust.vim'
-Plug 'vim-perl/vim-perl'
-Plug 'cakebaker/scss-syntax.vim'
-Plug 'wavded/vim-stylus'
-Plug 'ap/vim-css-color'
-Plug 'tpope/vim-surround'
-Plug 'tpope/vim-fugitive'
+" ::
+" :: Code formatters
+" ::
+Plug 'prettier/vim-prettier', { 'do': 'npm install' }
+" ::
+" :: Code linting
+" ::
+Plug 'dense-analysis/ale'
+" ::
+" :: Code completions
+" ::
+Plug 'neoclide/coc.nvim', { 'branch': 'release' }
 Plug 'codota/tabnine-vim'
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
-Plug 'w0rp/ale'
+" ::
+" :: Code assistants
+" ::
+Plug 'jiangmiao/auto-pairs'
+Plug 'tpope/vim-surround'
+Plug 'mattn/emmet-vim' " or https://github.com/rstacruz/sparkup
+" ::
+" :: Searching
+" ::
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
+" ::
+" :: Distraction free
+" ::
+Plug 'junegunn/goyo.vim'
+" ::
+" :: Git
+" ::
 Plug 'fszymanski/fzf-gitignore', { 'do': ':UpdateRemotePlugins' }
+Plug 'tpope/vim-fugitive'
 Plug 'mbbill/undotree'
+Plug 'airblade/vim-gitgutter'
+Plug 'itchyny/vim-gitbranch'
+" ::
+" :: Behaviors
+" :: 
+Plug 'psliwka/vim-smoothie'
 call plug#end()
 
 
-" :: STARTFY
-" :: @see https://github.com/mhinz/vim-startify'
+
+" :: ENCODING
+" =============================================================================
+
+set encoding=utf-8
+set fileencoding=utf-8
+set fileencodings=utf-8
+
+
+" :: BACKUP
+" =============================================================================
+
+set nobackup
+set nowritebackup
+set noswapfile
+
+
+
+" :: SEARCHING
+" =============================================================================
+
+set hlsearch
+
+
+
+" :: PROVIDERS
+" =============================================================================
+
+let g:ruby_host_prog = '/usr/bin/ruby'
+let g:python_host_prog = '/usr/bin/python'
+let g:python3_host_prog = '/usr/bin/python3'
+
+
+
+" :: WELCOME PAGE
+" =============================================================================
+
+" :: Startfy
+" :: @see https://github.com/mhinz/vim-startify
 " -----------------------------------------------------------------------------
 let g:startify_custom_header = [
 \"                                                    ",
@@ -68,21 +135,40 @@ let g:startify_custom_header = [
 \"                                                    ",
 \]
 
-" :: THEME
-" :: @see https://github.com/crusoexia/vim-monokai
-" -----------------------------------------------------------------------------
+
+
+" :: VISUAL SETTINGS
+" =============================================================================
+
 syntax enable
 syntax on
 
 set background=dark
-
-colorscheme monokai
 
 if (has("termguicolors"))
   set termguicolors
 else
   set t_Co=256
 endif
+
+
+
+" :: THEMES
+" =============================================================================
+
+" :: vim-monokai
+" :: @see https://github.com/crusoexia/vim-monokai
+" -----------------------------------------------------------------------------
+colorscheme monokai
+
+
+
+" :: SYNTAX HIGHLIGHT
+" =============================================================================
+
+" :: Polyglot
+" :: @see https://github.com/sheerun/vim-polyglot
+" -----------------------------------------------------------------------------
 
 " :: TypeScript
 " :: @see https://github.com/HerringtonDarkholme/yats.vim
@@ -101,9 +187,8 @@ au BufNewFile,BufRead *.tsx setlocal filetype=typescript.tsx
 " :: JavaScript
 " :: @see https://github.com/pangloss/vim-javascript 
 " --
-let g:javascript_plugin_jsdoc = 1
-let g:javascript_plugin_ngdoc = 1
-let g:javascript_plugin_flow = 1
+set conceallevel=1
+
 let g:javascript_conceal_function                  = "ƒ"
 let g:javascript_conceal_null                      = "ø"
 let g:javascript_conceal_this                      = "@"
@@ -116,54 +201,9 @@ let g:javascript_conceal_super                     = "Ω"
 let g:javascript_conceal_arrow_function            = "⇒"
 let g:javascript_conceal_noarg_arrow_function      = "🞅"
 let g:javascript_conceal_underscore_arrow_function = "🞅"
-
-set conceallevel=1
-
-" :: COC
-" :: @see https://github.com/neoclide/coc.nvim
-" -----------------------------------------------------------------------------
-let g:coc_user_config = {
-\}
-let g:coc_global_extensions = [
-\'coc-css',
-\'coc-html',
-\'coc-json',
-\'coc-prettier',
-\'coc-eslint',
-\'coc-tsserver',
-\'coc-snippets',
-\]
-
-" :: ALE (Asynchronous Lint Engine)
-" :: @see https://github.com/w0rp/ale
-" -----------------------------------------------------------------------------
-let g:ale_fix_on_save = 1
-let g:ale_fixers = {
-\'javascript': ['eslint'],
-\}
-
-" :: FZF
-" :: @see https://github.com/junegunn/fzf
-" -----------------------------------------------------------------------------
-let $FZF_DEFAULT_COMMAND = 'ag -g ""' " ag -> nix-env -iA silver-searcher
-let g:fzf_action = {
-\'ctrl-t': 'tab split',
-\'ctrl-s': 'split',
-\'ctrl-v': 'vsplit'
-\}
-
-
-" :: Undotree
-" :: @see https://github.com/mbbill/undotree
-" -----------------------------------------------------------------------------
-set undofile " set undotree to save to file
-
-
-
-" :: Encoding
-" =============================================================================
-
-set encoding=utf-8
+let g:javascript_plugin_jsdoc = 1
+let g:javascript_plugin_ngdoc = 1
+let g:javascript_plugin_flow = 1
 
 
 
@@ -188,28 +228,8 @@ set smarttab
 
 
 
-" :: Searching
-" =============================================================================
-
-set hlsearch
-
-
-
-" :: Backup
-" =============================================================================
-
-set nobackup
-set nowritebackup
-set noswapfile
-
-
-
 " :: Settings
 " =============================================================================
-
-let g:ruby_host_prog = '/usr/bin/ruby'
-let g:python_host_prog = '/usr/bin/python'
-let g:python3_host_prog = '/usr/bin/python3'
 
 set hidden
 set number
@@ -226,6 +246,12 @@ set laststatus=2
 set cpoptions+=n
 set vb
 set list listchars=tab:\ \ ,trail:·
+
+
+" :: Undotree
+" :: @see https://github.com/mbbill/undotree
+" -----------------------------------------------------------------------------
+set undofile " set undotree to save to file
 
 
 
@@ -261,20 +287,42 @@ vnoremap <C-S-j> :m '>+1<CR>gv=gv
 nmap <C-S-d> <Esc>Yp
 imap <C-S-d> <Esc>Ypa
 
+" :: Prettier
+" :: @see https://github.com/prettier/vim-prettier
+" -----------------------------------------------------------------------------
+" N/A
 
+" :: COC
+" :: @see https://github.com/neoclide/coc.nvim
+" -----------------------------------------------------------------------------
+let g:coc_user_config = {
+\}
+let g:coc_global_extensions = [
+\'coc-css',
+\'coc-html',
+\'coc-json',
+\'coc-prettier',
+\'coc-eslint',
+\'coc-tsserver',
+\'coc-snippets',
+\]
 
-" ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-"
-" :: Brief help
-"
-" ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+" :: ALE (Asynchronous Lint Engine)
+" :: @see https://github.com/w0rp/ale
+" -----------------------------------------------------------------------------
+let g:ale_fix_on_save = 1
+let g:ale_fixers = {
+\'javascript': ['eslint'],
+\}
 
-" v: select
-" shift+v: select entire line
-" x: cut
-" yy: copy an entire line
-" p: paste
-" O: insert a blank line
-" u: undo
-" ctrl+r: redo
+" :: FZF
+" :: @see https://github.com/junegunn/fzf
+" -----------------------------------------------------------------------------
+" in order to get `ag` runs `nix-env -iA silver-searcher`
+let $FZF_DEFAULT_COMMAND = 'ag -g ""'
 
+let g:fzf_action = {
+\'ctrl-t': 'tab split',
+\'ctrl-s': 'split',
+\'ctrl-v': 'vsplit'
+\}
