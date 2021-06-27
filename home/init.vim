@@ -49,7 +49,6 @@
 " :: Plug
 " :: @see https://github.com/junegunn/vim-plug
 " -----------------------------------------------------------------------------
-
 call plug#begin()
 " :: 
 " :: Welcome page
@@ -114,10 +113,10 @@ call plug#end()
 " :: PROVIDERS
 " =============================================================================
 
-let g:ruby_host_prog = '/usr/bin/ruby'
-let g:node_host_prog = '/usr/local/bin/neovim-node-host'
-let g:python_host_prog = '/usr/bin/python'
-let g:python3_host_prog = '/usr/bin/python3'
+" let g:node_host_prog = '/usr/local/bin/neovim-node-host'
+" let g:ruby_host_prog = '/usr/bin/ruby'
+" let g:python3_host_prog = '/usr/bin/python3'
+" let g:python_host_prog = '/usr/bin/python'
 
 
 
@@ -149,8 +148,8 @@ set hlsearch
 " :: WELCOME PAGE
 " =============================================================================
 
-" :: Startfy
-" :: @see https://github.com/mhinz/vim-startify
+" :: Dashboard NVIM
+" :: @see https://github.com/glepnir/dashboard-nvim
 " -----------------------------------------------------------------------------
 let g:dashboard_custom_header = [
 \"                                                    ",
@@ -197,7 +196,6 @@ colorscheme monokai
 " :: Polyglot
 " :: @see https://github.com/sheerun/vim-polyglot
 " -----------------------------------------------------------------------------
-
 " :: TypeScript
 " :: @see https://github.com/HerringtonDarkholme/yats.vim
 " --
@@ -378,5 +376,6 @@ vnoremap <C-S-j> :m '>+1<CR>gv=gv
 " @see https://stackoverflow.com/a/48734229/1345327
 nmap <C-S-d> <Esc>Yp
 imap <C-S-d> <Esc>Ypa
+
 
 
