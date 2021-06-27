@@ -115,6 +115,7 @@ call plug#end()
 " =============================================================================
 
 let g:ruby_host_prog = '/usr/bin/ruby'
+let g:node_host_prog = '/usr/local/bin/neovim-node-host'
 let g:python_host_prog = '/usr/bin/python'
 let g:python3_host_prog = '/usr/bin/python3'
 
