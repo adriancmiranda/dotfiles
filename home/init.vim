@@ -2,16 +2,55 @@
 " :: @see https://github.com/junegunn/vim-plug
 " =============================================================================
 
+set nocompatible
+
+" :: Polyglot
+" :: @see https://github.com/sheerun/vim-polyglot
+" -----------------------------------------------------------------------------
+let g:polyglot_disabled = [
+\]
+
 call plug#begin()
 Plug 'mhinz/vim-startify'
 Plug 'crusoexia/vim-monokai'
-Plug 'HerringtonDarkholme/yats.vim'
+Plug 'sheerun/vim-polyglot'
+Plug 'pangloss/vim-javascript'
+Plug 'statico/vim-javascript-sql'
+Plug 'mustache/vim-mustache-handlebars'
+Plug 'digitaltoad/vim-pug'
+Plug 'leafOfTree/vim-svelte-plugin'
+Plug 'jxnblk/vim-mdx-js'
 Plug 'maxmellon/vim-jsx-pretty'
+Plug 'HerringtonDarkholme/yats.vim'
+Plug 'GutenYe/json5.vim'
+Plug 'neoclide/jsonc.vim'
+Plug 'othree/html5.vim'
+Plug 'tikhomirov/vim-glsl'
+Plug 'ekalinin/Dockerfile.vim'
+Plug 'chr4/nginx.vim'
+Plug 'LnL7/vim-nix'
+Plug 'tpope/vim-git'
+Plug 'jasonshell/vim-svg-indent'
+Plug 'vim-scripts/svg.vim'
+Plug 'jparise/vim-graphql'
+Plug 'cespare/vim-toml'
+Plug 'posva/vim-vue'
+Plug 'amadeus/vim-xml'
+Plug 'briancollins/vim-jst'
+Plug 'rust-lang/rust.vim'
+Plug 'vim-perl/vim-perl'
+Plug 'cakebaker/scss-syntax.vim'
+Plug 'wavded/vim-stylus'
 Plug 'ap/vim-css-color'
+Plug 'tpope/vim-surround'
+Plug 'tpope/vim-fugitive'
+Plug 'codota/tabnine-vim'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'w0rp/ale'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
-Plug 'codota/tabnine-vim'
+Plug 'fszymanski/fzf-gitignore', { 'do': ':UpdateRemotePlugins' }
+Plug 'mbbill/undotree'
 call plug#end()
 
 
@@ -83,17 +122,41 @@ set conceallevel=1
 " :: COC
 " :: @see https://github.com/neoclide/coc.nvim
 " -----------------------------------------------------------------------------
-" N/A
+let g:coc_user_config = {
+\}
+let g:coc_global_extensions = [
+\'coc-css',
+\'coc-html',
+\'coc-json',
+\'coc-prettier',
+\'coc-eslint',
+\'coc-tsserver',
+\'coc-snippets',
+\]
+
+" :: ALE (Asynchronous Lint Engine)
+" :: @see https://github.com/w0rp/ale
+" -----------------------------------------------------------------------------
+let g:ale_fix_on_save = 1
+let g:ale_fixers = {
+\'javascript': ['eslint'],
+\}
 
 " :: FZF
 " :: @see https://github.com/junegunn/fzf
 " -----------------------------------------------------------------------------
 let $FZF_DEFAULT_COMMAND = 'ag -g ""' " ag -> nix-env -iA silver-searcher
 let g:fzf_action = {
-\ 'ctrl-t': 'tab split',
-\ 'ctrl-s': 'split',
-\ 'ctrl-v': 'vsplit'
+\'ctrl-t': 'tab split',
+\'ctrl-s': 'split',
+\'ctrl-v': 'vsplit'
 \}
+
+
+" :: Undotree
+" :: @see https://github.com/mbbill/undotree
+" -----------------------------------------------------------------------------
+set undofile " set undotree to save to file
 
 
 
@@ -112,6 +175,8 @@ set encoding=utf-8
 
 " :: Indentation
 " =============================================================================
+
+filetype plugin indent on
 
 set backspace=indent,eol,start
 set shiftwidth=2
@@ -135,6 +200,7 @@ set hlsearch
 
 set nobackup
 set nowritebackup
+set noswapfile
 
 
 
