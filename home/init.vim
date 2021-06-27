@@ -129,6 +129,7 @@ set fileencoding=utf-8
 set fileencodings=utf-8
 
 
+
 " :: BACKUP
 " =============================================================================
 
@@ -296,7 +297,7 @@ let g:fzf_action = {
 
 " :: FOLDING
 " =============================================================================
-
+" N/A
 
 
 
@@ -377,3 +378,5 @@ vnoremap <C-S-j> :m '>+1<CR>gv=gv
 " @see https://stackoverflow.com/a/48734229/1345327
 nmap <C-S-d> <Esc>Yp
 imap <C-S-d> <Esc>Ypa
+
+
