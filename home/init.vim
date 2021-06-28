@@ -6,6 +6,8 @@
 
 " ## Getting started:
 "
+"  Install [nerd fonts](https://www.nerdfonts.com/)
+"
 "  ```sh
 "  brew install --HEAD tree-sitter luajit neovim
 "  ```
@@ -30,7 +32,8 @@
 " x: Cut
 " yy: Copy an entire line
 " p: Paste
-" O: Insert a blank line
+" o: Insert a blank line at bottom
+" O: Insert a blank line at top
 " u: Undo
 " ctrl+r: Redo
 " <number>+up: Move the cursor <number> lines to up
