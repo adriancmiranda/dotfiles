@@ -59,6 +59,8 @@
 " []: https://github.com/mhinz/vim-galore
 " []: https://github.com/mutewinter/dot_vim
 " []: https://github.com/ChristianChiarulli/LunarVim
+" []: https://github.com/itmecho/neoterm.nvim
+" []: https://www.youtube.com/watch?v=FW2X1CXrU1w
 
 " =============================================================================
 " :: PLUGINS
