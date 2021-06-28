@@ -459,6 +459,7 @@ set colorcolumn=120
 " :: SETTINGS
 " =============================================================================
 
+set paste
 set shell=/bin/sh
 set hidden" Enable hidden buffers
 set number
