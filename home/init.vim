@@ -32,8 +32,8 @@
 " x: Cut
 " yy: Copy an entire line
 " p: Paste
-" o: Insert a blank line at bottom
-" O: Insert a blank line at top
+" o: Insert a blank line at the bottom
+" O: Insert a blank line at the top
 " u: Undo
 " ctrl+r: Redo
 " <number>+up: Move the cursor <number> lines to up
@@ -64,22 +64,30 @@
 " :: PLUGINS
 " =============================================================================
 
+" Include user's extra bundle in order to preset some rules of plugins e.g. `sheerun/vim-polyglot`
+if filereadable(expand("~/preset.vim"))
+  source ~/preset.vim
+endif
+
 " :: Plug
 " :: @see https://github.com/junegunn/vim-plug
 " -----------------------------------------------------------------------------
 call plug#begin()
 " :: 
+" :: Icons
+" :: 
+Plug 'ryanoasis/vim-devicons'" adds icons
+" :: 
 " :: Welcome page
 " :: 
-Plug 'glepnir/dashboard-nvim' " or https://github.com/mhinz/vim-startify
+Plug 'glepnir/dashboard-nvim'" or https://github.com/mhinz/vim-startify
 " ::
 " :: Editor tabs
 " ::
-Plug 'romgrk/barbar.nvim' " it depends on https://github.com/ryanoasis/vim-devicons if you want to display icons
+Plug 'romgrk/barbar.nvim'" it depends on https://github.com/ryanoasis/vim-devicons if you want to display icons
 " :: 
 " :: Themes
 " :: 
-Plug 'ryanoasis/vim-devicons' " adds icons
 Plug 'crusoexia/vim-monokai'
 Plug 'arcticicestudio/nord-vim'
 Plug 'ayu-theme/ayu-vim'
@@ -315,31 +323,38 @@ let g:fzf_action = {
 
 
 
-" :: FOLDING
-" =============================================================================
-" N/A
-
-
-
 " :: INDENTATION
 " =============================================================================
 
-filetype plugin indent on
+filetype plugin indent on" required
+" In order to ignore plugin indent changes, instead, use:
+"filetype plugin on
 
-set backspace=indent,eol,start
-set shiftwidth=2
-set tabstop=2
+set backspace=indent,eol,start" Fix backspace indent
+set shiftwidth=2" number of spaces to use for indent and unindent
+set tabstop=2" the visible width of tabs
+set softtabstop=0" edit as if the tabs are 0 characters wide
+set smarttab" tab respects 'tabstop', 'shiftwidth', and 'softtabstop'
+set expandtab" tabs ftw
+set autoindent" automatically set indent of new line
 set smartindent
-set autoindent
-set expandtab
-set smarttab
+
+
+
+" :: CODE FOLDING
+" =============================================================================
+
+set foldmethod=syntax" fold based on indent
+set foldnestmax=10" deepest fold is 10 levels
+set nofoldenable" don't fold by default
+set foldlevel=1
 
 
 
 " :: SETTINGS
 " =============================================================================
 
-set hidden
+set hidden" Enable hidden buffers
 set number
 set relativenumber
 set mouse=a
@@ -363,14 +378,14 @@ set list listchars=tab:\ \ ,trail:·
 " :: Undotree
 " :: @see https://github.com/mbbill/undotree
 " -----------------------------------------------------------------------------
-set undofile " set undotree to save to file
+set undofile" set undotree to save to file
 
 
 
 " :: MAPPINGS
 " =============================================================================
 
-let mapleader="\<space>" " press spacebar and then type...
+let mapleader="\<space>"" set a map leader for more key combos, so, press spacebar and then type...
 
 nnoremap <leader>reload :source ~/.config/nvim/init.vim<cr>
 nnoremap <leader>splith ~/.config/nvim/init.vim<cr>
