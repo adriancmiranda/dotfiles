@@ -76,15 +76,15 @@ call plug#begin()
 " ::
 " :: Icons
 " ::
-Plug 'ryanoasis/vim-devicons'" adds icons
+Plug 'kyazdani42/nvim-web-devicons'" adds icons
 " ::
 " :: Welcome page
 " ::
 Plug 'mhinz/vim-startify'" or https://github.com/glepnir/dashboard-nvim
 " ::
-" :: Editor tabs
+" :: File tabs
 " ::
-Plug 'romgrk/barbar.nvim'" it depends on https://github.com/ryanoasis/vim-devicons if you want to display icons
+Plug 'romgrk/barbar.nvim'" it depends on https://github.com/kyazdani42/nvim-web-devicons if you want to display icons
 " ::
 " :: Themes
 " ::
@@ -154,8 +154,8 @@ call plug#end()
 " =============================================================================
 
 set encoding=utf-8
-set fileencoding=utf-8
-set fileencodings=utf-8
+"set fileencoding=utf-8
+"set fileencodings=utf-8
 set fileformats=unix,dos,mac
 set bomb
 set binary
@@ -201,6 +201,66 @@ let g:startify_custom_header = [
 \"     ~~~~~~~~~~~~~~~~~~~~~~~~~ a.m. |_:_._/         ",
 \"                                                    ",
 \]
+
+
+
+" :: FILE TABS
+" =============================================================================
+
+" :: Barbar status bar
+" :: @see https://github.com/romgrk/barbar.nvim
+" -----------------------------------------------------------------------------
+" NOTE: If barbar's option dict isn't created yet, create it
+let bufferline = get(g:, 'bufferline', {})
+
+" Enable/disable animations
+let bufferline.animation = v:false
+
+" Enable/disable auto-hiding the tab bar when there is a single buffer
+let bufferline.auto_hide = v:false
+
+" Enable/disable icons
+" if set to 'numbers', will show buffer index in the tabline
+" if set to 'both', will show buffer index and icons in the tabline
+let bufferline.icons = v:true
+
+" If set, the icon color will follow its corresponding buffer
+" highlight group. By default, the Buffer*Icon group is linked to the
+" Buffer* group (see Highlighting below). Otherwise, it will take its
+" default value as defined by devicons.
+let bufferline.icon_custom_colors = v:false
+
+" Configure icons on the bufferline.
+let bufferline.icon_separator_active = '▎'
+let bufferline.icon_separator_inactive = '▎'
+let bufferline.icon_close_tab = ''
+let bufferline.icon_close_tab_modified = '●'
+
+" Enable/disable close button
+let bufferline.closable = v:false
+
+" Enables/disable clickable tabs
+"  - left-click: go to buffer
+"  - middle-click: delete buffer
+let bufferline.clickable = v:false
+
+" If set, the letters for each buffer in buffer-pick mode will be
+" assigned based on their name. Otherwise or in case all letters are
+" already assigned, the behavior is to assign letters in order of
+" usability (see order below)
+let bufferline.semantic_letters = v:true
+
+" New buffer letters are assigned in this order. This order is
+" optimal for the qwerty keyboard layout but might need adjustement
+" for other layouts.
+let bufferline.letters =
+  \ 'asdfjkl;ghnmxcvbziowerutyqpASDFJKLGHNMXCVBZIOWERUTYQP'
+
+" Sets the maximum padding width with which to surround each tab
+let bufferline.maximum_padding = 4
+
+" Sets the name of unsaved buffers
+let bufferline.no_name_title = v:null
 
 
 
@@ -399,6 +459,7 @@ set shell=/bin/sh
 set hidden" Enable hidden buffers
 set number
 set relativenumber
+set guifont=DroidSansMono\ Nerd\ Font\ 11
 set guioptions=egmrti
 set gfn=Menlo:h12
 set mouse=a
