@@ -33,6 +33,10 @@
 " O: Insert a blank line
 " u: Undo
 " ctrl+r: Redo
+" <number>+up: Move the cursor <number> lines to up
+" <number>+down: Move the cursor <number> lines to down
+" <number>+left: Move the cursor <number> columns to left
+" <number>+right: Move the cursor <number> columns to right
 "
 "
 " ## Mappings
