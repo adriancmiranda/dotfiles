@@ -73,28 +73,28 @@ endif
 " :: @see https://github.com/junegunn/vim-plug
 " -----------------------------------------------------------------------------
 call plug#begin()
-" :: 
+" ::
 " :: Icons
-" :: 
+" ::
 Plug 'ryanoasis/vim-devicons'" adds icons
-" :: 
+" ::
 " :: Welcome page
-" :: 
-Plug 'glepnir/dashboard-nvim'" or https://github.com/mhinz/vim-startify
+" ::
+Plug 'mhinz/vim-startify'" or https://github.com/glepnir/dashboard-nvim
 " ::
 " :: Editor tabs
 " ::
 Plug 'romgrk/barbar.nvim'" it depends on https://github.com/ryanoasis/vim-devicons if you want to display icons
-" :: 
+" ::
 " :: Themes
-" :: 
+" ::
 Plug 'crusoexia/vim-monokai'
 Plug 'arcticicestudio/nord-vim'
 Plug 'ayu-theme/ayu-vim'
 Plug 'altercation/vim-colors-solarized'
-" :: 
+" ::
 " :: Syntax highlighters
-" :: 
+" ::
 Plug 'sheerun/vim-polyglot'
 " ::
 " :: Code formatters
@@ -134,7 +134,7 @@ Plug 'airblade/vim-gitgutter'
 Plug 'itchyny/vim-gitbranch'
 " ::
 " :: Behaviors
-" :: 
+" ::
 Plug 'psliwka/vim-smoothie'
 call plug#end()
 
@@ -156,7 +156,10 @@ call plug#end()
 set encoding=utf-8
 set fileencoding=utf-8
 set fileencodings=utf-8
-
+set fileformats=unix,dos,mac
+set bomb
+set binary
+set ttyfast" faster redrawing
 
 
 " :: BACKUP
@@ -172,16 +175,23 @@ set noswapfile
 " =============================================================================
 
 set hlsearch
+set incsearch" set incremental search, like modern browsers
+set ignorecase" case insensitive searching
+set smartcase" case-sensitive if expresson contains a capital letter
+set nolazyredraw" don't redraw while executing macros
+set magic" Set magic on, for regex
+set showmatch" show matching braces
+set mat=2" how many tenths of a second to blink
 
 
 
 " :: WELCOME PAGE
 " =============================================================================
 
-" :: Dashboard NVIM
-" :: @see https://github.com/glepnir/dashboard-nvim
+" :: Startify
+" :: @see https://github.com/mhinz/vim-startify
 " -----------------------------------------------------------------------------
-let g:dashboard_custom_header = [
+let g:startify_custom_header = [
 \"                                                    ",
 \"                                 /     '      /  /  ",
 \"                                /__      ___ (  /   ",
@@ -331,6 +341,7 @@ filetype plugin indent on" required
 "filetype plugin on
 
 set backspace=indent,eol,start" Fix backspace indent
+set shiftround" round indent to a multiple of 'shiftwidth'
 set shiftwidth=2" number of spaces to use for indent and unindent
 set tabstop=2" the visible width of tabs
 set softtabstop=0" edit as if the tabs are 0 characters wide
@@ -351,24 +362,61 @@ set foldlevel=1
 
 
 
+" :: WHITE SPACES
+" =============================================================================
+
+set list
+set listchars=tab:▸·,trail:~,eol:¬,extends:>,precedes:<,space:·
+set listchars=tab:├·,trail:~,eol:¬,extends:>,precedes:<,space:·
+set listchars=tab:├─,trail:·,eol:¬,extends:>,precedes:<,space:·
+set lcs+=space:·
+
+
+
+" :: STATUS BAR
+" =============================================================================
+
+set showcmd
+set cmdheight=2
+set laststatus=2
+set statusline=%F%m%r%h%w%=(%{&ff}/%Y)\ (line\ %l\/%L,\ col\ %c)\
+
+
+
+" :: CURSOR
+" =============================================================================
+
+set cursorline
+set cursorcolumn
+set colorcolumn=120
+
+
+
 " :: SETTINGS
 " =============================================================================
 
+set shell=/bin/sh
 set hidden" Enable hidden buffers
 set number
 set relativenumber
+set guioptions=egmrti
+set gfn=Menlo:h12
 set mouse=a
+set mousemodel=popup
 set clipboard+=unnamedplus
 set inccommand=split
-set cmdheight=2
 set updatetime=300
 set shortmess+=c
 set signcolumn=yes
 set autochdir
-set laststatus=2
 set cpoptions+=n
+set ruler
 set vb
-set list listchars=tab:\ \ ,trail:·
+set modeline
+set modelines=10
+set title
+set titleold="Terminal"
+set titlestring=%F
 
 
 
