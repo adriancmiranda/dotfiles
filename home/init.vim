@@ -76,15 +76,15 @@ call plug#begin()
 " ::
 " :: Icons
 " ::
-Plug 'kyazdani42/nvim-web-devicons'" adds icons
+Plug 'kyazdani42/nvim-web-devicons'" adds icons, dependents: romgrk/barbar.nvim, mhinz/vim-startify
 " ::
 " :: Welcome page
 " ::
-Plug 'mhinz/vim-startify'" or https://github.com/glepnir/dashboard-nvim
+Plug 'mhinz/vim-startify'" or Plug 'glepnir/dashboard-nvim'
 " ::
 " :: File tabs
 " ::
-Plug 'romgrk/barbar.nvim'" it depends on https://github.com/kyazdani42/nvim-web-devicons if you want to display icons
+Plug 'romgrk/barbar.nvim'" it depends on kyazdani42/nvim-web-devicons if you want to display icons
 " ::
 " :: Themes
 " ::
@@ -114,7 +114,7 @@ Plug 'codota/tabnine-vim'
 " ::
 Plug 'jiangmiao/auto-pairs'
 Plug 'tpope/vim-surround'
-Plug 'mattn/emmet-vim' " or https://github.com/rstacruz/sparkup
+Plug 'mattn/emmet-vim'" or Plug 'rstacruz/sparkup'
 " ::
 " :: Searching
 " ::
@@ -210,11 +210,15 @@ let g:startify_custom_header = [
 " :: Barbar status bar
 " :: @see https://github.com/romgrk/barbar.nvim
 " -----------------------------------------------------------------------------
+let $PLUGIN_DIRECTORY = '~/.config/nvim/plugged'
+set runtimepath^=$PLUGIN_DIRECTORY/nvim-web-devicons
+set runtimepath^=$PLUGIN_DIRECTORY/barbar.nvim
+
 " NOTE: If barbar's option dict isn't created yet, create it
 let bufferline = get(g:, 'bufferline', {})
 
 " Enable/disable animations
-let bufferline.animation = v:false
+let bufferline.animation = v:true
 
 " Enable/disable auto-hiding the tab bar when there is a single buffer
 let bufferline.auto_hide = v:false
@@ -228,7 +232,7 @@ let bufferline.icons = v:true
 " highlight group. By default, the Buffer*Icon group is linked to the
 " Buffer* group (see Highlighting below). Otherwise, it will take its
 " default value as defined by devicons.
-let bufferline.icon_custom_colors = v:false
+let bufferline.icon_custom_colors = v:true
 
 " Configure icons on the bufferline.
 let bufferline.icon_separator_active = '▎'
@@ -237,12 +241,12 @@ let bufferline.icon_close_tab = ''
 let bufferline.icon_close_tab_modified = '●'
 
 " Enable/disable close button
-let bufferline.closable = v:false
+let bufferline.closable = v:true
 
 " Enables/disable clickable tabs
 "  - left-click: go to buffer
 "  - middle-click: delete buffer
-let bufferline.clickable = v:false
+let bufferline.clickable = v:true
 
 " If set, the letters for each buffer in buffer-pick mode will be
 " assigned based on their name. Otherwise or in case all letters are
@@ -459,7 +463,7 @@ set shell=/bin/sh
 set hidden" Enable hidden buffers
 set number
 set relativenumber
-set guifont=DroidSansMono\ Nerd\ Font\ 11
+" set guifont=DroidSansMono\ Nerd\ Font\ 11
 set guioptions=egmrti
 set gfn=Menlo:h12
 set mouse=a
