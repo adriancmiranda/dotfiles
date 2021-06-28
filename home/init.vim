@@ -75,7 +75,7 @@ Plug 'glepnir/dashboard-nvim' " or https://github.com/mhinz/vim-startify
 " ::
 " :: Editor tabs
 " ::
-Plug 'romgrk/barbar.nvim' " it depends on https://github.com/kyazdani42/nvim-web-devicon if you want to display icons
+Plug 'romgrk/barbar.nvim' " it depends on https://github.com/ryanoasis/vim-devicons if you want to display icons
 " :: 
 " :: Themes
 " :: 
