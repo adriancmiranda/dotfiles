@@ -28,9 +28,6 @@ Session.vim
 !/.github
 !/.git/hooks
 !/.config/nvim
-*.o
-\#*#
-*#
-.#*
-.*~
+~*
 *~
+*#*
