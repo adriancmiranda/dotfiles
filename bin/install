@@ -430,3 +430,4 @@ log "${Red}$LD${NC}";
 # open ~/Desktop/_dotfiles;
 # open ~/bin;
 # open $PWD;
+
