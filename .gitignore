@@ -15,6 +15,7 @@
 !.github/
 !.config/
 !.config/nvim/
+!.config/nvim/*.vim
 
 
 
