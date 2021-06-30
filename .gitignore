@@ -4,6 +4,9 @@
 
 *
 */
+!bin/install
+!bin/uninstall
+!bin/backup
 
 
 
@@ -18,14 +21,4 @@
 !.config/nvim/*.vim
 !.config/nvim/colors/
 !.config/nvim/colors/*.vim
-
-
-
-# =============================================================================
-# ░░░░ BINARY 
-# =============================================================================
-
-!bin/install
-!bin/uninstall
-!bin/backup
 
