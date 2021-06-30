@@ -2,10 +2,10 @@
 # ░░░░ SETUP 
 # =============================================================================
 
-**
-!bin/install
-!bin/uninstall
-!bin/backup
+/**
+!/bin/install
+!/bin/uninstall
+!/bin/backup
 
 
 
@@ -25,10 +25,13 @@
 !.gitignore
 !.gitattributes
 !.gitmodules
-!.github/
-!.config/
-!.config/nvim/
-!.config/nvim/*.vim
-!.config/nvim/colors/
-!.config/nvim/colors/*.vim
+!/.github/
+!/.config/
+!/.config/*
+!/.config/nvim/
+!/.config/nvim/*
+!/.config/nvim/*.vim
+!/.config/nvim/colors/
+!/.config/nvim/colors/*
+!/.config/nvim/colors/*.vim
 
