@@ -53,3 +53,4 @@ l'-->
 [vim_ink]: http://vim.ink/ 
 [vim_resources]: https://github.com/magnunleno/vim-resources
 [terminal-colors]: https://gist.github.com/XVilka/8346728
+[keyboard]: https://www.danielkossmann.com/ajeitando-cedilha-errado-ubuntu-linux/
