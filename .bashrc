@@ -1,18 +1,15 @@
 # =============================================================================
 # ░░░░ FIXES
 # =============================================================================
-
 # ~/.bashrc: executed by bash(1) for non-login shells.
 # see /usr/share/doc/bash/examples/startup-files (in the package bash-doc)
 # for examples
-
+# -----------------------------------------------------------------------------
 # If not running interactively, don't do anything
-case $- in
-    *i*) ;;
-      *) return;;
-esac
+case $- in *i*) ;; *) return;; esac
 
 # Terminal Tillix
+# -----------------------------------------------------------------------------
 if [ $TILIX_ID ] || [ $VTE_VERSION ]; then
   if [ -x /etc/profile.d/vte.sh ]; then
     . /etc/profile.d/vte.sh
@@ -25,7 +22,6 @@ fi
 # =============================================================================
 
 printf "Welcome to Bourne Again Shell"
-
 
 
 # =============================================================================
@@ -44,12 +40,11 @@ printf "Welcome to Bourne Again Shell"
 if [ -f ~/.bash_aliases ]; then . ~/.bash_aliases; fi
 
 
-
 # =============================================================================
 # ░░░░ PATHS
 # =============================================================================
 
+# NixOS paths
 export PATH="$HOME/.npm-packages/bin:$PATH"
 export NIX_PATH=$HOME/.nix-defexpr/channels${NIX_PATH:+:}$NIX_PATH
-
 
