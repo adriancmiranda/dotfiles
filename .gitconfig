@@ -1,9 +1,15 @@
-[github]
-	user = adriancmiranda
-
 [user]
 	name = Adrian Miranda
 	email = adriancmiranda@gmail.com
+
+[github]
+	user = adriancmiranda
+
+[gitlab]
+	user = adriancmiranda
+
+[credential]
+	helper = cache --timeout=3600
 
 [core]
 	pager = less

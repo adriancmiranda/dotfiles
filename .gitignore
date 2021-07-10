@@ -31,10 +31,14 @@
 !.bashrc
 !.bash_profile
 !.bash_aliases
+!.profile
 !/.github/
 !/.config/
 !/.config/nvim/
 !/.config/nvim/*.vim
 !/.config/nvim/colors/
 !/.config/nvim/colors/*.vim
+!/.config/nvim/after/
+!/.config/nvim/after/plugin/
+!/.config/nvim/after/plugin/*.vim
 
