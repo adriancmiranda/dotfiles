@@ -1,13 +1,17 @@
+[github]
+	user = adriancmiranda
+
 [user]
 	name = Adrian Miranda
 	email = adriancmiranda@gmail.com
 
 [core]
 	pager = less
-	editor = vim
+	editor = nvim
 	ignorecase = false
 	excludesfile = ~/.gitignore.global
 	attributesfile = ~/.gitattributes.global
 
 [alias]
 	id = rev-parse HEAD
+
