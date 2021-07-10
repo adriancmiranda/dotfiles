@@ -17,10 +17,38 @@ call plug#begin()
 " ~~
 " !! Make sure you use single quotes to plugs
 " ~~
+" ::
+" :: Language Server Protocol (LSP)
+" ::
+
+Plug 'https://github.com/neovim/nvim-lspconfig'
+Plug 'https://github.com/glepnir/lspsaga.nvim'
+
+
+" ::
+" :: Searching
+" ::
+" :: [requires]:
+" :: -https://github.com/ggreer/the_silver_searcher
+" :: -https://github.com/BurntSushi/ripgrep
+
+" :: Telescope
+Plug 'https://github.com/nvim-lua/popup.nvim'
+Plug 'https://github.com/nvim-lua/plenary.nvim'
+Plug 'https://github.com/nvim-telescope/telescope.nvim'
+
+" :: Clap
+Plug 'https://github.com/liuchengxu/vim-clap', { 'do': ':Clap install-binary!' }
+
+" :: FZF
+Plug 'https://github.com/junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'https://github.com/junegunn/fzf.vim'
+
+
 " :: 
 " :: Icons
 " ::
-" :: [dependents]:
+" :: [required]:
 " :: -https://github.com/romgrk/barbar.nvim
 " :: -https://github.com/mhinz/vim-startify
 " :: -https://github.com/kyazdani42/nvim-tree.lua
@@ -42,19 +70,21 @@ Plug 'https://github.com/rktjmp/lush.nvim'" Create another color schemes
 " ::
 " :: Welcome page
 " ::
-" :: [dependency]:
+" :: [requires]:
 " :: -https://github.com/kyazdani42/nvim-web-devicons
+" :: -https://github.com/junegunn/fzf
 " ::
 " :: [options]:
 " :: -https://github.com/ahmedkhalf/lsp-rooter.nvim
+" :: -https://github.com/ChristianChiarulli/dashboard-nvim
 
-Plug 'https://github.com/ahmedkhalf/lsp-rooter.nvim'
+Plug 'https://github.com/ChristianChiarulli/dashboard-nvim'
 
 
 " ::
 " :: File tabs
 " ::
-" :: [dependency]:
+" :: [requires]:
 " :: -https://github.com/kyazdani42/nvim-web-devicons
 
 Plug 'https://github.com/romgrk/barbar.nvim'
@@ -63,7 +93,7 @@ Plug 'https://github.com/romgrk/barbar.nvim'
 " ::
 " :: File explorer
 " ::
-" :: [dependency]:
+" :: [requires]:
 " :: -https://github.com/kyazdani42/nvim-web-devicons
 " ::
 " :: [options]:
@@ -82,7 +112,7 @@ Plug 'https://github.com/psliwka/vim-smoothie'
 " ::
 " :: Status line
 " ::
-" :: [dependency]:
+" :: [requires]:
 " :: -https://github.com/kyazdani42/nvim-web-devicons
 " ::
 " :: [options]:
@@ -92,3 +122,4 @@ Plug 'https://github.com/glepnir/galaxyline.nvim' , { 'branch': 'main' }
 
 
 call plug#end()
+

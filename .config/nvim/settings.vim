@@ -11,6 +11,9 @@
 " ░░░░ BACKUP
 " =============================================================================
 
+set nobackup
+set nowritebackup
+set noswapfile
 
 
 " ░░░░ SEARCHING
@@ -21,9 +24,23 @@
 " ░░░░ VISUAL SETTINGS
 " =============================================================================
 
+syntax on
+syntax enable
+
+set background=dark
+if (has("termguicolors"))
+  set termguicolors
+else
+  set t_Co=256
+endif
 
 
 " ░░░░ THEME
 " =============================================================================
 
+" :: vim-monokai
+" :: @see https://github.com/crusoexia/vim-monokai
+" -----------------------------------------------------------------------------
+
 colorscheme monokai
+
