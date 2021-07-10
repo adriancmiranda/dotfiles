@@ -8,6 +8,15 @@
 [gitlab]
 	user = adriancmiranda
 
+[hub]
+	protocol = https
+
+[web]
+	browser = chrome
+
+[http]
+	postBuffer = 157286400
+
 [credential]
 	helper = cache --timeout=3600
 
@@ -18,6 +27,48 @@
 	excludesfile = ~/.gitignore.global
 	attributesfile = ~/.gitattributes.global
 
+[filter "lfs"]
+	required = true
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+
+[diff]
+	renames = true
+	tool = nvimdiff
+
+[merge]
+	tool = nvimdiff
+
+[difftool "nvimdiff"]
+	cmd = nvim -d \"$LOCAL\" \"$REMOTE\"
+	path = 
+
+[mergetool "nvimdiff"]
+	cmd = nvim -d \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
+	trustExitCode = true
+
+[push]
+	default = simple
+
+[color]
+	ui = auto
+	grep = auto
+	diff = auto
+	pager = true
+	status = auto
+	branch = auto
+	interactive = auto
+
 [alias]
+	aliases = !git config --list | grep 'alias\\.' | sed 's/alias\\.\\([^=]*\\)=\\(.*\\)/\\1\\\t => \\2/' | sort
 	id = rev-parse HEAD
+	ref = remote -v
+	who = shortlog -sne
+	branchs = !git fetch --all && git fetch -p && git branch -a
+	print-authors = !git shortlog -se | perl -spe 's/^\\s+\\d+\\s+//' | sed -e '/^CommitSyncScript.*$/d' > AUTHORS
+	recent = for-each-ref --sort=-committerdate refs/heads/
+	lastcommit = log -1 HEAD
+	lasttag = describe --tags --abbrev=0
+	info = !git ref && git who && git branchs && git lasttag
 
