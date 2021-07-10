@@ -37,7 +37,10 @@ printf "Welcome to Bourne Again Shell"
 # =============================================================================
 
 # Shared with zshrc
-if [ -f ~/.bash_aliases ]; then . ~/.bash_aliases; fi
+[ -f ~/.bash_aliases ] && . ~/.bash_aliases
+
+# @see https://github.com/junegunn/fzf
+[ -f ~/.fzf.bash ] && . ~/.fzf.bash
 
 
 # =============================================================================
