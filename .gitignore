@@ -27,6 +27,7 @@
 !.gitmodules
 !.gitconfig
 !.tmux.conf
+!.tmux.osx.conf
 !.zshrc
 !.bashrc
 !.bash_profile
