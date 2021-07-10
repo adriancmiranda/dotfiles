@@ -121,5 +121,31 @@ Plug 'https://github.com/psliwka/vim-smoothie'
 Plug 'https://github.com/glepnir/galaxyline.nvim' , { 'branch': 'main' }
 
 
+" ::
+" :: Distraction free
+" ::
+" :: [options]:
+" :: -https://github.com/junegunn/goyo.vim
+
+Plug 'https://github.com/folke/zen-mode.nvim'
+
+
+" https://github.com/sindrets/diffview.nvim
+" https://github.com/folke/trouble.nvim
+" https://github.com/simrat39/symbols-outline.nvim
+" https://github.com/JoosepAlviste/nvim-ts-context-commentstring
+" https://github.com/nacro90/numb.nvim
+" https://github.com/norcalli/nvim-colorizer.lua
+" https://github.com/kevinhwang91/rnvimr
+" https://github.com/phaazon/hop.nvim
+" https://github.com/folke/which-key.nvim
+" https://github.com/cohama/lexima.vim
+" https://github.com/andymass/vim-matchup
+" https://github.com/numToStr/FTerm.nvim
+" https://github.com/windwp/nvim-spectre
+" https://github.com/iamcco/markdown-preview.nvim
+" https://github.com/metakirby5/codi.vim
+" https://github.com/turbio/bracey.vim
+" https://github.com/vim-scripts/RltvNmbr.vim
 call plug#end()
 
