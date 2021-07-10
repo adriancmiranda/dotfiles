@@ -1,0 +1,13 @@
+[user]
+	name = Adrian Miranda
+	email = adriancmiranda@gmail.com
+
+[core]
+	pager = less
+	editor = vim
+	ignorecase = false
+	excludesfile = ~/.gitignore.global
+	attributesfile = ~/.gitattributes.global
+
+[alias]
+	id = rev-parse HEAD

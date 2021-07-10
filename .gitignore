@@ -25,6 +25,12 @@
 !.gitignore
 !.gitattributes
 !.gitmodules
+!.gitconfig
+!.tmux.conf
+!.zshrc
+!.bashrc
+!.bash_profile
+!.bash_aliases
 !/.github/
 !/.config/
 !/.config/nvim/
