@@ -171,6 +171,6 @@ export NIX_PATH=$HOME/.nix-defexpr/channels${NIX_PATH:+:}$NIX_PATH
 # :: @see https://github.com/junegunn/fzf
 [ -f ~/.fzf.zsh ] && . ~/.fzf.zsh
 
-# :: @see https://terminalroot.com.br/2021/05/customize-seu-prompt-com-starship-escrito-em-rust.html
+# :: @see https://starship.rs
 [ -x starship ] && eval "$(starship init zsh)"
 
