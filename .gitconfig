@@ -26,7 +26,7 @@
 	ignorecase = false
 	excludesfile = ~/.gitignore.global
 	attributesfile = ~/.gitattributes.global
-
+	
 [filter "lfs"]
 	required = true
 	clean = git-lfs clean -- %f
@@ -48,27 +48,146 @@
 	cmd = nvim -d \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
 	trustExitCode = true
 
+[pull]
+	rebase = false
+
 [push]
 	default = simple
 
 [color]
-	ui = auto
+	ui = true
+	pager = true
 	grep = auto
 	diff = auto
-	pager = true
 	status = auto
 	branch = auto
 	interactive = auto
 
 [alias]
 	aliases = !git config --list | grep 'alias\\.' | sed 's/alias\\.\\([^=]*\\)=\\(.*\\)/\\1\\\t => \\2/' | sort
+	
 	id = rev-parse HEAD
+	
 	ref = remote -v
-	who = shortlog -sne
-	branchs = !git fetch --all && git fetch -p && git branch -a
-	print-authors = !git shortlog -se | perl -spe 's/^\\s+\\d+\\s+//' | sed -e '/^CommitSyncScript.*$/d' > AUTHORS
-	recent = for-each-ref --sort=-committerdate refs/heads/
-	lastcommit = log -1 HEAD
-	lasttag = describe --tags --abbrev=0
-	info = !git ref && git who && git branchs && git lasttag
 
+	uri = remote -v
+	
+	who = shortlog -sne
+	
+	branchs = !git fetch --all && git fetch -p && git branch -a
+	
+	recent = for-each-ref --sort=-committerdate refs/heads/
+	
+	lastcommit = log -1 HEAD
+	
+	lasttag = describe --tags --abbrev=0
+
+	info = !git ref && git who && git branchs && git lasttag
+	
+	print-authors = !git shortlog -se | perl -spe 's/^\\s+\\d+\\s+//' | sed -e '/^CommitSyncScript.*$/d' > AUTHORS
+
+	# ░░░░ TODO: Organize
+
+	rollback = revert1
+	
+	revert1 = revert HEAD~1..HEAD
+	
+	revert2 = revert HEAD~2..HEAD
+	
+	unstage = reset HEAD -- #file
+	
+	untrack = rm --cache -- #file
+
+	reset-untracked = clean -fd;
+
+	prd = !git change master
+
+	hom = !git change hom
+
+	dev = !git change dev
+
+	master = !git prd
+
+	staging = !git hom
+
+	develop = !git dev
+
+	cleanupds = "!_() { find . -type f -name '*.DS_Store' -ls -delete; }; _"
+
+	ours = "!_() { git checkout --ours $@ && git add $@; }; _"
+
+	theirs = "!_() { git checkout --theirs $@ && git add $@; }; _"
+
+	mktag = "!_() { git tag -a $1 -m $2 && git push --tags; }; _"
+
+	rmtag = "!_() { git tag -d $1 && git push origin :refs/tags/$1; }; _"
+
+	upstream = "!_() { BRANCH=$(git rev-parse --abbrev-ref HEAD); git branch --set-upstream-to=origin/$(BRANCH) $(BRANCH); }; _"
+
+	history = log --graph --pretty=format:'%Cred%h%Creset %C(yellow)%an%d%Creset %s %Cgreen(%cr)%Creset' --date=relative
+
+	branchs = !git fetch --all && git fetch -p && git branch -a
+
+	track = "!_() { git checkout --track -B $1 origin/$1; }; _"
+
+	change = "!_() { git checkout $1 && git pull origin $1 --verbose; }; _"
+
+	mkbranch = "!_() { git checkout -b $1 && git push origin $1 && git change master && git track $1 && git checkout $1; }; _"
+
+	rmbranch = "!_() { git branch -D $1; git push origin :$1; git branchs; }; _"
+
+	mvbranch = "!_() { OLD_NAME=$1; NEW_NAME=$2; git branch -m $OLD_NAME $NEW_NAME; git push origin :$OLD_NAME; git push origin $NEW_NAME; git branchs; }; _"
+
+	info = !git uri && git who && git branchs && git lasttag
+
+	up = !git pull origin $(git rev-parse --abbrev-ref HEAD) && git pull --verbose
+
+	psh = !git up && git push origin $(git rev-parse --abbrev-ref HEAD)
+
+	record = ! sh -c '(git add -p -- $@ && git commit) || git reset' --
+
+	fuse = !git up && git merge
+
+	goto = !git change
+
+	stat = !git status -s
+
+	st = !git status -s
+
+	undo = "!_() { if [[ -z $1 ]]; then git reset --hard; else git checkout HEAD -- $1; fi  }; _"
+	
+	url = !git uri
+	
+	gk = 'gitk --all&'
+	
+	k = !gitk
+	
+	gx = 'gitx --all'
+	
+	prune-all = !git remote | xargs -n 1 git remote prune
+	
+	empty-tree-sha1 = hash-object -t tree /dev/null
+	
+	oneline ="!_() { $(test $# -eq 0 && echo xargs -L1) git log --no-walk --decorate --oneline \"$@\";  }; _"
+	
+	tips = "!_() { t=$(git rev-list --no-merges --max-count=1 \"$@\"); if test -n \"$t\"; then echo $t; _ \"$@\" ^$t; fi;  }; _"
+	
+	copyrsa = "pbcopy < ~/.ssh/id_rsa.pub"
+	
+	change-passphrase = "!f(){ OLD_PASSPHRASE=$1; NEW_PASSPHRASE=$2; ssh-keygen -p -P $OLD_PASSPHRASE -N $NEW_PASSPHRASE -f $HOME/.ssh/id_rsa; }; f;"
+	
+	gh-pages = !git push -f origin master:gh-pages
+
+	feat-master-deploy = "!_() { BRANCH=$(git rev-parse --abbrev-ref HEAD); git pull --verbose && git pull origin $BRANCH --verbose && git push origin $BRANCH && git checkout master && git pull origin master --verbose && git merge $BRANCH && git push origin master && git checkout $BRANCH; }; _"
+	
+	feat-main-deploy = "!_() { BRANCH=$(git rev-parse --abbrev-ref HEAD); git pull --verbose && git pull origin $BRANCH --verbose && git push origin $BRANCH && git checkout main && git pull origin main --verbose && git merge $BRANCH && git push origin main && git checkout $BRANCH; }; _"
+
+	feat-dev-deploy = "!_() { BRANCH=$(git rev-parse --abbrev-ref HEAD); git pull --verbose && git pull origin $BRANCH --verbose && git push origin $BRANCH && git checkout dev && git pull origin dev --verbose && git merge $BRANCH && git push origin dev && git checkout $BRANCH; }; _"
+
+	feat-hom-deploy = "!_() { BRANCH=$(git rev-parse --abbrev-ref HEAD); git pull --verbose && git pull origin $BRANCH --verbose && git push origin $BRANCH && git checkout dev && git pull origin dev --verbose && git merge $BRANCH && git push origin dev && git checkout hom && git pull origin hom --verbose && git merge dev && git push origin hom && git checkout $BRANCH; }; _"
+
+	feat-prod-deploy = "!_() { BRANCH=$(git rev-parse --abbrev-ref HEAD); git pull --verbose && git pull origin $BRANCH --verbose && git push origin $BRANCH && git checkout dev && git pull origin dev --verbose && git merge $BRANCH && git push origin dev && git checkout hom && git pull origin hom --verbose && git merge dev && git push origin hom && git checkout prod && git pull origin prod --verbose && git merge hom && git push origin prod && git checkout $BRANCH; }; _"
+
+	deploy-hom = "!_() { [[ "$(git rev-parse --abbrev-ref HEAD)" = "dev" ]] && git psh && git pull origin dev --verbose && git checkout hom && git pull origin hom --verbose && git merge dev && git push origin hom && git checkout dev; }; _"
+
+	deploy-prod = "!_() { [[ "$(git rev-parse --abbrev-ref HEAD)" = "dev" ]] && git psh && git pull origin dev --verbose && git checkout hom && git pull origin hom --verbose && git merge dev && git push origin hom && git checkout prod && git pull origin prod --verbose && git merge hom && git push origin prod && git checkout dev; }; _"

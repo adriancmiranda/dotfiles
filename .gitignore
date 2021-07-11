@@ -33,6 +33,7 @@
 !.bash_profile
 !.bash_aliases
 !.profile
+!.secret.conf.sample
 !/.github/
 !/.config/
 !/.config/nvim/
