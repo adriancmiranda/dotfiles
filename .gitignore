@@ -34,6 +34,8 @@
 !.bash_aliases
 !.profile
 !.secret.conf.sample
+!.nixos-mkflake/
+!.nixos-mkflake/*
 !/.github/
 !/.config/
 !/.config/nvim/
