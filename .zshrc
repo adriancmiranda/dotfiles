@@ -15,7 +15,7 @@ fi
 # ░░░░ WELCOME
 # =============================================================================
 
-printf "Welcome to Oh My ZSH!"
+printf "Welcome to Oh My ZSH! "
 
 
 # =============================================================================
@@ -29,7 +29,7 @@ printf "Welcome to Oh My ZSH!"
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # :: Path to your oh-my-zsh installation.
-export ZSH=$HOME/.oh-my-zsh
+[ -d ~/.oh-my-zsh ] && export ZSH=~/.oh-my-zsh
 
 # :: Set name of the theme to load --- if set to "random", it will
 # :: load a random theme each time oh-my-zsh is loaded, in which case,
@@ -104,7 +104,7 @@ ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets pattern cursor)
 plugins=(git gitignore vscode nvm npm node ng man aws docker cargo nmap python pip virtualenv colorize ansible bundler colored-man-pages zsh-syntax-highlighting zsh-autosuggestions zsh-navigation-tools zsh_reload)
 
 # :: Runtime oh-my-zsh.sh always when I do
-source $ZSH/oh-my-zsh.sh
+[ -x $ZSH/.oh-my-zsh ] && source $ZSH/oh-my-zsh.sh
 
 
 # =============================================================================
@@ -172,5 +172,5 @@ export NIX_PATH=$HOME/.nix-defexpr/channels${NIX_PATH:+:}$NIX_PATH
 [ -f ~/.fzf.zsh ] && . ~/.fzf.zsh
 
 # :: @see https://terminalroot.com.br/2021/05/customize-seu-prompt-com-starship-escrito-em-rust.html
-eval "$(starship init zsh)"
+[ -x starship ] && eval "$(starship init zsh)"
 

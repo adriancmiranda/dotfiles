@@ -103,7 +103,6 @@ alias tmux.osx.conf='nvim ~/.tmux.osx.conf'
 alias init.vim='nvim ~/.config/nvim/init.vim'
 alias reload='
 . ~/.zshrc &&\
-. ~/.bashrc &&\
 . ~/.profile &&\
 . ~/.bash_profile &&\
 . ~/.bash_aliases &&\
@@ -131,7 +130,6 @@ alias nix-delete-old-generations='sudo nix-env -p /nix/var/nix/profiles/system -
 alias npmr='npm run'
 alias reload.audio='pulseaudio -k && sudo alsa force-reload'
 alias unabled_to_download='sudo dpkg --configure -a && apt-get -f install && apt-get -f remove && apt-get update && apt-get upgrade'
-alias iplocal="echo $(hostname -I)"
 alias path='echo -e ${PATH//:/\\n}'
 alias rsa='pbcopy < ~/.ssh/id_rsa.pub && echo -e "${BCya}RSA Key copied to clipboard! ${NC}"'
 alias venv3='source ~/.local/bin/venv3/bin/activate'

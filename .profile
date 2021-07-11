@@ -2,6 +2,6 @@
 # ░░░░ WELCOME
 # =============================================================================
 
-printf "Welcome to Bourne Shell"
+printf "Welcome to Bourne Shell! "
 
 
