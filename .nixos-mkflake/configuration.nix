@@ -111,16 +111,26 @@ in
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
-     # Typography
+     # Typography.
      nerdfonts
 
-     # Text editors
+     # Text editors.
      neovim
      micro
 
-     # Command lines and terminal
-     wirelesstools
+     # X11
      xorg.xkill
+     xorg.xbacklight
+     xorg.setxkbmap
+     xorg.xmodmap
+     xorg.xev
+     xclip
+     xsel
+     arc-theme
+
+     # Command lines and terminal.
+     wirelesstools
+     xcompmgr
      jq
      gitFull
      git-lfs
@@ -130,13 +140,13 @@ in
      unrar
      wget
      file
+     atop
      htop
      tree
      tree-sitter
      pstree
      zsh
-     xclip
-     xsel
+     antigen
      tmux
      screen
      cargo
@@ -157,6 +167,7 @@ in
      nodePackages.http-server
      cmus
      ranger
+     nnn
      neofetch
      lsof
      docker
@@ -168,31 +179,38 @@ in
      yasm
      lshw
      nmap
+     ncdu
      speech-tools
      notify-desktop
-     arc-theme
+     timetrap
      pavucontrol
      nvme-cli
      stow
+     trash-cli
 
-     # Useless CLI
+     # Useless CLI.
      cmatrix
 
-     # Database
+     # Database.
      postgresql
      mongodb
      sqlite
 
-     # Server
+     # Server.
      nginx
 
-     # GUI programs
+     # GUI programs.
      google-chrome
+     slack
+     discord
      flameshot
      peek
      vlc
 
-     # NixOS utils
+     # Window Manager and related stuff.
+     nitrogen
+     
+     # NixOS utils.
      nix-prefetch-git
      homesick
   ];
@@ -202,9 +220,10 @@ in
   # The value of each variable can be either a string or a list of strings.
   # The latter is concatenaded, interspersed with colon characters.
   environment.variables = {
-    EDITOR = "nvim";
-    VISUAL = "nvim";
+    EDITOR = "micro";
+    VISUAL = "micro";
     AMBOX_SECRET = "$HOME/.ambox-secret.conf";
+    HOME_MANAGER_CONFIG = "$HOME/.config/nixpkgs/home.nix";
     NIXOS_HARDWARE_CONFIG = "/etc/nixos/hardware-configuration.nix";
     NIXOS_CONFIG = "/etc/nixos/configuration.nix";
     NIXPKGS_ALLOW_UNFREE = "1";
@@ -248,6 +267,8 @@ in
     "@" = "cd $HOME/";
     "@capsule" = "cd $HOME/Capsule/";
     "@sites" = "cd $HOME/Sites/";
+    "@sites.ad" = "cd $HOME/Sites/ad/";
+    "@sites.zak" = "cd $HOME/Sites/zak/";
     "@documents" = "cd $HOME/Documents/";
     "@music" = "cd $HOME/Music/";
     "@desktop" = "cd $HOME/Desktop/";
@@ -266,7 +287,7 @@ in
     "npmr" = "npm run";
     "npmw" = "npmr -w";
     "ssh-change" = "eval $(ssh-agent -s) && ssh-add";
-    "-p ip" = "curl ifconfig.pro";
+    "ip" = "curl ifconfig.pro";
     "nix-collect-generations" = "sudo nix-env -p /nix/var/nix/profiles/system --delete-generations old && nix-collect-garbage -d";
 
     # Dotfiles
@@ -274,12 +295,14 @@ in
     "profile" = "$EDITOR $HOME/.profile";
     "bash_profile" = "$EDITOR $HOME/.bash_profile";
     "zshrc"  = "$EDITOR $HOME/.zshrc";
+    "zshenv" = "$EDITOR $HOME/.zshenv";
     "bash_aliases" = "$EDITOR $HOME/.bash_aliases";
     "tmux.conf" = "$EDITOR $HOME/.tmux.conf";
     "gitconfig" = "$EDITOR $HOME/.gitconfig";
     "secret" = "$EDITOR $HOME/.ambox-secret.conf";
     "hardware-configuration.nix" = "sudo $EDITOR $NIXOS_HARDWARE_CONFIG";
     "configuration.nix" = "sudo $EDITOR $NIXOS_CONFIG";
+    "home.nix" = "$EDITOR $HOME_MANAGER_CONFIG";
   };
 
   # Set of aliases for bash shell, which overrides `environment.shellAliases`.
@@ -318,9 +341,8 @@ in
       "ansible"
       "bundler"
       "colored-man-pages"
-      "zsh-syntax-highlighting"
-      "zsh-autosuggestions"
-      "zsh-navigation-tools zsh_reload"
+      "zsh-navigation-tools"
+      "zsh_reload"
     ];
   };
  
