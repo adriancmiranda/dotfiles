@@ -8,6 +8,9 @@
 [gitlab]
 	user = adriancmiranda
 
+[url "git@gitlab.com:"]
+	insteadOf = https://gitlab.com/
+
 [hub]
 	protocol = https
 
@@ -191,3 +194,4 @@
 	deploy-hom = "!_() { [[ "$(git rev-parse --abbrev-ref HEAD)" = "dev" ]] && git psh && git pull origin dev --verbose && git checkout hom && git pull origin hom --verbose && git merge dev && git push origin hom && git checkout dev; }; _"
 
 	deploy-prod = "!_() { [[ "$(git rev-parse --abbrev-ref HEAD)" = "dev" ]] && git psh && git pull origin dev --verbose && git checkout hom && git pull origin hom --verbose && git merge dev && git push origin hom && git checkout prod && git pull origin prod --verbose && git merge hom && git push origin prod && git checkout dev; }; _"
+
