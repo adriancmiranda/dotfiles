@@ -11,7 +11,7 @@ in
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
     ];
-  
+      
   # Allow proprietary packages and make unstable flag. 
   nixpkgs.config = {
     allowUnfree = true;
@@ -21,10 +21,17 @@ in
       };
     };
   };
-  
+
+  # Supposedly better for SSD
+  #fileSystems."/".options = [ "noatime" "nodiratime" "discard" ];
+    
   # Use the systemd-boot EFI boot loader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
+
+  # Whether to enable power management.
+  # This includes support for suspend-to-RAM and powersave features on laptops.
+  powerManagement.enable = true;
 
   # Set your time zone.
   time.timeZone = "America/Sao_Paulo";
@@ -49,8 +56,10 @@ in
 
   # Select internationalisation properties.
   i18n.defaultLocale = "en_US.UTF-8";
+  # Set the virtual consoles properties. 
   console = {
-    font = "Lat2-Terminus16";
+    #font = "Lat2-Terminus16";
+    font = "latarcyrheb-sun32";
     keyMap = "us";
   };
 
@@ -71,6 +80,9 @@ in
   # Configure keymap in X11
   services.xserver.layout = "us";
   services.xserver.xkbOptions = "eurosign:e";
+
+  # Use GPU.
+  #services.xserver.videoDrivers = [ "intel" ];
    
   # Enable CUPS to print documents.
   services.printing.enable = true;
@@ -87,8 +99,14 @@ in
   users.users.ad = {
     isNormalUser = true;
     initialPassword = " ";
-    extraGroups = [ "wheel" ]; # Enable ‘sudo’ for the user.
+    shell = pkgs.zsh;
+    extraGroups = [ "wheel"  "networkmanager" "docker" ]; # Enable ‘sudo’ for the user.
   };
+
+  # List of primary font paths.
+  fonts.fonts = [
+  	pkgs.nerdfonts
+  ];
   
   # List packages installed in system profile. To search, run:
   # $ nix search wget
@@ -101,6 +119,7 @@ in
      micro
 
      # Command lines and terminal
+     wirelesstools
      xorg.xkill
      jq
      gitFull
@@ -108,11 +127,13 @@ in
      subversion
      ngrok
      unzip
+     unrar
      wget
      file
      htop
      tree
      tree-sitter
+     pstree
      zsh
      xclip
      xsel
@@ -127,6 +148,7 @@ in
      gnumake
      ripgrep
      silver-searcher
+     ag
      fzf
      luajit
      neovim-remote
@@ -148,6 +170,10 @@ in
      nmap
      speech-tools
      notify-desktop
+     arc-theme
+     pavucontrol
+     nvme-cli
+     stow
 
      # Useless CLI
      cmatrix
@@ -164,6 +190,7 @@ in
      google-chrome
      flameshot
      peek
+     vlc
 
      # NixOS utils
      nix-prefetch-git
@@ -240,7 +267,7 @@ in
     "npmw" = "npmr -w";
     "ssh-change" = "eval $(ssh-agent -s) && ssh-add";
     "-p ip" = "curl ifconfig.pro";
-    "nix-collect-generations" = "nix-env -p /nix/var/nix/profiles/system --delete-generations old && nix-collect-garbage -d";
+    "nix-collect-generations" = "sudo nix-env -p /nix/var/nix/profiles/system --delete-generations old && nix-collect-garbage -d";
 
     # Dotfiles
     "hosts" = "sudo $EDITOR /etc/hosts";
@@ -257,6 +284,9 @@ in
 
   # Set of aliases for bash shell, which overrides `environment.shellAliases`.
   programs.bash.shellAliases = {};
+
+  # Set of aliases for fish shell, which overrides `environment.shellAliases`.
+  #programs.fish.shellAliases = {};
 
   # Set of aliases for zsh shell, which overrides `environment.shellAliases`.
   programs.zsh.shellAliases = {};
@@ -285,7 +315,6 @@ in
       "nmap"
       "python"
       "npm"
-      "ag"
       "ansible"
       "bundler"
       "colored-man-pages"
@@ -294,10 +323,6 @@ in
       "zsh-navigation-tools zsh_reload"
     ];
   };
-
-
-  # Set of aliases for fish shell, which overrides `environment.shellAliases`.
-  #programs.fish.shellAliases = {};
  
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
@@ -326,4 +351,3 @@ in
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
   system.stateVersion = "21.05"; # Did you read the comment?
 }
-
