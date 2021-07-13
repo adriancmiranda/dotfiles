@@ -183,3 +183,4 @@ configure a gosto
 
 [youtube-tutorial]: https://www.youtube.com/watch?v=axOxLJ4BWmY
 [NIX_PATH]: nixpkgs=/nix/var/nix/profiles/per-user/root/channels/nixos:nixos-config=/etc/nixos/configuration.nix:/nix/var/nix/profiles/per-user/root/channels
+[PATH]: /run/wrappers/bin:/home/ad/.nix-profile/bin:/etc/profiles/per-user/ad/bin:/nix/var/nix/profiles/default/bin:/run/current-system/sw/bin 
