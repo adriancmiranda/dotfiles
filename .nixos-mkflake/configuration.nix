@@ -151,6 +151,7 @@ in
      screen
      cargo
      python3
+     python39Packages.bpython
      ruby
      deno
      nodejs
@@ -171,6 +172,7 @@ in
      neofetch
      lsof
      docker
+     speedtest-cli
      youtube-dl
      imagemagick
      image_optim
@@ -186,6 +188,8 @@ in
      pavucontrol
      nvme-cli
      stow
+     irssi
+     spotify-tui
      trash-cli
 
      # Useless CLI.
